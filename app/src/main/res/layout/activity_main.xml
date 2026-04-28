@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/bg_gradient"
+    android:paddingHorizontal="40dp" >
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        app:srcCompat="@drawable/background" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:hint="Nombre de Usuario"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/btn_white_rounded"
+        android:padding="10dp"
+        android:textColor="#2E7D32"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:hint="Clave de Usuario"
+        android:inputType="textPassword"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/btn_white_rounded"
+        android:padding="10dp"
+        android:textColor="#2E7D32"
+        />
+    <!-- Botón Iniciar sesión -->
+    <android.widget.Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@drawable/btn_white_rounded"
+        android:backgroundTint="#ffffff"
+        android:elevation="4dp"
+        android:text="Iniciar sesión"
+        android:textColor="#2E7D32"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+
+
+</LinearLayout>
