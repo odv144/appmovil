@@ -6,21 +6,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
-    android:background="@drawable/bg_gradient"
     android:paddingHorizontal="40dp" >
+
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
+        android:layout_marginTop="10dp"
         app:srcCompat="@drawable/background" />
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="44dp"
         android:hint="Nombre de Usuario"
-        android:backgroundTint="@color/white"
+
         android:background="@drawable/btn_white_rounded"
         android:padding="10dp"
         android:textColor="#2E7D32"
@@ -28,10 +29,10 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="44dp"
         android:hint="Clave de Usuario"
         android:inputType="textPassword"
-        android:backgroundTint="@color/white"
+
         android:background="@drawable/btn_white_rounded"
         android:padding="10dp"
         android:textColor="#2E7D32"
@@ -41,14 +42,19 @@
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="52dp"
-        android:background="@drawable/btn_white_rounded"
-        android:backgroundTint="#ffffff"
-        android:elevation="4dp"
-        android:text="Iniciar sesión"
-        android:textColor="#2E7D32"
-        android:textSize="15sp"
-        android:textStyle="bold" />
 
+        android:background="@drawable/btn_verde_rounded_sm"
+        android:elevation="4dp"
+        android:text="Entrar al Sistema"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Sport Center @ 2026"
+        android:layout_marginTop="20dp"/>
 
 
 </LinearLayout>
