@@ -65,14 +65,4 @@
         android:paddingEnd="6dp"
         android:textColor="#2E7D32" />
 
-    <!--
-        NOTA sobre el badge de estado:
-        En lugar de usar un drawable personalizado (que podría fallar),
-        el color del texto se cambia directamente desde el Adapter:
-          - "Al día"  → textColor #2E7D32 (verde)
-          - "Vencido" → textColor #C62828 (rojo)
-          - "Próximo" → textColor #E65100 (naranja)
-        Esto es más simple y seguro para no romper el layout.
-    -->
-
 </LinearLayout>
