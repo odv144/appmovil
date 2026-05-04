@@ -1,0 +1,40 @@
+# Android Studio / IntelliJ IDEA
+.idea/
+*.iml
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/assetWizardSettings.xml
+.idea/dictionaries
+.idea/libraries
+.idea/caches
+.idea/modules.xml
+
+# Gradle
+.gradle/
+build/
+**/build/
+local.properties
+
+# Archivos generados
+gen/
+out/
+bin/
+
+# Keystore (NUNCA subir claves)
+*.jks
+*.keystore
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# NDK
+obj/
+*.so
+
+# Archivos de lint
+lint/intermediates/
+lint/generated/
+lint/outputs/
+lint/tmp/
