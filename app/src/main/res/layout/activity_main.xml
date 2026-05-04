@@ -42,19 +42,18 @@
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="52dp"
-
         android:background="@drawable/btn_verde_rounded_sm"
+        android:backgroundTint="#ffffff"
         android:elevation="4dp"
-        android:text="Entrar al Sistema"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:text="Iniciar sesión"
+        android:textColor="#2E7D32"
+        android:textSize="15sp"
         android:textStyle="bold" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:text="Sport Center @ 2026"
         android:layout_marginTop="20dp"/>
-
-
 </LinearLayout>

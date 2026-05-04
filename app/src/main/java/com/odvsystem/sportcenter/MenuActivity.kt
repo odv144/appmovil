@@ -19,10 +19,9 @@ class MenuActivity : AppCompatActivity() {
         val socios: LinearLayout = findViewById<LinearLayout>(R.id.menu_Socio)
 
         socios.setOnClickListener {
-            Toast.makeText(this,"has precionado el layout", Toast.LENGTH_LONG).show()
-            val intentar = Intent(this, MenuActivity::class.java)
+            Toast.makeText(this,"presionando boton de socio", Toast.LENGTH_LONG).show()
+            val intentar = Intent(this, SociosActivity::class.java)
             startActivity(intentar)
-
         }
 
     }
