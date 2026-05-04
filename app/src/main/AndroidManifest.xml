@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SportCenter">
         <activity
+            android:name=".Socios_Activity"
+            android:exported="false" />
+        <activity
             android:name=".MenuActivity"
             android:exported="false" />
         <activity

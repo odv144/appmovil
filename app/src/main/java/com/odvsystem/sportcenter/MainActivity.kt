@@ -17,10 +17,9 @@ class MainActivity : AppCompatActivity() {
         val boton: Button = findViewById(R.id.btnLogin)
 
         boton.setOnClickListener{
-
             val intentar = Intent(this, MenuActivity::class.java)
             startActivity(intentar)
-            Toast.makeText(this,"has precionado el boton", Toast.LENGTH_LONG).show()
+
         }
     }
 }

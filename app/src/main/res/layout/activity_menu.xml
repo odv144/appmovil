@@ -139,6 +139,7 @@
                 android:layout_height="wrap_content"
                 >
                 <LinearLayout
+                    android:id="@+id/menu_Socio"
                     android:layout_width="0dp"
                     android:layout_height="120dp"
                     android:orientation="vertical"
@@ -167,6 +168,7 @@
 
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/menu_NoSocio"
                     android:layout_width="0dp"
                     android:layout_height="120dp"
                     android:orientation="vertical"
@@ -206,6 +208,7 @@
                 android:layout_height="wrap_content"
                 >
                 <LinearLayout
+                    android:id="@+id/menu_actividades"
                     android:layout_width="0dp"
                     android:layout_height="120dp"
                     android:orientation="vertical"
@@ -234,6 +237,7 @@
 
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/menu_Vencimientos"
                     android:layout_width="0dp"
                     android:layout_height="120dp"
                     android:orientation="vertical"
@@ -267,6 +271,7 @@
 
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/menu_reimpresion"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="10dp"
@@ -287,14 +292,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Vencimientos"
+                    android:text="Reimpresión de Carnet"
                     android:textColor="@color/black"
                     android:textSize="30sp"
                     android:padding="2dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Estado de cuotas"
+                    android:text="Genera credencial de socio"
                     android:textColor="@color/black"
                     android:textSize="16sp"/>
             </LinearLayout>
