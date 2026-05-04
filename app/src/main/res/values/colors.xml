@@ -2,4 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Paleta Sport Center -->
+    <color name="verde_oscuro">#1A5C28</color>
+    <color name="verde_medio">#2E7D32</color>
+    <color name="verde_claro">#4CAF50</color>
+    <color name="verde_acento">#2E8B3A</color>
+    <color name="texto_secundario">#CCFFFFFF</color>
 </resources>
+
+

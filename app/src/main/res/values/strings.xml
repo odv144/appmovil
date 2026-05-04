@@ -1,3 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">SportCenter</string>
+
+    <!-- Portada -->
+    <string name="titulo_portada">SPORT CENTER</string>
+    <string name="subtitulo_portada">GESTIÓN DEPORTIVA</string>
+    <string name="btn_iniciar_sesion">Iniciar sesión</string>
+    <string name="desc_logo">Logo Sport Center</string>
 </resources>

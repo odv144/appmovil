@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/ic_estrella_circulo.xml -->
+<!--
+    Ícono: estrella de 5 puntas dentro de un círculo con borde blanco semitransparente.
+    Fiel al diseño del Figma: círculo con fondo verde oscuro semitransparente + estrella blanca.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- Círculo de fondo semitransparente (verde oscuro) -->
+    <path
+        android:fillColor="#33000000"
+        android:pathData="M48,48 m-44,0 a44,44 0 1,0 88,0 a44,44 0 1,0 -88,0" />
+
+    <!-- Borde del círculo blanco semitransparente -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#80FFFFFF"
+        android:strokeWidth="1.5"
+        android:pathData="M48,48 m-42,0 a42,42 0 1,0 84,0 a42,42 0 1,0 -84,0" />
+
+    <!-- Estrella de 5 puntas blanca centrada -->
+    <!-- Calculada con centro en (48,48), radio externo 22, radio interno 9 -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="
+            M48,26
+            L52.94,41.81
+            L69.49,41.81
+            L56.28,51.37
+            L61.22,67.18
+            L48,57.62
+            L34.78,67.18
+            L39.72,51.37
+            L26.51,41.81
+            L43.06,41.81
+            Z" />
+
+</vector>
