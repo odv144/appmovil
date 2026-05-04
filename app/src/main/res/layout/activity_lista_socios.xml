@@ -79,7 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Buscar por nombre o DNI..."
-                android:hintTextColor="#AAAAAA"
+                android:textColorHint="#AAAAAA"
                 android:textColor="#333333"
                 android:textSize="13sp"
                 android:background="@null"

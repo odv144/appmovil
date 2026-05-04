@@ -1,10 +1,318 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MenuActivity">
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#2e7d32"
+            android:padding="16dp"
+            android:orientation="vertical">
+            <TextView
+                android:text="PANEL PRINCIPAL"
+                android:layout_marginBottom="2dp"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"/>
+            <TextView
+                android:text="Sport Center"
+                android:textColor="#FFFFFF"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                 android:layout_height="wrap_content"
+                android:layout_width="match_parent"/>
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="Bienvenido Administrador"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:layout_marginTop="5dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_margin="5dp"
+                    android:background="#fff"
+                    android:layout_gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="48"
+                        android:textStyle="bold"
+                        android:textColor="#2e7d32"
+                        android:textSize="32sp"
+                       android:layout_gravity="center"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Socios"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_margin="5dp"
+                android:background="#fff"
+                android:layout_gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12"
+                    android:textStyle="bold"
+                    android:textColor="#2e7d32"
+                    android:textSize="32sp"
+                    android:layout_gravity="center"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="visitas hoy"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_margin="5dp"
+                android:background="#fff"
+                android:layout_gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5"
+                    android:textStyle="bold"
+                    android:textColor="#f00"
+                    android:textSize="32sp"
+                    android:layout_gravity="center"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Socios"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginHorizontal="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Fila 1: Socios / No Socios -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <LinearLayout
+                    android:id="@+id/menu_Socio"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:orientation="vertical"
+                    android:background="#555999"
+                    android:layout_weight="1"
+                    android:layout_margin="2dp">
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="#555999"
+                        android:layout_gravity="center"
+                        android:src="@android:drawable/ic_menu_agenda"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Socios"
+                        android:textColor="@color/black"
+                        android:textSize="30sp"
+                        android:padding="2dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Gestionar Membresia"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/menu_NoSocio"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:orientation="vertical"
+                    android:background="#995599"
+                    android:layout_weight="1"
+                    android:layout_margin="2dp"
+                    >
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="#995599"
+                        android:layout_gravity="center"
+                        android:src="@android:drawable/ic_menu_call"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No Socios"
+                        android:textColor="@color/black"
+                        android:textSize="30sp"
+                        android:padding="2dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Registro de visitas"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Fila 2: Actividades / Vencimientos -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <LinearLayout
+                    android:id="@+id/menu_actividades"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:orientation="vertical"
+                    android:background="#eeff55"
+                    android:layout_weight="1"
+                    android:layout_margin="2dp">
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="#eeff55"
+                        android:layout_gravity="center"
+                        android:src="@android:drawable/ic_menu_myplaces"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Actividades"
+                        android:textColor="@color/black"
+                        android:textSize="30sp"
+                        android:padding="2dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Clases y tarifas"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/menu_Vencimientos"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:orientation="vertical"
+                    android:background="#bbff99"
+                    android:layout_weight="1"
+                    android:layout_margin="2dp"
+                    >
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="#bbff99"
+                        android:layout_gravity="center"
+                        android:src="@android:drawable/ic_menu_month"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Vencimientos"
+                        android:textColor="@color/black"
+                        android:textSize="30sp"
+                        android:padding="2dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Estado de cuotas"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/menu_reimpresion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:background="#ccc"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="#bbff99"
+                android:layout_gravity="center"
+                android:layout_marginRight="30dp"
+                android:src="@android:drawable/ic_menu_set_as"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reimpresión de Carnet"
+                    android:textColor="@color/black"
+                    android:textSize="30sp"
+                    android:padding="2dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Genera credencial de socio"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+        </LinearLayout>
+        <android.widget.Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_verde_rounded_sm"
+            android:text="Cerrar Sesión"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:layout_marginTop="20dp"/>
+    </LinearLayout>
+
+</ScrollView>
