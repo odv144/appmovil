@@ -20,7 +20,7 @@ class MenuActivity : AppCompatActivity() {
 
         socios.setOnClickListener {
             Toast.makeText(this,"has precionado el layout", Toast.LENGTH_LONG).show()
-            val intentar = Intent(this, Socios_Activity::class.java)
+            val intentar = Intent(this, MenuActivity::class.java)
             startActivity(intentar)
 
         }
