@@ -17,12 +17,19 @@ class MenuActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_menu)
         val socios: LinearLayout = findViewById<LinearLayout>(R.id.menu_Socio)
+        val nosocio: LinearLayout = findViewById<LinearLayout>(R.id.menu_NoSocio)
 
         socios.setOnClickListener {
             Toast.makeText(this,"presionando boton de socio", Toast.LENGTH_LONG).show()
             val intentar = Intent(this, SociosActivity::class.java)
             startActivity(intentar)
         }
+
+        nosocio.setOnClickListener{
+            val intentar = Intent(this, RegistrarNoSocioActivity::class.java)
+            startActivity(intentar)
+        }
+
 
     }
 }
