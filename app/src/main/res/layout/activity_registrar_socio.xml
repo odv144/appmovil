@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/fondoGris">
     <!--ENCABEZADO REUTILIZABLE CON COMPONENTE-->
     <com.odvsystem.sportcenter.components.Header
         android:id="@+id/encabezado"
@@ -15,8 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp"
-        android:orientation="vertical"
-        android:background="@color/fondoGris">
+        android:orientation="vertical" >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,6 +26,7 @@
             android:textColor="@color/verde_oscuro"
             />
         <EditText
+            android:id="@+id/etDni"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="DNI"
@@ -34,6 +35,7 @@
             android:layout_marginTop="5dp"
             />
         <EditText
+            android:id="@+id/etNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="NOMBRE"
@@ -42,6 +44,7 @@
             android:layout_marginTop="5dp"
             />
         <EditText
+            android:id="@+id/etApellido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="APELLIDO"
@@ -50,6 +53,7 @@
             android:layout_marginTop="5dp"
             />
         <EditText
+            android:id="@+id/etTelefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="TELEFONO"
@@ -75,14 +79,7 @@
             android:textColor="@color/verde_oscuro"
             />
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="DNI"
-            android:background="@color/white"
-            android:padding="3dp"
-            android:layout_marginTop="5dp"
-            />
-        <EditText
+            android:id="@+id/etActividad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="ACTIVIDAD"
@@ -91,6 +88,7 @@
             android:layout_marginTop="5dp"
             />
         <EditText
+            android:id="@+id/etCuota"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="COUTA MENSUAL"
@@ -99,6 +97,7 @@
             android:layout_marginTop="5dp"
             />
         <EditText
+            android:id="@+id/etFormaPago"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="FORMA DE PAGO"
@@ -106,14 +105,25 @@
             android:padding="3dp"
             android:layout_marginTop="5dp"
             />
-        <EditText
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="CERTIFICADO. MÉDICO"
-            android:background="@color/white"
-            android:padding="3dp"
-            android:layout_marginTop="5dp"
-            />
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="CERTIFICADO. MÉDICO"
+                android:background="@color/white"
+                android:padding="3dp"
+                android:textSize="18sp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"/>
+            <CheckBox
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/chkCerti"/>
+        </LinearLayout>
+
 
 
     </LinearLayout>
@@ -128,11 +138,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_margin="15dp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp"
-            android:background="@color/verde_oscuro"
+            android:background="@drawable/btn_verde_rounded_sm"
             android:text="Guardar" />
         <android.widget.Button
+
             android:id="@+id/btnLimpiar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

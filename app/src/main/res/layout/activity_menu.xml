@@ -210,6 +210,7 @@
                 <LinearLayout
                     android:id="@+id/menu_actividades"
                     android:layout_width="0dp"
+
                     android:layout_height="120dp"
                     android:orientation="vertical"
                     android:background="#eeff55"
