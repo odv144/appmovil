@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F2F4F2">
+
+    <include layout="@layout/component_header" />
+
+    <!-- ===== BUSCADOR ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="14dp"
+        android:gravity="center_vertical">
+
+        <EditText
+            android:id="@+id/etBuscarSocio"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@android:drawable/editbox_background_normal"
+            android:hint="García Luis"
+            android:paddingStart="10dp"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnBuscar"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="#2E7D32"
+            android:text="Buscar"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+    <!-- ===== CARD LISTADO ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="14dp"
+        android:background="#FFFFFF"
+        android:elevation="4dp"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="0,1,2">
+
+            <!-- ENCABEZADO -->
+            <TableRow android:padding="8dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:text="NOMBRE"
+                    android:textColor="#2E7D32"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:text="ACTIVIDAD"
+                    android:textColor="#2E7D32"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="ESTADO"
+                    android:textColor="#2E7D32"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:gravity="center" />
+            </TableRow>
+            <View android:layout_height="1dp" android:background="@color/linea_divisora" />
+
+            <!-- FILA GARCÍA LUIS -->
+            <TableRow android:padding="10dp">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:orientation="vertical">
+                    <TextView
+                        android:text="García, Luis"
+                        android:textStyle="bold"
+                        android:textColor="#333333" />
+                    <TextView
+                        android:text="30.123.456"
+                        android:textSize="10sp" />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:text="Fútbol"
+                    android:layout_gravity="center_vertical"
+                    android:paddingStart="8dp" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="Al día"
+                    android:background="#E8F5E9"
+                    android:textColor="#2E7D32"
+                    android:textSize="10sp"
+                    android:padding="4dp"
+                    android:gravity="center"
+                    android:layout_gravity="center_vertical" />
+            </TableRow>
+            <View android:layout_height="1dp" android:background="@color/linea_divisora" />
+
+            <!-- FILA LÓPEZ MARCOS -->
+            <TableRow android:padding="10dp">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:orientation="vertical">
+                    <TextView
+                        android:text="López, Marcos"
+                        android:textStyle="bold"
+                        android:textColor="#333333" />
+                    <TextView
+                        android:text="35.789.012"
+                        android:textSize="10sp" />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:text="Tenis"
+                    android:layout_gravity="center_vertical"
+                    android:paddingStart="8dp" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="Vencido"
+                    android:background="#FFEBEE"
+                    android:textColor="#C62828"
+                    android:textSize="10sp"
+                    android:padding="4dp"
+                    android:gravity="center"
+                    android:layout_gravity="center_vertical" />
+            </TableRow>
+            <View android:layout_height="1dp" android:background="@color/linea_divisora" />
+
+        </TableLayout>
+    </LinearLayout>
+</LinearLayout>
