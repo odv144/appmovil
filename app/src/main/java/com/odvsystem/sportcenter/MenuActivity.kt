@@ -26,7 +26,7 @@ class MenuActivity : AppCompatActivity() {
         }
 
         nosocio.setOnClickListener{
-            val intentar = Intent(this, RegistrarNoSocioActivity::class.java)
+            val intentar = Intent(this, NoSociosActivity::class.java)
             startActivity(intentar)
         }
 

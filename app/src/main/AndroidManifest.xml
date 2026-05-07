@@ -21,7 +21,7 @@
             android:name=".SociosActivity"
             android:exported="false" />
         <activity
-            android:name=".Socios_Activity"
+            android:name=".NoSociosActivity"
             android:exported="false" />
         <activity
             android:name=".MenuActivity"
