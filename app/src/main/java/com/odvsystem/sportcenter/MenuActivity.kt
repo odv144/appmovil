@@ -24,12 +24,12 @@ class MenuActivity : AppCompatActivity() {
             val intentar = Intent(this, SociosActivity::class.java)
             startActivity(intentar)
         }
-
+/*
         nosocio.setOnClickListener{
             val intentar = Intent(this, NoSociosActivity::class.java)
             startActivity(intentar)
         }
-
+*/
         vencimiento.setOnClickListener {
             val intentar = Intent(this, VencimientoActivity::class.java)
             startActivity(intentar)

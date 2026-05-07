@@ -37,7 +37,7 @@
                         android:layout_height="wrap_content"
                         android:text="5 vencidos"
                         android:textColor="#C62828"
-                        android:background="@drawable/bg_badge_rojo"
+                        android:background="@drawable/bg_badge_naranjaclaro"
                         android:paddingHorizontal="10dp"
                         android:paddingVertical="4dp"
                         android:textSize="13sp"
@@ -50,7 +50,7 @@
                         android:layout_height="wrap_content"
                         android:text="3 próximos"
                         android:textColor="#E65100"
-                        android:background="@drawable/bd_badge_gris"
+                        android:background="@drawable/bg_card_white"
                         android:paddingHorizontal="10dp"
                         android:paddingVertical="4dp"
                         android:textSize="13sp"
@@ -159,4 +159,3 @@
 
     </LinearLayout>
 
-</LinearLayout>
