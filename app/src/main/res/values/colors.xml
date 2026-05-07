@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-
-
-    <!-- Paleta portada -->
-    <color name="verde_oscuro">#1A5C28</color>
-    <color name="verde_medio">#2E7D32</color>
-    <color name="verde_claro">#4CAF50</color>
-    <color name="verde_acento">#2E8B3A</color>
-    <color name="texto_secundario">#CCFFFFFF</color>
-    <color name="verdeFondo">#0F3E1A</color>
-    <color name="verdeBoton">#238A3C</color>
-    <color name="verdeBagde">#DBF3E3</color>
-    <color name="fondoGris">#BFC1BF</color>
-</resources>
+    <resources>
+        <color name="black">#FF000000</color>
+        <color name="white">#FFFFFFFF</color>
+        <color name="verde_oscuro">#1A5C28</color>
+        <color name="verde_medio">#2E7D32</color>
+        <color name="verde_claro">#4CAF50</color>
+        <color name="verde_acento">#2E8B3A</color>
+        <color name="texto_secundario">#CCFFFFFF</color>
+        <color name="verdeFondo">#0F3E1A</color>
+        <color name="verdeBoton">#238A3C</color>
+        <color name="verdeBagde">#DBF3E3</color>
+        <color name="fondoGris">#BFC1BF</color>
+    </resources>

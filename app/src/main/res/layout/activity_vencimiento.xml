@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <com.odvsystem.sportcenter.components.Header
+        android:id="@+id/encabezado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="14dp">
+
+            <!-- VENCIDOS -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5 vencidos"
+                android:textColor="#D32F2F"
+                android:textStyle="bold"
+                android:textSize="11sp"
+                android:background="@drawable/bg_badge_rosa"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="6dp"
+                android:layout_marginEnd="8dp" />
+
+            <!-- PROXIMOS -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3 próximos"
+                android:textColor="#F57C00"
+                android:textStyle="bold"
+                android:textSize="11sp"
+                android:background="@drawable/bg_badge_naranjaclaro"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="6dp"
+                android:layout_marginEnd="8dp" />
+
+            <!-- AL DIA -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="40 al día"
+                android:textColor="@color/verde_medio"
+                android:textStyle="bold"
+                android:textSize="11sp"
+                android:background="@drawable/bg_badge_verde_claro2"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="6dp" />
+        </LinearLayout>
+
+        <!-- CARD BASE  TABLA-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background=""
+            android:padding="12dp">
+
+
+
+
+            <!-- ENCABEZADOS -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.2"
+                    android:text="NOMBRE"
+                    android:textColor="@color/verde_medio"
+                    android:textStyle="bold"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.2"
+                    android:text="PERÍODO"
+                    android:textColor="@color/verde_medio"
+                    android:textStyle="bold"
+                    android:textSize="10sp"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.1"
+                    android:text="MONTO"
+                    android:textColor="@color/verde_medio"
+                    android:textStyle="bold"
+                    android:textSize="10sp"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="VENCE"
+                    android:textColor="@color/verde_medio"
+                    android:textStyle="bold"
+                    android:textSize="10sp"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:text="EST."
+                    android:textColor="@color/verde_medio"
+                    android:textStyle="bold"
+                    android:textSize="10sp"
+                    android:gravity="center" />
+            </LinearLayout>
+
+
+
+            <!-- FILA EJEMPLO-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="14dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.2"
+                    android:text="García, Luis"
+                    android:textSize="13sp"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.2"
+                    android:text="Abr 25"
+                    android:textSize="13sp"
+                    android:textColor="@color/black"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.1"
+                    android:text="$8.500"
+                    android:textSize="13sp"
+                    android:textColor="@color/black"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="10/04"
+                    android:textSize="13sp"
+                    android:textColor="@color/black"
+                    android:gravity="center" />
+
+                <!-- ESTADO -->
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:text="✓"
+                    android:textColor="@color/verde_medio"
+                    android:textStyle="bold"
+                    android:gravity="center" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <!-- BOTON COBRAR-->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnCobrar"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="20dp"
+            android:text="Cobrar cuota"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:backgroundTint="@color/verde_claro" />
+
+    </LinearLayout>
+
+</LinearLayout>
