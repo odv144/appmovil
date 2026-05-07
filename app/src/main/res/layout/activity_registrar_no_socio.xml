@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/fondoGris">
+    <!--ENCABEZADO REUTILIZABLE CON COMPONENTE-->
+    <com.odvsystem.sportcenter.components.Header
+        android:id="@+id/encabezado"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:orientation="vertical" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DATOS DEL VISITANTE"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/verde_oscuro"
+            />
+        <EditText
+            android:id="@+id/etDni"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="DNI"
+            android:background="@color/white"
+            android:padding="3dp"
+            android:layout_marginTop="5dp"
+            />
+        <EditText
+            android:id="@+id/etNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="NOMBRE"
+            android:background="@color/white"
+            android:padding="3dp"
+            android:layout_marginTop="5dp"
+            />
+        <EditText
+            android:id="@+id/etApellido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="APELLIDO"
+            android:background="@color/white"
+            android:padding="3dp"
+            android:layout_marginTop="5dp"
+            />
+        <EditText
+            android:id="@+id/etTelefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="TELEFONO"
+            android:background="@color/white"
+            android:padding="3dp"
+            android:inputType="phone"
+            android:layout_marginTop="5dp"
+            />
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="CORREO ELECTRONICO"
+            android:inputType="textEmailAddress"
+            android:background="@color/white"
+            android:padding="3dp"
+            android:layout_marginTop="5dp"
+            />
+
+    </LinearLayout>
+    <!--CONTENIDO PARA MEMBRESIA-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:orientation="vertical"
+        android:background="@color/fondoGris">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ACTIVIDAD DEL DÍA"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/verde_oscuro"
+            />
+        <EditText
+            android:id="@+id/etActividad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="ACTIVIDAD"
+            android:background="@color/white"
+            android:padding="3dp"
+            android:layout_marginTop="5dp"
+            />
+        <EditText
+            android:id="@+id/etCuota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="TARIFA DEL DÍA"
+            android:background="@color/white"
+            android:padding="3dp"
+            android:layout_marginTop="5dp"
+            />
+        <EditText
+            android:id="@+id/etFormaPago"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="FORMA DE PAGO"
+            android:background="@color/white"
+            android:padding="3dp"
+            android:layout_marginTop="5dp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="CERTIFICADO. MÉDICO"
+                android:background="@color/white"
+                android:padding="3dp"
+                android:textSize="18sp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"/>
+            <CheckBox
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/chkCerti"/>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+        <Button
+            android:id="@+id/btnGuardar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="15dp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:backgroundTint="@color/verdeBoton"
+            android:text="REGISTRAR Y COBRAR" />
+        <Button
+
+            android:id="@+id/btnLimpiar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="15dp"
+            android:backgroundTint="@color/white"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:text="LIMPIAR" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -8,14 +8,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class SociosActivity : AppCompatActivity() {
+class NoSociosActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_socios)
+        setContentView(R.layout.activity_lista_no_socios)
         val registrar: Button = findViewById<Button>(R.id.btnRegistrar)
         registrar.setOnClickListener {
-            val intentar = Intent(this, RegistrarSocioActivity::class.java)
+            val intentar = Intent(this, RegistrarNoSocioActivity::class.java)
             startActivity(intentar)
         }
     }
