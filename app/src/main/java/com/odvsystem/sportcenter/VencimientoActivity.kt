@@ -1,5 +1,6 @@
 package com.odvsystem.sportcenter
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -51,13 +52,33 @@ class VencimientoActivity : AppCompatActivity() {
         val recycler = findViewById<RecyclerView>(R.id.recyclerVencimientos)
         recycler.layoutManager = LinearLayoutManager(this)
         recycler.adapter = VencimientoAdapter(datos) { socio ->
+            val cobro=layoutInflater.inflate(R.layout.dialog_cobrar,null)
+
+            val dialog = AlertDialog.Builder(this)
+                .setTitle("Cobrar Cuota")
+                .setView(cobro)
+                .setPositiveButton("Confirmar Cobro"){_,_->
+                    Toast.makeText(this,"Paso algo", Toast.LENGTH_LONG).show()
+                }
+                .create()
+            dialog.show()
             Toast.makeText(this, "Seleccionado: ${socio.nombre}", Toast.LENGTH_SHORT).show()
         }
 
-        findViewById<Button>(R.id.btnAtras).setOnClickListener { finish() }
+
 
         findViewById<Button>(R.id.btnCobrarCuota).setOnClickListener {
             // Lógica de cobro
+            val cobro=layoutInflater.inflate(R.layout.dialog_cobrar,null)
+
+            val dialog = AlertDialog.Builder(this)
+                .setTitle("Cobrar Cuota")
+                .setView(cobro)
+                .setPositiveButton("Confirmar Cobro"){_,_->
+                    Toast.makeText(this,"Paso algo", Toast.LENGTH_LONG).show()
+                }
+                .create()
+            dialog.show()
         }
     }
 }
