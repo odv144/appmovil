@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SportCenter">
         <activity
+            android:name=".NuevaActividad"
+            android:exported="false" />
+        <activity
+            android:name=".ReimpresionCarnet"
+            android:exported="false" />
+        <activity
             android:name=".VencimientoActivity"
             android:exported="false" />
         <activity
@@ -21,10 +27,10 @@
             android:name=".RegistrarSocioActivity"
             android:exported="false" />
         <activity
-            android:name=".SociosActivity"
+            android:name=".ListadoCarnet"
             android:exported="false" />
         <activity
-            android:name=".Socios_Activity"
+            android:name=".SociosActivity"
             android:exported="false" />
         <activity
             android:name=".MenuActivity"
