@@ -21,7 +21,13 @@
             android:name=".VencimientoActivity"
             android:exported="false" />
         <activity
+            android:name=".ActividadesActivity"
+            android:exported="false" />
+        <activity
             android:name=".RegistrarNoSocioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NoSociosActivity"
             android:exported="false" />
         <activity
             android:name=".RegistrarSocioActivity"

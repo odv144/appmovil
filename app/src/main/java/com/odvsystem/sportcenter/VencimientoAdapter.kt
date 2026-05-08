@@ -51,7 +51,7 @@ class VencimientoAdapter (
             "proximo" -> {
                 holder.tvEstado.text = "!"
                 holder.tvEstado.setTextColor(Color.parseColor("#E65100"))
-                holder.tvEstado.setBackgroundResource(R.drawable.bg_badge_naranja)
+                holder.tvEstado.setBackgroundResource(R.drawable.bg_badge_naranjaclaro)
             }
         }
 

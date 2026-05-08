@@ -15,11 +15,17 @@ class RegistrarSocioActivity : AppCompatActivity() {
         setContentView(binding.root)
         enableEdgeToEdge()
         val guardar: Button= findViewById<Button>(R.id.btnGuardar)
+        val limpiar: Button= findViewById<Button>(R.id.btnLimpiar)
         binding.encabezado.setTitulo("Nuevo Socio")
-        binding.encabezado.setDestino(MenuActivity::class.java)
+        binding.encabezado.setDestino(SociosActivity::class.java)
 
         guardar.setOnClickListener {
-            val intentar = Intent(this, MenuActivity::class.java)
+            val intentar = Intent(this, SociosActivity::class.java)
+            startActivity(intentar)
+        }
+
+        limpiar.setOnClickListener {
+            val intentar = Intent(this, SociosActivity::class.java)
             startActivity(intentar)
         }
 
