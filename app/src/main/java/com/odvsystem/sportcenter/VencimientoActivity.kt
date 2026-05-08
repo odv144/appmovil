@@ -37,7 +37,7 @@ class VencimientoActivity : AppCompatActivity() {
         enableEdgeToEdge()
        // creo que no se necesita la linea de abajo
      //   setContentView(R.layout.activity_vencimiento)
-        binding.encabezado.setTitulo("DATOS DE COBRANZAS")
+        binding.encabezado.setTitulo("Vencimientos")
         binding.encabezado.setDestino(MenuActivity::class.java)
 
         val vencidos = datos.count { it.estado == "vencido" }
@@ -57,25 +57,25 @@ class VencimientoActivity : AppCompatActivity() {
             val dialog = AlertDialog.Builder(this)
                 .setTitle("Cobrar Cuota")
                 .setView(cobro)
-                .setPositiveButton("Confirmar Cobro"){_,_->
-                    Toast.makeText(this,"Paso algo", Toast.LENGTH_LONG).show()
+                .setPositiveButton("Imprimir"){_,_->
+                    Toast.makeText(this,"Comprobante enviado a imprimirse", Toast.LENGTH_LONG).show()
                 }
                 .create()
             dialog.show()
             Toast.makeText(this, "Seleccionado: ${socio.nombre}", Toast.LENGTH_SHORT).show()
         }
 
+       val botonCobrar : Button = findViewById<Button>(R.id.btnCobrarCuota)
 
-
-        findViewById<Button>(R.id.btnCobrarCuota).setOnClickListener {
+        botonCobrar.setOnClickListener {
             // Lógica de cobro
             val cobro=layoutInflater.inflate(R.layout.dialog_cobrar,null)
 
             val dialog = AlertDialog.Builder(this)
                 .setTitle("Cobrar Cuota")
                 .setView(cobro)
-                .setPositiveButton("Confirmar Cobro"){_,_->
-                    Toast.makeText(this,"Paso algo", Toast.LENGTH_LONG).show()
+                .setPositiveButton("Imprimir"){_,_->
+                    Toast.makeText(this,"Comprobante enviado a la impresora", Toast.LENGTH_LONG).show()
                 }
                 .create()
             dialog.show()
