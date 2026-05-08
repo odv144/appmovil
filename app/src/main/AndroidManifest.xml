@@ -24,10 +24,10 @@
             android:name=".ActividadesActivity"
             android:exported="false" />
         <activity
-            android:name=".activity_actividades"
+            android:name=".RegistrarNoSocioActivity"
             android:exported="false" />
         <activity
-            android:name=".RegistrarNoSocioActivity"
+            android:name=".NoSociosActivity"
             android:exported="false" />
         <activity
             android:name=".RegistrarSocioActivity"

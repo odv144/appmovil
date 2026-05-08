@@ -19,19 +19,28 @@ class MenuActivity : AppCompatActivity() {
         val socios: LinearLayout = findViewById<LinearLayout>(R.id.menu_Socio)
         val nosocio: LinearLayout = findViewById<LinearLayout>(R.id.menu_NoSocio)
         val vencimiento: LinearLayout=findViewById<LinearLayout>(R.id.menu_Vencimientos)
+        val acti : LinearLayout=findViewById<LinearLayout>(R.id.menu_actividades)
+        val reimpresion: LinearLayout=findViewById<LinearLayout>(R.id.menu_reimpresion)
+
         socios.setOnClickListener {
             Toast.makeText(this,"presionando boton de socio", Toast.LENGTH_LONG).show()
             val intentar = Intent(this, SociosActivity::class.java)
             startActivity(intentar)
         }
-/*
         nosocio.setOnClickListener{
             val intentar = Intent(this, NoSociosActivity::class.java)
             startActivity(intentar)
         }
-*/
         vencimiento.setOnClickListener {
             val intentar = Intent(this, VencimientoActivity::class.java)
+            startActivity(intentar)
+        }
+        acti.setOnClickListener {
+            val intentar = Intent(this, ActividadesActivity::class.java)
+            startActivity(intentar)
+        }
+        reimpresion.setOnClickListener {
+            val intentar = Intent(this, ReimpresionCarnet::class.java)
             startActivity(intentar)
         }
 

@@ -1,10 +1,14 @@
 package com.odvsystem.sportcenter
 
+import android.app.AlertDialog
 import android.os.Bundle
+import android.widget.Button
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+
 import com.odvsystem.sportcenter.databinding.ActivityMainBinding
 import com.odvsystem.sportcenter.databinding.ActivityRegistrarNoSocioBinding
 import com.odvsystem.sportcenter.databinding.ActivityRegistrarSocioBinding
@@ -18,7 +22,24 @@ class RegistrarNoSocioActivity : AppCompatActivity() {
         binding = ActivityRegistrarNoSocioBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.encabezado.setTitulo("Registro No Socio")
-        binding.encabezado.setDestino(SociosActivity::class.java)
+        binding.encabezado.setDestino(NoSociosActivity::class.java)
+
+
+        val limpiar: Button= findViewById<Button>(R.id.btnLimpiar)
+        val cobro: Button= findViewById<Button>(R.id.btnCobrar)
+        cobro.setOnClickListener {
+            val cobro=layoutInflater.inflate(R.layout.dialog_cobrar,null)
+
+            val dialog = AlertDialog.Builder(this)
+                .setTitle("COMPROBANTE DE PAGO DIARIO")
+                .setView(cobro)
+                .setPositiveButton("Imprimir Pago Diario"){_,_->
+                    //DEBE IR EL ACTIVITY DEL COMROBANTE
+                    Toast.makeText(this,"COMPROBANTE ENVIADO A IMPRIMIRSE", Toast.LENGTH_LONG).show()
+                }
+                .create()
+            dialog.show()
+        }
 
     }
 }
