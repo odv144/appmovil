@@ -21,6 +21,7 @@ class MenuActivity : AppCompatActivity() {
         val vencimiento: LinearLayout=findViewById<LinearLayout>(R.id.menu_Vencimientos)
         val acti : LinearLayout=findViewById<LinearLayout>(R.id.menu_actividades)
         val reimpresion: LinearLayout=findViewById<LinearLayout>(R.id.menu_reimpresion)
+        val cerrarSesion: Button = findViewById(R.id.btnCerrarSesion)
 
         socios.setOnClickListener {
             Toast.makeText(this,"presionando boton de socio", Toast.LENGTH_LONG).show()
@@ -44,6 +45,9 @@ class MenuActivity : AppCompatActivity() {
             startActivity(intentar)
         }
 
-
+        cerrarSesion.setOnClickListener {
+            val intentar = Intent(this, MainActivity::class.java)
+            startActivity(intentar)
+        }
     }
 }
