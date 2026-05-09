@@ -75,10 +75,15 @@ class VencimientoActivity : AppCompatActivity() {
                 .setTitle("Cobrar Cuota")
                 .setView(cobro)
                 .setPositiveButton("Imprimir"){_,_->
-                    Toast.makeText(this,"Comprobante enviado a la impresora", Toast.LENGTH_LONG).show()
+                    val comprobante = layoutInflater.inflate(R.layout.dialog_comprobante, null)
+                    val dialogComprobante = AlertDialog.Builder(this)
+                        .setView(comprobante)
+                        .create()
+                    dialogComprobante.show()
                 }
                 .create()
             dialog.show()
+
         }
     }
 }
