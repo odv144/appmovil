@@ -9,12 +9,12 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.odvsystem.sportcenter.databinding.ActivityEditarSocioBinding
 
-class EditarSocio : AppCompatActivity() {
-
+class EditarSocioActivity : AppCompatActivity() {
     private lateinit var  binding: ActivityEditarSocioBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEditarSocioBinding.inflate(layoutInflater)
+        setContentView(R.layout.activity_editar_socio)
         setContentView(binding.root)
         enableEdgeToEdge()
         val guardar: Button= findViewById<Button>(R.id.btnGuardar)
@@ -31,6 +31,5 @@ class EditarSocio : AppCompatActivity() {
             val intentar = Intent(this, SociosActivity::class.java)
             startActivity(intentar)
         }
-
-        }
     }
+}

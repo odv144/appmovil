@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SportCenter">
         <activity
-            android:name=".EditarSocio"
+            android:name=".EditarSocioActivity"
             android:exported="false" />
         <activity
             android:name=".InicioPortada"

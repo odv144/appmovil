@@ -16,7 +16,8 @@ class RegistrarSocioActivity : AppCompatActivity() {
         enableEdgeToEdge()
         val guardar: Button= findViewById<Button>(R.id.btnGuardar)
         val limpiar: Button= findViewById<Button>(R.id.btnLimpiar)
-        binding.encabezado.setTitulo("Nuevo Socio")
+
+        binding.encabezado.setTitulo("REGISTRAR SOCIO")
         binding.encabezado.setDestino(SociosActivity::class.java)
 
         guardar.setOnClickListener {
@@ -28,9 +29,5 @@ class RegistrarSocioActivity : AppCompatActivity() {
             val intentar = Intent(this, SociosActivity::class.java)
             startActivity(intentar)
         }
-
-        
-
-
     }
 }
