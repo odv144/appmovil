@@ -2,6 +2,7 @@
 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -11,15 +12,15 @@
     android:paddingEnd="40dp">
 
     <!-- Ícono estrella en círculo -->
+    <!-- Título: SPORT CENTER -->
     <ImageView
         android:id="@+id/imgEstrella"
         android:layout_width="96dp"
         android:layout_height="96dp"
-        android:src="@drawable/ic_estrella_circulo"
         android:layout_marginBottom="28dp"
-        android:contentDescription="@string/desc_logo" />
+        android:contentDescription="@string/desc_logo"
+        android:src="@drawable/ic_estrella_circulo" />
 
-    <!-- Título: SPORT CENTER -->
     <TextView
         android:id="@+id/tvTitulo"
         android:layout_width="wrap_content"

@@ -34,8 +34,13 @@ class RegistrarNoSocioActivity : AppCompatActivity() {
                 .setTitle("COMPROBANTE DE PAGO DIARIO")
                 .setView(cobro)
                 .setPositiveButton("Imprimir Pago Diario"){_,_->
-                    //DEBE IR EL ACTIVITY DEL COMROBANTE
-                    Toast.makeText(this,"COMPROBANTE ENVIADO A IMPRIMIRSE", Toast.LENGTH_LONG).show()
+                    val comprobante = layoutInflater.inflate(R.layout.dialog_comprobante, null)
+                    val dialogComprobante = AlertDialog.Builder(this)
+                        .setView(comprobante)
+                        .setPositiveButton("Cerrar"){_,_->}
+                        .create()
+                    dialogComprobante.show()
+
                 }
                 .create()
             dialog.show()

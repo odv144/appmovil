@@ -25,20 +25,21 @@
             android:textStyle="bold"
             android:textColor="@color/verde_oscuro"
             />
+
         <EditText
             android:id="@+id/etDni"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="DNI"
-            android:background="@color/white"
-            android:padding="3dp"
             android:layout_marginTop="5dp"
-            />
+            android:background="@color/white"
+            android:hint="99.888.777"
+            android:padding="3dp" />
+
         <EditText
             android:id="@+id/etNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="NOMBRE"
+            android:hint="JUAN"
             android:background="@color/white"
             android:padding="3dp"
             android:layout_marginTop="5dp"
@@ -47,7 +48,7 @@
             android:id="@+id/etApellido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="APELLIDO"
+            android:hint="PEREZ"
             android:background="@color/white"
             android:padding="3dp"
             android:layout_marginTop="5dp"
@@ -56,7 +57,7 @@
             android:id="@+id/etTelefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="TELEFONO"
+            android:hint="114777888"
             android:background="@color/white"
             android:padding="3dp"
             android:inputType="phone"
@@ -66,7 +67,7 @@
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="CORREO ELECTRONICO"
+            android:hint="JUANPEREZ@GMAIL.COM"
             android:inputType="textEmailAddress"
             android:background="@color/white"
             android:padding="3dp"
@@ -93,7 +94,7 @@
             android:id="@+id/etActividad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="ACTIVIDAD"
+            android:hint="FUTBOL"
             android:background="@color/white"
             android:padding="3dp"
             android:layout_marginTop="5dp"
@@ -102,7 +103,7 @@
             android:id="@+id/etCuota"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="TARIFA DEL DÍA"
+            android:hint="$16.000"
             android:background="@color/white"
             android:padding="3dp"
             android:layout_marginTop="5dp"
@@ -111,7 +112,7 @@
             android:id="@+id/etFormaPago"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="FORMA DE PAGO"
+            android:hint="EFECTIVO"
             android:background="@color/white"
             android:padding="3dp"
             android:layout_marginTop="5dp"
@@ -143,28 +144,26 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center">
-
         <Button
-            android:id="@+id/btnCobrar"
+            android:id="@+id/btnGuardar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/verdeBoton"
-            android:text="REGISTRAR Y COBRAR"
+            android:layout_margin="15dp"
             android:textColor="@color/white"
-            android:textSize="18sp" />
-
+            android:textSize="18sp"
+            android:backgroundTint="@color/verdeBoton"
+            android:text="GUARDAR" />
         <Button
             android:id="@+id/btnLimpiar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
             android:layout_weight="1"
+            android:layout_margin="15dp"
             android:backgroundTint="@color/white"
-            android:text="LIMPIAR"
+            android:textSize="18sp"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:text="LIMPIAR" />
 
 
     </LinearLayout>

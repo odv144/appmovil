@@ -12,6 +12,7 @@ import com.odvsystem.sportcenter.databinding.ActivityRegistrarSocioBinding
 import com.odvsystem.sportcenter.databinding.ActivitySociosBinding
 
 class SociosActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivitySociosBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,11 +28,15 @@ class SociosActivity : AppCompatActivity() {
         val editar: Button= findViewById<Button>(R.id.btnEditar)
 
         registrar.setOnClickListener {
-            val intentar = Intent(this, RegistrarSocioActivity::class.java)
+
+            val intentar = Intent(this, RegistrarSocioActivity::class.java).apply {
+
+            }
             startActivity(intentar)
         }
         editar.setOnClickListener {
-            val intentar = Intent(this, RegistrarSocioActivity::class.java)
+            val intentar = Intent(this, EditarSocioActivity::class.java).apply {
+            }
             startActivity(intentar)
         }
 

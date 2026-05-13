@@ -5,19 +5,21 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import com.odvsystem.sportcenter.databinding.ActivityRegistrarSocioBinding
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import com.odvsystem.sportcenter.databinding.ActivityEditarSocioBinding
 
-class RegistrarSocioActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityRegistrarSocioBinding
+class EditarSocioActivity : AppCompatActivity() {
+    private lateinit var  binding: ActivityEditarSocioBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityRegistrarSocioBinding.inflate(layoutInflater)
+        binding = ActivityEditarSocioBinding.inflate(layoutInflater)
+        setContentView(R.layout.activity_editar_socio)
         setContentView(binding.root)
         enableEdgeToEdge()
         val guardar: Button= findViewById<Button>(R.id.btnGuardar)
         val limpiar: Button= findViewById<Button>(R.id.btnLimpiar)
-
-        binding.encabezado.setTitulo("REGISTRAR SOCIO")
+        binding.encabezado.setTitulo("Editar Socio")
         binding.encabezado.setDestino(SociosActivity::class.java)
 
         guardar.setOnClickListener {
