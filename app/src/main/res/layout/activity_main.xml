@@ -18,22 +18,23 @@
         app:srcCompat="@drawable/background" />
 
     <EditText
+        android:id="@+id/EtUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="44dp"
         android:hint="Nombre de Usuario"
-
+        android:inputType="text"
         android:background="@drawable/btn_white_rounded"
         android:padding="10dp"
         android:textColor="#2E7D32"
         />
     <EditText
+        android:id="@+id/EtClave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="44dp"
         android:hint="Clave de Usuario"
         android:inputType="textPassword"
-
         android:background="@drawable/btn_white_rounded"
         android:padding="10dp"
         android:textColor="#2E7D32"
@@ -41,13 +42,12 @@
     <!-- Botón Iniciar sesión -->
     <android.widget.Button
         android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="52dp"
-        android:background="@drawable/btn_verde_rounded_sm"
-        android:backgroundTint="#ffffff"
+        android:backgroundTint="@color/verde_oscuro"
         android:elevation="4dp"
         android:text="Iniciar sesión"
-        android:textColor="#2E7D32"
+        android:textColor="#FFFFFF"
         android:textSize="15sp"
         android:textStyle="bold" />
 
