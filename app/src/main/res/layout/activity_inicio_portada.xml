@@ -55,7 +55,7 @@
         android:elevation="0dp"
         android:letterSpacing="0.02"
         android:stateListAnimator="@null"
-        android:text="Iniciar Sesión"
+        android:text="@string/btn_iniciar_sesion"
         android:textAllCaps="false"
         android:textColor="#2E7D32"
         android:textSize="15sp"
