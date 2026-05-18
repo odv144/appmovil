@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.odvsystem.sportcenter.ui.actividad.ActividadActivity
 
 class MenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,9 +38,15 @@ class MenuActivity : AppCompatActivity() {
             startActivity(intentar)
         }
         acti.setOnClickListener {
+            val intentar = Intent(this, ActividadActivity::class.java)
+            startActivity(intentar)
+        }
+        /*
+        acti.setOnClickListener {
             val intentar = Intent(this, ActividadesActivity::class.java)
             startActivity(intentar)
         }
+        */
         reimpresion.setOnClickListener {
             val intentar = Intent(this, ReimpresionCarnet::class.java)
             startActivity(intentar)

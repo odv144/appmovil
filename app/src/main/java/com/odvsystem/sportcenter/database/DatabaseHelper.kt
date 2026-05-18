@@ -132,16 +132,7 @@ class DatabaseHelper(context: Context) :
         insertarDatosIniciales(db)
 
     }
-       /*
-        val creaTeTable = """
-            CREATE TABLE $TABLA_LOGIN(
-            $COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT,
-            $COLUMN_NOMBRE TEXT NOT NULL,
-            $COLUMN_CLAVE TEXT NOT NULL
-            )
-        """.trimIndent()
-        db?.execSQL(creaTeTable)
-        */
+
 
 
     override fun onUpgrade(
@@ -189,7 +180,6 @@ class DatabaseHelper(context: Context) :
         db?.execSQL("INSERT INTO actividad VALUES (9,'Natación Niños','Clases de natación para niños de 6 a 12 años',1800,3200,12,'Tarde')")
         db?.execSQL("INSERT INTO actividad VALUES (10,'Básquet','Entrenamientos y partidos de básquetbol',1600,2600,12,'Noche')")
     }
-    // ── Equivalente al stored procedure IngresoLogin ───────────
     fun ingresoLogin(usuario: String, pass: String): String? {
         val db = this.readableDatabase
 
