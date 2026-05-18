@@ -32,6 +32,9 @@
             android:name=".VencimientoActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.actividad.ActividadActivity"
+            android:exported="false" />
+        <activity
             android:name=".ActividadesActivity"
             android:exported="false" />
         <activity
