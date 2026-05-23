@@ -7,39 +7,48 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.odvsystem.sportcenter.databinding.ActivityRegistrarSocioBinding
 import com.odvsystem.sportcenter.databinding.ActivityVencimientoBinding
+import com.odvsystem.sportcenter.model.Vencimiento
+import com.odvsystem.sportcenter.repository.CuotaRepository
 
-data class Vencimiento(
-    val nombre:String,
-    val periodo: String,
-    val monto: String,
-    val vence:String,
-    val estado: String // "al_dia, "vencido","proximo"
-    )
 class VencimientoActivity : AppCompatActivity() {
-    public lateinit var binding: ActivityVencimientoBinding
-    private val datos = listOf(
-        Vencimiento("García, Luis",   "Abr 25", "$8.500",  "10/04", "al_dia"),
-        Vencimiento("López, Marcos",  "Mar 25", "$11.000", "31/03", "vencido"),
-        Vencimiento("Rodríguez, C.",  "Abr 25", "$7.500",  "15/04", "proximo"),
-        Vencimiento("Martínez, Ana",  "Abr 25", "$9.000",  "20/04", "al_dia"),
-        Vencimiento("Flores, Pedro",  "Mar 25", "$8.000",  "28/03", "vencido")
-    )
+    private lateinit var binding: ActivityVencimientoBinding
+    private lateinit var cuotaRepository: CuotaRepository
+    private var datos: List<Vencimiento> = listOf()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityVencimientoBinding.inflate(layoutInflater)
         setContentView(binding.root)
         enableEdgeToEdge()
-       // creo que no se necesita la linea de abajo
-     //   setContentView(R.layout.activity_vencimiento)
+
+        // 1. Inicializamos el repositorio y traemos los datos reales
+        cuotaRepository = CuotaRepository(this)
+        datos = cuotaRepository.obtenerVencimientosConNombre()
+
+        // 2. Configuramos el encabezado
         binding.encabezado.setTitulo("Vencimientos")
         binding.encabezado.setDestino(MenuActivity::class.java)
 
+        // 3. Calculamos los contadores dinámicamente desde la base de datos
+        actualizarContadores()
+
+        // 4. Configuramos el RecyclerView con los datos reales
+        val recycler = findViewById<RecyclerView>(R.id.recyclerVencimientos)
+        recycler.layoutManager = LinearLayoutManager(this)
+        recycler.adapter = VencimientoAdapter(datos) { socio ->
+            mostrarDialogoCobro(socio.nombre)
+        }
+
+        // 5. Botón de cobro general
+        findViewById<Button>(R.id.btnCobrarCuota).setOnClickListener {
+            mostrarDialogoCobro(null)
+        }
+    }
+
+    private fun actualizarContadores() {
         val vencidos = datos.count { it.estado == "vencido" }
         val proximos = datos.count { it.estado == "proximo" }
         val alDia    = datos.count { it.estado == "al_dia" }
@@ -47,43 +56,22 @@ class VencimientoActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.tvVencidos).text = "$vencidos vencidos"
         findViewById<TextView>(R.id.tvProximos).text = "$proximos próximos"
         findViewById<TextView>(R.id.tvAlDia).text    = "$alDia al día"
+    }
 
-        // RecyclerView
-        val recycler = findViewById<RecyclerView>(R.id.recyclerVencimientos)
-        recycler.layoutManager = LinearLayoutManager(this)
-        recycler.adapter = VencimientoAdapter(datos) { socio ->
-            val cobro=layoutInflater.inflate(R.layout.dialog_cobrar,null)
+    private fun mostrarDialogoCobro(nombreSocio: String?) {
+        val cobro = layoutInflater.inflate(R.layout.dialog_cobrar, null)
+        val builder = AlertDialog.Builder(this)
+            .setTitle(if (nombreSocio != null) "Cobrar: $nombreSocio" else "Cobrar Cuota")
+            .setView(cobro)
+            .setPositiveButton("Imprimir") { _, _ ->
+                Toast.makeText(this, "Comprobante enviado a imprimir", Toast.LENGTH_LONG).show()
+                // Aquí podrías agregar la lógica para mostrar el dialog_comprobante
+            }
 
-            val dialog = AlertDialog.Builder(this)
-                .setTitle("Cobrar Cuota")
-                .setView(cobro)
-                .setPositiveButton("Imprimir"){_,_->
-                    Toast.makeText(this,"Comprobante enviado a imprimirse", Toast.LENGTH_LONG).show()
-                }
-                .create()
-            dialog.show()
-            Toast.makeText(this, "Seleccionado: ${socio.nombre}", Toast.LENGTH_SHORT).show()
+        if (nombreSocio == null) {
+            builder.setNegativeButton("Cancelar", null)
         }
 
-       val botonCobrar : Button = findViewById<Button>(R.id.btnCobrarCuota)
-
-        botonCobrar.setOnClickListener {
-            // Lógica de cobro
-            val cobro=layoutInflater.inflate(R.layout.dialog_cobrar,null)
-
-            val dialog = AlertDialog.Builder(this)
-                .setTitle("Cobrar Cuota")
-                .setView(cobro)
-                .setPositiveButton("Imprimir"){_,_->
-                    val comprobante = layoutInflater.inflate(R.layout.dialog_comprobante, null)
-                    val dialogComprobante = AlertDialog.Builder(this)
-                        .setView(comprobante)
-                        .create()
-                    dialogComprobante.show()
-                }
-                .create()
-            dialog.show()
-
-        }
+        builder.create().show()
     }
 }

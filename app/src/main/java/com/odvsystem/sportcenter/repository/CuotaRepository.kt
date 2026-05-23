@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.Cursor
 import com.odvsystem.sportcenter.database.DatabaseHelper
 import com.odvsystem.sportcenter.model.Cuota
+import com.odvsystem.sportcenter.model.Vencimiento
 
 class CuotaRepository(context: Context) {
     private val dbHelper = DatabaseHelper(context)
@@ -92,5 +93,43 @@ class CuotaRepository(context: Context) {
             metodoPago       = cursor.getString(cursor.getColumnIndexOrThrow("metodopago")),
             estadoPago       = cursor.getInt(cursor.getColumnIndexOrThrow("estadopago"))
         )
+
+    }
+    // ── VENCIMIENTOS CON NOMBRE DE SOCIO ──────────────────────
+    fun obtenerVencimientosConNombre(): List<Vencimiento> {
+        val db = dbHelper.readableDatabase
+        val lista = mutableListOf<Vencimiento>()
+
+        val cursor = db.rawQuery("""
+        SELECT u.apellido || ', ' || u.nombre AS nombre,
+               c.mes || '/' || c.anio AS periodo,
+               '$' || CAST(CAST(c.monto AS INTEGER) AS TEXT) AS monto,
+               c.fechavencimiento AS vence,
+               CASE 
+                   WHEN c.estadopago = 1 THEN 'al_dia'
+                   WHEN date(c.fechavencimiento) < date('now') THEN 'vencido'
+                   ELSE 'proximo'
+               END AS estado
+        FROM cuota c
+        INNER JOIN socio s ON c.nrosocio = s.nrosocio
+        INNER JOIN usuario u ON s.idusuario = u.idusuario
+        ORDER BY c.fechavencimiento ASC
+    """.trimIndent(), null)
+
+        while (cursor.moveToNext()) {
+            lista.add(
+                Vencimiento(
+                    nombre  = cursor.getString(0),
+                    periodo = cursor.getString(1),
+                    monto   = cursor.getString(2),
+                    vence   = cursor.getString(3),
+                    estado  = cursor.getString(4)
+                )
+            )
+        }
+
+        cursor.close()
+        db.close()
+        return lista
     }
 }
