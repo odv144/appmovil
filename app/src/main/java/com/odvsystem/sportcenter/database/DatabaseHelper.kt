@@ -184,16 +184,20 @@ class DatabaseHelper(context: Context) :
         db?.execSQL("INSERT INTO usuario VALUES (1,'García','Luis','30123456','1134567890','garcia@mail.com','2025-01-10',1)")
         db?.execSQL("INSERT INTO usuario VALUES (2,'López','Marcos','31234567','1145678901','lopez@mail.com','2025-01-15',1)")
         db?.execSQL("INSERT INTO usuario VALUES (3,'Rodríguez','Carlos','32345678','1156789012','rodriguez@mail.com','2025-02-01',1)")
+        db?.execSQL("INSERT INTO usuario VALUES (4,'Fernandez','Pedro','33456789','1167890123','flores@mail.com','2025-02-15',1)")
 
         // socios de prueba
         db?.execSQL("INSERT INTO socio VALUES (1,1,'activo',8500,1)")
         db?.execSQL("INSERT INTO socio VALUES (2,2,'activo',11000,1)")
         db?.execSQL("INSERT INTO socio VALUES (3,3,'activo',7500,1)")
+        db?.execSQL("INSERT INTO socio VALUES (4,4,'activo',8000,1)")
+
 
         // cuotas de prueba
         db?.execSQL("INSERT INTO cuota VALUES (1,1,4,2025,8500,'2025-04-10',null,null,1)")
         db?.execSQL("INSERT INTO cuota VALUES (2,2,3,2025,11000,'2025-03-31',null,null,0)")
         db?.execSQL("INSERT INTO cuota VALUES (3,3,4,2025,7500,'2025-04-15',null,null,0)")
+        db?.execSQL("INSERT INTO cuota VALUES (4,4,3,2025,8000,'2025-03-28',null,null,0)")
     }
     fun ingresoLogin(usuario: String, pass: String): String? {
         val db = this.readableDatabase

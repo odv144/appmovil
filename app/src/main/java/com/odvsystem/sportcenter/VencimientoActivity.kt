@@ -39,7 +39,7 @@ class VencimientoActivity : AppCompatActivity() {
         val recycler = findViewById<RecyclerView>(R.id.recyclerVencimientos)
         recycler.layoutManager = LinearLayoutManager(this)
         recycler.adapter = VencimientoAdapter(datos) { socio ->
-            mostrarDialogoCobro(socio.nombre)
+            mostrarDialogoCobro(socio)
         }
 
         // 5. Botón de cobro general
@@ -58,20 +58,21 @@ class VencimientoActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.tvAlDia).text    = "$alDia al día"
     }
 
-    private fun mostrarDialogoCobro(nombreSocio: String?) {
-        val cobro = layoutInflater.inflate(R.layout.dialog_cobrar, null)
+    private fun mostrarDialogoCobro(vencimiento: Vencimiento?) {
+        val view = layoutInflater.inflate(R.layout.dialog_cobrar, null)
+        vencimiento?.let {
+            view.findViewById<TextView>(R.id.tvNombreSocio).text = it.nombre
+            view.findViewById<TextView>(R.id.tvPeriodoCobrar).text = it.periodo
+            view.findViewById<TextView>(R.id.tvMontoCobrar).text = it.monto
+        }
         val builder = AlertDialog.Builder(this)
-            .setTitle(if (nombreSocio != null) "Cobrar: $nombreSocio" else "Cobrar Cuota")
-            .setView(cobro)
+            .setTitle(if (vencimiento != null) "Cobrar: ${vencimiento.nombre}" else "Cobrar Cuota")
+            .setView(view)
             .setPositiveButton("Imprimir") { _, _ ->
                 Toast.makeText(this, "Comprobante enviado a imprimir", Toast.LENGTH_LONG).show()
-                // Aquí podrías agregar la lógica para mostrar el dialog_comprobante
             }
-
-        if (nombreSocio == null) {
-            builder.setNegativeButton("Cancelar", null)
-        }
-
+            .setNegativeButton("Cancelar", null)
         builder.create().show()
     }
 }
+

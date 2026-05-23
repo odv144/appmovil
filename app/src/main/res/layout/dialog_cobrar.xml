@@ -31,6 +31,7 @@
                 android:orientation="vertical"
                 android:padding="10dp">
             <TextView
+                android:id="@+id/tvNombreSocio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/verde_oscuro"
@@ -66,6 +67,7 @@
             app:cardBackgroundColor="@color/fondoGris"
             android:layout_margin="10dp">
                 <TextView
+                    android:id="@+id/tvPeriodoCobrar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/verde_oscuro"
@@ -94,13 +96,14 @@
             app:cardBackgroundColor="@color/fondoGris"
             android:layout_margin="10dp">
             <TextView
+                android:id="@+id/tvMontoCobrar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/verde_oscuro"
                 android:textStyle="italic"
                 android:textSize="20sp"
                 android:padding="10dp"
-                android:text="$11.000"/>
+                android:text="&#36;11.000"/>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
     <LinearLayout
