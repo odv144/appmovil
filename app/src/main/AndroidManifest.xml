@@ -50,7 +50,7 @@
             android:name=".ListadoCarnet"
             android:exported="false" />
         <activity
-            android:name=".SociosActivity"
+            android:name=".ui.socio.SociosActivity"
             android:exported="false" />
         <activity
             android:name=".MenuActivity"
