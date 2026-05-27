@@ -53,6 +53,11 @@
                 android:maxLines="1" />
         </LinearLayout>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSocios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <!--
         <GridLayout
             android:id="@+id/gridSocios"
             android:layout_width="match_parent"
@@ -63,10 +68,7 @@
             android:useDefaultMargins="false"
             android:alignmentMode="alignMargins">
 
-            <!-- ── FILA 0: Encabezados ── -->
-
-            <!-- Encabezado NOMBRE -->
-            <TextView
+              <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_column="0"
@@ -80,7 +82,6 @@
                 android:paddingBottom="6dp"
                 android:paddingStart="4dp" />
 
-            <!-- Encabezado ACTIVIDAD -->
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -95,7 +96,6 @@
                 android:paddingTop="6dp"
                 android:paddingBottom="6dp" />
 
-            <!-- Encabezado ESTADO -->
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -111,7 +111,7 @@
                 android:paddingBottom="6dp" />
 
         </GridLayout>
-
+        -->
         <!-- Línea divisora (va entre encabezados y datos,
              la ponemos fija aquí como referencia visual) -->
         <!-- NOTA: en la versión dinámica esta línea la podés agregar
@@ -130,7 +130,7 @@
                 android:layout_height="48dp"
                 android:layout_weight="1"
                 android:layout_marginEnd="8dp"
-                android:text="+ Registrar"
+                android:text="+ NUEVO SOCIO"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -139,20 +139,7 @@
                 android:elevation="0dp"
                 android:stateListAnimator="@null" />
 
-            <Button
-                android:id="@+id/btnEditar"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:layout_marginStart="8dp"
-                android:text="Editar"
-                android:textColor="#2E7D32"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:textAllCaps="false"
-                android:backgroundTint="#FFFFFF"
-                android:elevation="0dp"
-                android:stateListAnimator="@null" />
+
 
         </LinearLayout>
 

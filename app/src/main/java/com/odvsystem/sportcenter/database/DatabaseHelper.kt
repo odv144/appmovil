@@ -184,7 +184,7 @@ class DatabaseHelper(context: Context) :
         db?.execSQL("INSERT INTO usuario VALUES (1,'García','Luis','30123456','1134567890','garcia@mail.com','2025-01-10',1)")
         db?.execSQL("INSERT INTO usuario VALUES (2,'López','Marcos','31234567','1145678901','lopez@mail.com','2025-01-15',1)")
         db?.execSQL("INSERT INTO usuario VALUES (3,'Rodríguez','Carlos','32345678','1156789012','rodriguez@mail.com','2025-02-01',1)")
-        db?.execSQL("INSERT INTO usuario VALUES (4,'Fernandez','Pedro','33456789','1167890123','flores@mail.com','2025-02-15',1)")
+        db?.execSQL("INSERT INTO usuario VALUES (4,'Fernandez','Pedro','33456789','1167890123','fernandez@mail.com','2025-02-15',1)")
 
         // socios de prueba
         db?.execSQL("INSERT INTO socio VALUES (1,1,'activo',8500,1)")

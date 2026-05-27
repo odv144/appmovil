@@ -36,33 +36,72 @@
             android:textColor="#999999"
             android:textSize="11sp" />
 
+        <!-- Columna ACTIVIDAD -->
+        <TextView
+            android:id="@+id/tvActividad"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:text="Fútbol"
+            android:textColor="#444444"
+            android:textSize="13sp"
+            android:gravity="center" />
+
+        <!-- Columna ESTADO — el color se cambia desde el Adapter en Kotlin -->
+        <TextView
+            android:id="@+id/tvEstado"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.3"
+            android:text="Al día"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:textColor="#2E7D32" />
     </LinearLayout>
-
-    <!-- Columna ACTIVIDAD -->
-    <TextView
-        android:id="@+id/tvActividad"
-        android:layout_width="0dp"
+    <!-- Botones -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1.5"
-        android:text="Fútbol"
-        android:textColor="#444444"
-        android:textSize="13sp"
-        android:gravity="center" />
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
 
-    <!-- Columna ESTADO — el color se cambia desde el Adapter en Kotlin -->
-    <TextView
-        android:id="@+id/tvEstado"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1.3"
-        android:text="Al día"
-        android:textSize="11sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp"
-        android:paddingStart="6dp"
-        android:paddingEnd="6dp"
-        android:textColor="#2E7D32" />
+        <android.widget.Button
+            android:id="@+id/btnDetalle"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:backgroundTint="#163A00"
+            android:text="Ver"
+            android:textSize="12sp"
+            android:layout_marginEnd="4dp"
+            android:textColor="#FFFFFF" />
+
+        <android.widget.Button
+            android:id="@+id/btnEditar"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:backgroundTint="#FFAB00"
+            android:text="Editar"
+            android:textSize="12sp"
+            android:layout_marginEnd="4dp"
+
+            android:textColor="#FFFFFF" />
+
+        <android.widget.Button
+            android:id="@+id/btnEliminar"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:backgroundTint="#D50000"
+            android:text="Eliminar"
+            android:textSize="12sp"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
 
 </LinearLayout>
