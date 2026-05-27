@@ -1,4 +1,4 @@
-package com.odvsystem.sportcenter
+package com.odvsystem.sportcenter.ui.vencimiento
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -9,6 +9,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.odvsystem.sportcenter.MenuActivity
+import com.odvsystem.sportcenter.R
+import com.odvsystem.sportcenter.ui.vencimiento.VencimientoAdapter
 import com.odvsystem.sportcenter.databinding.ActivityVencimientoBinding
 import com.odvsystem.sportcenter.model.Vencimiento
 import com.odvsystem.sportcenter.repository.CuotaRepository
@@ -75,4 +78,3 @@ class VencimientoActivity : AppCompatActivity() {
         builder.create().show()
     }
 }
-
