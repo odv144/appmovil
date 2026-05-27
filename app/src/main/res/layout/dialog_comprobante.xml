@@ -46,7 +46,7 @@
                 android:textColor="@color/verde_oscuro"
                 android:textStyle="italic"
                 android:textSize="22sp"
-                android:text="López, Marcos"/>
+                android:id="@+id/tvNombreSocioComprobante"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
                     android:textStyle="italic"
                     android:textSize="20sp"
                     android:padding="10dp"
-                    android:text="Abril 2025"/>
+                    android:id="@+id/tvPeriodoComprobante"/>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
     <LinearLayout
@@ -108,7 +108,7 @@
                 android:textStyle="italic"
                 android:textSize="20sp"
                 android:padding="10dp"
-                android:text="$11.000"/>
+                android:id="@+id/tvMontoComprobante"/>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
     <LinearLayout
@@ -135,7 +135,7 @@
                 android:textStyle="italic"
                 android:textSize="20sp"
                 android:padding="10dp"
-                android:text="Efectivo"/>
+                android:id="@+id/tvFormaPagoComprobante"/>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
     <!--

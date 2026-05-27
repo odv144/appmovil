@@ -72,7 +72,20 @@ class VencimientoActivity : AppCompatActivity() {
             .setTitle(if (vencimiento != null) "Cobrar: ${vencimiento.nombre}" else "Cobrar Cuota")
             .setView(view)
             .setPositiveButton("Imprimir") { _, _ ->
-                Toast.makeText(this, "Comprobante enviado a imprimir", Toast.LENGTH_LONG).show()
+                val comprobante = layoutInflater.inflate(R.layout.dialog_comprobante, null)
+
+                if (vencimiento != null) {
+                    comprobante.findViewById<TextView>(R.id.tvNombreSocioComprobante).text = vencimiento.nombre
+                    comprobante.findViewById<TextView>(R.id.tvPeriodoComprobante).text = vencimiento.periodo
+                    comprobante.findViewById<TextView>(R.id.tvMontoComprobante).text = vencimiento.monto
+                    comprobante.findViewById<TextView>(R.id.tvFormaPagoComprobante).text = "Efectivo"
+                }
+
+                AlertDialog.Builder(this)
+                    .setView(comprobante)
+                    .setNegativeButton("Cerrar", null)
+                    .create()
+                    .show()
             }
             .setNegativeButton("Cancelar", null)
         builder.create().show()
