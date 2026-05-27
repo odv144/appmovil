@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,6 +35,7 @@
             app:cardCornerRadius="15dp"
             app:strokeWidth="3dp"
             app:strokeColor="@color/black"
+            app:cardBackgroundColor="@color/white"
             android:layout_margin="10dp">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -66,13 +68,16 @@
             android:layout_height="wrap_content"
             android:text="Período"
             android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            />
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="15dp"
             app:strokeWidth="1dp"
             app:strokeColor="@color/black"
+            app:cardBackgroundColor="@color/white"
             android:layout_margin="10dp">
                 <TextView
                     android:layout_width="wrap_content"
@@ -93,13 +98,16 @@
             android:layout_height="wrap_content"
             android:text="Total abonado"
             android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            />
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="15dp"
             app:strokeWidth="1dp"
             app:strokeColor="@color/black"
+            app:cardBackgroundColor="@color/white"
             android:layout_margin="10dp">
             <TextView
                 android:layout_width="wrap_content"
@@ -120,13 +128,16 @@
             android:layout_height="wrap_content"
             android:text="Forma de Pago"
             android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            />
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="15dp"
             app:strokeWidth="1dp"
             app:strokeColor="@color/black"
+            app:cardBackgroundColor="@color/white"
             android:layout_margin="10dp">
             <TextView
                 android:layout_width="wrap_content"

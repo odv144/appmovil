@@ -71,7 +71,8 @@ class VencimientoActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
             .setTitle(if (vencimiento != null) "Cobrar: ${vencimiento.nombre}" else "Cobrar Cuota")
             .setView(view)
-            .setPositiveButton("Imprimir") { _, _ ->
+            .setPositiveButton("Imprimir") { dialogInterface, _ ->
+                dialogInterface.dismiss()
                 val comprobante = layoutInflater.inflate(R.layout.dialog_comprobante, null)
 
                 if (vencimiento != null) {
