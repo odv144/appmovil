@@ -4,33 +4,30 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.odvsystem.sportcenter.MenuActivity
-import com.odvsystem.sportcenter.NuevaActividad
 import com.odvsystem.sportcenter.R
 import com.odvsystem.sportcenter.RegistrarSocioActivity
 import com.odvsystem.sportcenter.databinding.ActivitySociosBinding
-import com.odvsystem.sportcenter.model.Actividad
-import com.odvsystem.sportcenter.model.Socio
+import com.odvsystem.sportcenter.model.SocioRegistro
 import com.odvsystem.sportcenter.repository.SocioRepository
 
 class SociosActivity : AppCompatActivity() {
 
-    val listaSocios = mutableListOf<Socio>()
+    val listaSocios = mutableListOf<SocioRegistro>()
     private lateinit var repo: SocioRepository
     private lateinit var adapter: SocioAdapter
     private lateinit var binding: ActivitySociosBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySociosBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_socios)
+        binding = ActivitySociosBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        enableEdgeToEdge()
-
+       // enableEdgeToEdge()
         binding.encabezado.setTitulo("SOCIOS")
         binding.encabezado.setDestino(MenuActivity::class.java)
 
@@ -38,52 +35,46 @@ class SociosActivity : AppCompatActivity() {
         val rvSocio = findViewById<RecyclerView>(R.id.rvSocios)
 
         adapter = SocioAdapter(
-            lista      = repo.obtenerTodos().toMutableList(),
-            onVer      = { socio -> mostrarDetalle(socio) },
-            onEditar   = { socio -> irAEditar(socio) },
-            onEliminar = { socio -> confirmarEliminar(socio) }
+            lista = repo.obtenerTodos().toMutableList(),
+            onVer = { usuarioSocio -> mostrarDetalle(usuarioSocio) },
+            onEditar = { usuarioSocio -> irAEditar(usuarioSocio) },
+            onEliminar = { usuarioSocio -> confirmarEliminar(usuarioSocio) }
         )
+        rvSocio.layoutManager = LinearLayoutManager(this)
+        rvSocio.adapter = adapter
+
         findViewById<Button>(R.id.btnRegistrar).setOnClickListener {
             irAEditar(null) // null = nueva actividad
         }
-
-/*
-        registrar.setOnClickListener {
-            val intentar = Intent(this, RegistrarSocioActivity::class.java).apply {
-
-            }
-            startActivity(intentar)
-
-        }
-  */}
+    }
         // Recargar lista al volver de editar
         override fun onResume() {
             super.onResume()
             adapter.actualizarLista(repo.obtenerTodos().toMutableList())
+
         }
 
-        private fun mostrarDetalle(socio: Socio) {
+        private fun mostrarDetalle(socio: SocioRegistro) {
             AlertDialog.Builder(this)
-                .setTitle(socio.nrosocio)
+                .setTitle("📋 Socio Nro: ${socio.nrosocio.toString()}")
                 .setMessage("""
-                📋 ${socio.idusuario}
-                
-                🕐 Estado: ${socio.estadohabilitacion}
-                👥 Cuota: ${socio.cuotamensual}
-                💰 Presento carnet: $${socio.carneteentregado}             
+                📋 ${socio.apellido}, ${socio.nombre}
+                🕐 Estado: ${socio.estadohabilitacion.toString()}
+                👥 Cuota: ${socio.cuotamensual.toString()}
+                💰 DNI: $${socio.dni.toString()}             
             """.trimIndent())
                 .setPositiveButton("Cerrar", null)
                 .show()
         }
 
-        private fun irAEditar(socio: Socio?) {
+        private fun irAEditar(socio: SocioRegistro?) {
             Toast.makeText(this, "Intentando editar", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, RegistrarSocioActivity::class.java)
             socio?.let { intent.putExtra("nroSocio", it.nrosocio) }
             startActivity(intent)
         }
 
-        private fun confirmarEliminar(socio: Socio) {
+        private fun confirmarEliminar(socio: SocioRegistro) {
             AlertDialog.Builder(this)
                 .setTitle("Eliminar Socio")
                 .setMessage("¿Seguro que querés eliminar ${socio.nrosocio}?")

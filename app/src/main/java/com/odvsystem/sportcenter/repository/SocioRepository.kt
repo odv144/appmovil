@@ -4,8 +4,8 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import com.odvsystem.sportcenter.database.DatabaseHelper
-import com.odvsystem.sportcenter.model.Actividad
 import com.odvsystem.sportcenter.model.Socio
+import com.odvsystem.sportcenter.model.SocioRegistro
 
 class SocioRepository(context: Context) {
     private val dbHelper = DatabaseHelper(context)
@@ -24,11 +24,14 @@ class SocioRepository(context: Context) {
         return resultado != -1L
     }
     // ── SELECT TODOS ───────────────────────────────────────────
-    fun obtenerTodos(): List<Socio> {
+    fun obtenerTodos(): List<SocioRegistro> {
         val db = dbHelper.readableDatabase
-        val lista = mutableListOf<Socio>()
+        val lista = mutableListOf<SocioRegistro>()
 
-        val cursor = db.rawQuery("SELECT * FROM socio", null)
+        val cursor = db.rawQuery(
+            """SELECT * 
+            FROM usuario u 
+            INNER JOIN socio s ON u.idUsuario = s.idUsuario""".trimIndent(),arrayOf())
         while (cursor.moveToNext()) {
            lista.add(cursorToSocio(cursor))
         }
@@ -39,11 +42,11 @@ class SocioRepository(context: Context) {
     }
 
     // ── SELECT POR ID ──────────────────────────────────────────
-    fun obtenerPorId(nroSocio: Int): Socio? {
+    fun obtenerPorId(nroSocio: Int): SocioRegistro? {
         val db = dbHelper.readableDatabase
 
         val cursor = db.rawQuery(
-            """SELECT u.nombre,u.apellido,s.estadohabilitacion FROM usuario u 
+            """SELECT * FROM usuario u 
                     INNER JOIN socio s ON u.idUsuario = s.idUsuario
                     WHERE s.nroSocio = ?""".trimIndent(),
             arrayOf(nroSocio.toString()))
@@ -53,14 +56,47 @@ class SocioRepository(context: Context) {
         db.close()
         return socio
     }
-
-    // ── SELECT POR NOMBRE ──────────────────────────────────────
-    fun obtenerPorNombre(nombre: String): List<Socio> {
+    fun obtenerSocioPorNro(nroSocio: Int): SocioRegistro? {
         val db = dbHelper.readableDatabase
-        val lista = mutableListOf<Socio>()
+
+        val cursor = db.rawQuery("""
+        SELECT 
+            s.nrosocio,
+            u.idusuario,
+            u.nombre,
+            u.apellido,
+            u.dni,
+            s.estadohabilitacion,
+            u.telefono,
+            u.email,
+            u.certificadomedico,
+            s.cuotamensual,
+            c.metodopago    AS formapago
+        FROM socio s
+        INNER JOIN usuario u ON s.idusuario = u.idusuario
+        LEFT JOIN cuota c ON s.nrosocio = c.nrosocio
+            AND c.mes  = strftime('%m', 'now')
+            AND c.anio = strftime('%Y', 'now')
+        WHERE s.nrosocio = ?
+    """.trimIndent(), arrayOf(nroSocio.toString()))
+
+        var resultado: SocioRegistro? = null
+
+        if (cursor.moveToFirst()) {
+            resultado = cursorToSocio(cursor)
+        }
+
+        cursor.close()
+        db.close()
+        return resultado
+    }
+    // ── SELECT POR NOMBRE ──────────────────────────────────────
+    fun obtenerPorNombre(nombre: String): List<SocioRegistro> {
+        val db = dbHelper.readableDatabase
+        val lista = mutableListOf<SocioRegistro>()
 
         val cursor = db.rawQuery(
-            """SELECT u.nombre,u.apellido,s.estadohabilitacion FROM usuario u 
+            """SELECT * FROM usuario u 
                     INNER JOIN socio s ON u.idUsuario = s.idUsuario
                     WHERE u.nombre LIKE ?""".trimIndent(),
             arrayOf("%$nombre%"))
@@ -78,14 +114,15 @@ class SocioRepository(context: Context) {
     fun actualizar(socio: Socio): Boolean {
         val db = dbHelper.writableDatabase
         val values = ContentValues().apply {
-            put("estadoHabilitacion",socio.estadohabilitacion)
-            put("cuotaMensual",   socio.cuotamensual)
-            put("carneteEntregado",   socio.carneteentregado)
+            put("idusuario", socio.idusuario)
+            put("carneteentregado", socio.carneteentregado)
+            put("estadohabilitacion", socio.estadohabilitacion)
+            put("cuotamensual", socio.cuotamensual)
         }
         val filas = db.update(
             "socio",
             values,
-            "nroSocio = ? ",
+            "nrosocio = ?",
             arrayOf(socio.nrosocio.toString())
         )
         db.close()
@@ -105,13 +142,20 @@ class SocioRepository(context: Context) {
     }
 
     // ── Helper: cursor → objeto ────────────────────────────────
-    private fun cursorToSocio(cursor: Cursor): Socio {
-        return Socio(
-            nrosocio = cursor.getInt(cursor.getColumnIndexOrThrow("nrosocio")),
-            idusuario   = cursor.getLong(cursor.getColumnIndexOrThrow("idusuario")),
-            estadohabilitacion   = cursor.getString(cursor.getColumnIndexOrThrow("estadohabilitacion")),
-            cuotamensual   = cursor.getDouble(cursor.getColumnIndexOrThrow("cuotamensual")),
-            carneteentregado = cursor.getInt(cursor.getColumnIndexOrThrow("carneteentregado"))
+    private fun cursorToSocio(cursor: Cursor): SocioRegistro {
+        val idxFormaPago = cursor.getColumnIndex("formapago")
+        return SocioRegistro(
+            nrosocio           = cursor.getInt(cursor.getColumnIndexOrThrow("nrosocio")),
+            idUsuario          = cursor.getInt(cursor.getColumnIndexOrThrow("idusuario")),
+            nombre             = cursor.getString(cursor.getColumnIndexOrThrow("nombre")) ?: "",
+            apellido           = cursor.getString(cursor.getColumnIndexOrThrow("apellido")) ?: "",
+            dni                = cursor.getString(cursor.getColumnIndexOrThrow("dni")) ?: "",
+            estadohabilitacion = cursor.getString(cursor.getColumnIndexOrThrow("estadohabilitacion")) ?: "activo",
+            telefono           = cursor.getString(cursor.getColumnIndexOrThrow("telefono")) ?: "",
+            correo             = cursor.getString(cursor.getColumnIndexOrThrow("email")) ?: "",
+            certificadoMedico  = cursor.getInt(cursor.getColumnIndexOrThrow("certificadomedico")),
+            cuotamensual       = cursor.getDouble(cursor.getColumnIndexOrThrow("cuotamensual")),
+            formaPago          = if (idxFormaPago != -1) (cursor.getString(idxFormaPago) ?: "") else ""
         )
     }
 }

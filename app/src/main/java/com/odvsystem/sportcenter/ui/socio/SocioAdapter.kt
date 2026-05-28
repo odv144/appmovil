@@ -8,19 +8,19 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.odvsystem.sportcenter.R
-import com.odvsystem.sportcenter.model.Socio
+import com.odvsystem.sportcenter.model.SocioRegistro
+import com.odvsystem.sportcenter.model.UsuarioSocio
 
 class SocioAdapter (
-    private var lista: MutableList<Socio>,
-    private val onVer: (Socio) -> Unit,
-    private val onEditar: (Socio) -> Unit,
-    private val onEliminar: (Socio) -> Unit
+    private var lista: MutableList<SocioRegistro>,
+    private val onVer: (SocioRegistro) -> Unit,
+    private val onEditar: (SocioRegistro) -> Unit,
+    private val onEliminar: (SocioRegistro) -> Unit
 ) : RecyclerView.Adapter<SocioAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvNombre: TextView = view.findViewById(R.id.tvNombre)
         val tvDni: TextView = view.findViewById(R.id.tvDni)
-        val tvActividad: TextView  = view.findViewById(R.id.tvActividad)
         val tvEstado: TextView  = view.findViewById(R.id.tvEstado)
         val btnDetalle: Button  = view.findViewById(R.id.btnDetalle)
         val btnEditar: Button   = view.findViewById(R.id.btnEditar)
@@ -37,11 +37,10 @@ class SocioAdapter (
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = lista[position]
-
-        holder.tvNombre.text = "Socio:${item.nrosocio} nombre y apellido del join entre usuario y socio"
-        holder.tvDni.text = item.nrosocio.toString()
-        holder.tvActividad.text  = item.idusuario.toString()
-        holder.tvEstado.text  = item.estadohabilitacion
+        holder.tvNombre.text = "Socio: ${item.apellido}, ${item.nombre}"
+        holder.tvDni.text = "DNI: ${item.dni}"
+      //  holder.tvActividad.text  ="Cuota Mensual $${item.cuota.toString()}"
+        holder.tvEstado.text  = $$"Estado: $${item.estadohabilitacion}"
         holder.btnDetalle.setOnClickListener  { onVer(item) }
         holder.btnEditar.setOnClickListener   { onEditar(item) }
         holder.btnEliminar.setOnClickListener { onEliminar(item) }
@@ -49,7 +48,7 @@ class SocioAdapter (
 
     // Actualizar lista después de eliminar o editar
     @SuppressLint("NotifyDataSetChanged")
-    fun actualizarLista(nuevaLista: MutableList<Socio>) {
+    fun actualizarLista(nuevaLista: MutableList<SocioRegistro>) {
         lista = nuevaLista
         // notifyDataSetChanged()
     }
