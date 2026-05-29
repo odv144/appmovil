@@ -61,6 +61,15 @@
             android:padding="3dp"
             android:layout_marginTop="5dp"
             />
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="EMAIL"
+            android:background="@color/white"
+            android:padding="3dp"
+            android:layout_marginTop="5dp"
+            />
 
     </LinearLayout>
     <!--CONTENIDO PARA MEMBRESIA-->
@@ -78,6 +87,7 @@
             android:textStyle="bold"
             android:textColor="@color/verde_oscuro"
             />
+       <!--
         <EditText
             android:id="@+id/etActividad"
             android:layout_width="match_parent"
@@ -87,6 +97,7 @@
             android:padding="3dp"
             android:layout_marginTop="5dp"
             />
+        -->
         <EditText
             android:id="@+id/etCuota"
             android:layout_width="match_parent"

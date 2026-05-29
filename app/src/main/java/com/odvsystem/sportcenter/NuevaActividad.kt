@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.odvsystem.sportcenter.databinding.ActivityNuevaActividadBinding
 import com.odvsystem.sportcenter.model.Actividad
 import com.odvsystem.sportcenter.repository.ActividadRepository
+import com.odvsystem.sportcenter.ui.actividad.ActividadActivity
 
 class NuevaActividad : AppCompatActivity() {
     private lateinit var binding: ActivityNuevaActividadBinding
@@ -59,9 +60,10 @@ class NuevaActividad : AppCompatActivity() {
             // MODO NUEVO → título vacío
             binding.encabezado.setTitulo("Nuevas Actividad")
 
+
         }
        // Configuracion del boton de Atraz del encabezado
-        binding.encabezado.setDestino(MenuActivity::class.java)
+        binding.encabezado.setDestino(ActividadActivity::class.java)
 
         // --- 2. CONFIGURACIÓN DE LOS BOTONES DE LA CARD ---
 
@@ -103,8 +105,7 @@ class NuevaActividad : AppCompatActivity() {
     private fun guardar() {
         // Validar campos vacíos
         if (!validarCampos()) return
-
-        val actividad = Actividad(
+       val actividad = Actividad(
             idActividad   = actividadExistente?.idActividad ?: 0,
             nombre        = etNombreActividad.text.toString().trim(),
             descripcion   = etDescripcion.text.toString().trim(),

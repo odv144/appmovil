@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.odvsystem.sportcenter.databinding.ActivityEditarSocioBinding
+import com.odvsystem.sportcenter.ui.socio.SociosActivity
 
 class EditarSocioActivity : AppCompatActivity() {
     private lateinit var  binding: ActivityEditarSocioBinding
