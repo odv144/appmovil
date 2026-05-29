@@ -1,4 +1,4 @@
-package com.odvsystem.sportcenter
+package com.odvsystem.sportcenter.ui.vencimiento
 
 import android.graphics.Color
 import android.view.LayoutInflater
@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.odvsystem.sportcenter.R
+import com.odvsystem.sportcenter.model.Vencimiento
 
 class VencimientoAdapter (
     private val lista: List<Vencimiento>,

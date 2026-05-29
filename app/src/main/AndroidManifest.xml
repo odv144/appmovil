@@ -29,7 +29,7 @@
             android:name=".ReimpresionCarnet"
             android:exported="false" />
         <activity
-            android:name=".VencimientoActivity"
+            android:name=".ui.vencimiento.VencimientoActivity"
             android:exported="false" />
         <activity
             android:name=".ui.actividad.ActividadActivity"
