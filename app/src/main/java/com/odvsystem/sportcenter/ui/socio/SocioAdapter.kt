@@ -50,6 +50,6 @@ class SocioAdapter (
     @SuppressLint("NotifyDataSetChanged")
     fun actualizarLista(nuevaLista: MutableList<SocioRegistro>) {
         lista = nuevaLista
-        // notifyDataSetChanged()
+        notifyDataSetChanged()
     }
 }

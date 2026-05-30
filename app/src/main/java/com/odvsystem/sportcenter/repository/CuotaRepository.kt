@@ -6,6 +6,9 @@ import android.database.Cursor
 import com.odvsystem.sportcenter.database.DatabaseHelper
 import com.odvsystem.sportcenter.model.Cuota
 import com.odvsystem.sportcenter.model.Vencimiento
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class CuotaRepository(context: Context) {
     private val dbHelper = DatabaseHelper(context)
@@ -73,6 +76,8 @@ class CuotaRepository(context: Context) {
             put("anio", cuota.anio)
             put("monto", cuota.monto)
             put("fechavencimiento", cuota.fechaVencimiento)
+            put("fechapago", cuota.fechaPago)
+            put("metodopago", cuota.metodoPago)
             put("estadopago", cuota.estadoPago)
         }
         val resultado = db.insert("cuota", null, values)
@@ -131,5 +136,12 @@ class CuotaRepository(context: Context) {
         cursor.close()
         db.close()
         return lista
+    }
+    fun obtenerRenovacionVencimiento(fecha:String, dias:Int = 30): String {
+        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val calendar = Calendar.getInstance()
+        calendar.time = sdf.parse(fecha)!!
+        calendar.add(Calendar.DAY_OF_MONTH, dias)
+        return sdf.format(calendar.time)
     }
 }

@@ -11,7 +11,7 @@ class SocioRepository(context: Context) {
     private val dbHelper = DatabaseHelper(context)
 
     // ── INSERT ─────────────────────────────────────────────────
-    fun insertar(socio: Socio): Boolean {
+    fun insertar(socio: Socio): Long {
         val db = dbHelper.writableDatabase
         val values = ContentValues().apply {
             put("idusuario",socio.idusuario)
@@ -21,7 +21,7 @@ class SocioRepository(context: Context) {
         }
         val resultado = db.insert("socio", null, values)
         db.close()
-        return resultado != -1L
+        return resultado
     }
     // ── SELECT TODOS ───────────────────────────────────────────
     fun obtenerTodos(): List<SocioRegistro> {
@@ -90,16 +90,15 @@ class SocioRepository(context: Context) {
         db.close()
         return resultado
     }
-    // ── SELECT POR NOMBRE ──────────────────────────────────────
-    fun obtenerPorNombre(nombre: String): List<SocioRegistro> {
+    fun obtenerSocioFiltro(nombre: String): List<SocioRegistro> {
         val db = dbHelper.readableDatabase
         val lista = mutableListOf<SocioRegistro>()
 
         val cursor = db.rawQuery(
             """SELECT * FROM usuario u 
                     INNER JOIN socio s ON u.idUsuario = s.idUsuario
-                    WHERE u.nombre LIKE ?""".trimIndent(),
-            arrayOf("%$nombre%"))
+                    WHERE u.nombre LIKE ? OR u.apellido LIKE ? OR u.dni LIKE ?""".trimIndent(),
+            arrayOf("%$nombre%", "%$nombre%", "%$nombre%"))
 
         while (cursor.moveToNext()) {
             lista.add(cursorToSocio(cursor))
