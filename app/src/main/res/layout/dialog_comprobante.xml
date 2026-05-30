@@ -50,6 +50,7 @@
                 android:textSize="22sp"
                 android:id="@+id/tvNombreSocioComprobante"/>
             <TextView
+                android:id="@+id/tvActiSocio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/verde_claro"

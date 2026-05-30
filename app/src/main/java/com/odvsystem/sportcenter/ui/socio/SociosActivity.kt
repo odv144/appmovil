@@ -2,6 +2,8 @@ package com.odvsystem.sportcenter.ui.socio
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -24,7 +26,6 @@ class SociosActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_socios)
         binding = ActivitySociosBinding.inflate(layoutInflater)
         setContentView(binding.root)
        // enableEdgeToEdge()
@@ -46,6 +47,15 @@ class SociosActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btnRegistrar).setOnClickListener {
             irAEditar(null) // null = nueva actividad
         }
+
+        binding.etBuscar.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val filtro = s.toString()
+                adapter.actualizarLista(repo.obtenerSocioFiltro(filtro).toMutableList())
+            }
+            override fun afterTextChanged(s: Editable?) {}
+        })
     }
         // Recargar lista al volver de editar
         override fun onResume() {
@@ -60,8 +70,8 @@ class SociosActivity : AppCompatActivity() {
                 .setMessage("""
                 📋 ${socio.apellido}, ${socio.nombre}
                 🕐 Estado: ${socio.estadohabilitacion.toString()}
-                👥 Cuota: ${socio.cuotamensual.toString()}
-                💰 DNI: $${socio.dni.toString()}             
+                👥 Cuota: $${socio.cuotamensual.toString()}
+                💰 DNI: ${socio.dni.toString()}             
             """.trimIndent())
                 .setPositiveButton("Cerrar", null)
                 .show()

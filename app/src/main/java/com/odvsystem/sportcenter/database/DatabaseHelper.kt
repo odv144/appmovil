@@ -13,7 +13,7 @@ class DatabaseHelper(context: Context) :
     ){
     companion object{
         const val DATABASE_NAME="deportivo.db"
-        const val DATABASE_VERSION =1
+        const val DATABASE_VERSION = 2
 
         //TABLA
         const val TABLA_LOGIN = "login"
@@ -56,7 +56,7 @@ class DatabaseHelper(context: Context) :
             passusu TEXT,
             rolusu INTEGER,
             activo INTEGER DEFAULT 1,
-            FOREIGN KEY (rolusu) REFERENCES roles(rolusu)
+            FOREIGN KEY (rolusu) REFERENCES roles(rolusu) ON DELETE CASCADE
             )
         """.trimIndent())
         //SOCIO
@@ -67,7 +67,7 @@ class DatabaseHelper(context: Context) :
             estadohabilitacion TEXT NOT NULL DEFAULT 'activo',
             cuotamensual REAL,
             carneteentregado INTEGER,
-            FOREIGN KEY (idusuario) REFERENCES usuario(idusuario)
+            FOREIGN KEY (idusuario) REFERENCES usuario(idusuario) ON DELETE CASCADE
             )
         """.trimIndent())
         //ACTIVIDAD
@@ -94,7 +94,7 @@ class DatabaseHelper(context: Context) :
             fechapago TEXT,
             metodopago TEXT,
             estadopago INTEGER DEFAULT 0,
-            FOREIGN KEY (nrosocio) REFERENCES socio(nrosocio)
+            FOREIGN KEY (nrosocio) REFERENCES socio(nrosocio) ON DELETE CASCADE
             )
         """.trimIndent())
         //NO SOCIO
@@ -103,7 +103,7 @@ class DatabaseHelper(context: Context) :
                 nronosocio  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
                 idusuario   INTEGER,
                 observacion TEXT,
-                FOREIGN KEY (idusuario) REFERENCES usuario(idusuario)
+                FOREIGN KEY (idusuario) REFERENCES usuario(idusuario) ON DELETE CASCADE
             )
         """.trimIndent())
         //SOCIO - ACTIVIDAD
@@ -115,8 +115,8 @@ class DatabaseHelper(context: Context) :
                 fechainscripcion TEXT NOT NULL,
                 estado          TEXT,
                 UNIQUE (nrosocio, idactividad),
-                FOREIGN KEY (nrosocio)    REFERENCES socio(nrosocio),
-                FOREIGN KEY (idactividad) REFERENCES actividad(idactividad)
+                FOREIGN KEY (nrosocio)    REFERENCES socio(nrosocio) ON DELETE CASCADE,
+                FOREIGN KEY (idactividad) REFERENCES actividad(idactividad) ON DELETE CASCADE
             )
         """.trimIndent())
         //NOSOCIO ACTIVIDAD
@@ -125,8 +125,8 @@ class DatabaseHelper(context: Context) :
                 id          INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
                 nronosocio  INTEGER NOT NULL,
                 idactividad INTEGER NOT NULL,
-                FOREIGN KEY (nronosocio)  REFERENCES nosocio(nronosocio),
-                FOREIGN KEY (idactividad) REFERENCES actividad(idactividad)
+                FOREIGN KEY (nronosocio)  REFERENCES nosocio(nronosocio) ON DELETE CASCADE,
+                FOREIGN KEY (idactividad) REFERENCES actividad(idactividad) ON DELETE CASCADE
             )
         """.trimIndent())
         insertarDatosIniciales(db)
