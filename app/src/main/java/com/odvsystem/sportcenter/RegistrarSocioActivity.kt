@@ -151,6 +151,7 @@ class RegistrarSocioActivity : AppCompatActivity() {
                         1))
                     if(ok){
                         val cobro :Vencimiento = Vencimiento(
+                            idCuota = 0,
                             usuario.nombre,
                             fecha,
                             socio.cuotamensual.toString(),

@@ -13,7 +13,7 @@ class VencimientoAdapter (
     private val lista: List<Vencimiento>,
     private val onClick: (Vencimiento) -> Unit
     ) : RecyclerView.Adapter<VencimientoAdapter.ViewHolder>() {
-
+    private var posicionSeleccionada = -1
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvNombre: TextView = view.findViewById(R.id.tvNombre)
         val tvPeriodo: TextView = view.findViewById(R.id.tvPeriodo)
@@ -56,7 +56,22 @@ class VencimientoAdapter (
                 holder.tvEstado.setBackgroundResource(R.drawable.bg_badge_naranjaclaro)
             }
         }
+        if (position == posicionSeleccionada) {
+            holder.itemView.setBackgroundResource(
+                R.drawable.bg_item_seleccionado
+            )
+        } else {
+            holder.itemView.setBackgroundColor(Color.TRANSPARENT)
+        }
+        holder.itemView.setOnClickListener {
 
-        holder.itemView.setOnClickListener { onClick(item) }
+            val anterior = posicionSeleccionada
+            posicionSeleccionada = holder.adapterPosition
+
+            notifyItemChanged(anterior)
+            notifyItemChanged(posicionSeleccionada)
+
+            onClick(item)
+        }
     }
 }
