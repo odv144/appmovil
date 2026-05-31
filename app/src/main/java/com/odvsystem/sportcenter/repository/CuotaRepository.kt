@@ -106,29 +106,31 @@ class CuotaRepository(context: Context) {
         val lista = mutableListOf<Vencimiento>()
 
         val cursor = db.rawQuery("""
-        SELECT u.apellido || ', ' || u.nombre AS nombre,
-               c.mes || '/' || c.anio AS periodo,
-               '$' || CAST(CAST(c.monto AS INTEGER) AS TEXT) AS monto,
-               c.fechavencimiento AS vence,
-               CASE 
-                   WHEN c.estadopago = 1 THEN 'al_dia'
-                   WHEN date(c.fechavencimiento) < date('now') THEN 'vencido'
-                   ELSE 'proximo'
-               END AS estado
-        FROM cuota c
-        INNER JOIN socio s ON c.nrosocio = s.nrosocio
-        INNER JOIN usuario u ON s.idusuario = u.idusuario
-        ORDER BY c.fechavencimiento ASC
-    """.trimIndent(), null)
+    SELECT c.idcuota,
+           u.apellido || ', ' || u.nombre AS nombre,
+           c.mes || '/' || c.anio AS periodo,
+           '$' || CAST(CAST(c.monto AS INTEGER) AS TEXT) AS monto,
+           c.fechavencimiento AS vence,
+           CASE 
+               WHEN c.estadopago = 1 THEN 'al_dia'
+               WHEN date(c.fechavencimiento) < date('now') THEN 'vencido'
+               ELSE 'proximo'
+           END AS estado
+    FROM cuota c
+    INNER JOIN socio s ON c.nrosocio = s.nrosocio
+    INNER JOIN usuario u ON s.idusuario = u.idusuario
+    ORDER BY c.fechavencimiento ASC
+""".trimIndent(), null)
 
         while (cursor.moveToNext()) {
             lista.add(
                 Vencimiento(
-                    nombre  = cursor.getString(0),
-                    periodo = cursor.getString(1),
-                    monto   = cursor.getString(2),
-                    vence   = cursor.getString(3),
-                    estado  = cursor.getString(4)
+                    idCuota = cursor.getInt(0),
+                    nombre  = cursor.getString(1),
+                    periodo = cursor.getString(2),
+                    monto   = cursor.getString(3),
+                    vence   = cursor.getString(4),
+                    estado  = cursor.getString(5)
                 )
             )
         }

@@ -21,6 +21,8 @@ class VencimientoActivity : AppCompatActivity() {
     private lateinit var cuotaRepository: CuotaRepository
     private var datos: List<Vencimiento> = listOf()
 
+    private var socioSeleccionado: Vencimiento? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityVencimientoBinding.inflate(layoutInflater)
@@ -42,12 +44,33 @@ class VencimientoActivity : AppCompatActivity() {
         val recycler = findViewById<RecyclerView>(R.id.recyclerVencimientos)
         recycler.layoutManager = LinearLayoutManager(this)
         recycler.adapter = VencimientoAdapter(datos) { socio ->
-            mostrarDialogoCobro(socio)
+            socioSeleccionado = socio
         }
 
         // 5. Botón de cobro general
         findViewById<Button>(R.id.btnCobrarCuota).setOnClickListener {
-            mostrarDialogoCobro(null)
+
+            val socio = socioSeleccionado
+
+            if (socio == null) {
+                Toast.makeText(
+                    this,
+                    "Seleccione un socio",
+                    Toast.LENGTH_SHORT
+                ).show()
+                return@setOnClickListener
+            }
+
+            if (socio.estado == "al_dia") {
+                Toast.makeText(
+                    this,
+                    "El socio ya se encuentra al día",
+                    Toast.LENGTH_SHORT
+                ).show()
+                return@setOnClickListener
+            }
+
+            mostrarDialogoCobro(socio)
         }
     }
 
@@ -71,10 +94,23 @@ class VencimientoActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
             .setTitle(if (vencimiento != null) "Cobrar: ${vencimiento.nombre}" else "Cobrar Cuota")
             .setView(view)
-            .setPositiveButton("Imprimir") { dialogInterface, _ ->
+            .setPositiveButton("Confirmar cobro") { dialogInterface, _ ->
                 dialogInterface.dismiss()
-                val comprobante = layoutInflater.inflate(R.layout.dialog_comprobante, null)
 
+                if (vencimiento != null) {
+                    val fechaHoy = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault())
+                        .format(java.util.Date())
+                    cuotaRepository.marcarComoPagada(vencimiento.idCuota, "Efectivo", fechaHoy)
+                    socioSeleccionado = null
+                    datos = cuotaRepository.obtenerVencimientosConNombre()
+                    findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.recyclerVencimientos).adapter =
+                        VencimientoAdapter(datos) { socio ->
+                            socioSeleccionado = socio
+                        }
+                    actualizarContadores()
+                }
+
+                val comprobante = layoutInflater.inflate(R.layout.dialog_comprobante, null)
                 if (vencimiento != null) {
                     comprobante.findViewById<TextView>(R.id.tvNombreSocioComprobante).text = vencimiento.nombre
                     comprobante.findViewById<TextView>(R.id.tvPeriodoComprobante).text = vencimiento.periodo
@@ -84,10 +120,18 @@ class VencimientoActivity : AppCompatActivity() {
 
                 AlertDialog.Builder(this)
                     .setView(comprobante)
+                    .setPositiveButton("Imprimir") { _, _ ->
+                        Toast.makeText(
+                            this,
+                            "Función de impresión pendiente",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                     .setNegativeButton("Cerrar", null)
                     .create()
                     .show()
             }
+
             .setNegativeButton("Cancelar", null)
         builder.create().show()
     }
