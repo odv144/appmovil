@@ -13,22 +13,23 @@ class NuevaActividad : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_nueva_actividad)
 
-        // --- 1. CONFIGURACIÓN DEL HEADER ---
-        val tvTitulo: TextView = findViewById(R.id.tvTitulo)
-        tvTitulo.text = "Nueva Actividad"
 
+        val tvTitulo: TextView = findViewById(R.id.tvTitulo)
+        val eflag = intent.getBooleanExtra("FLAG", false)
+        if (eflag) {
+
+        }
+        else{
+            tvTitulo.text = "Editar Actividad"
+        }
         val btnAtras: Button = findViewById(R.id.btnAtras)
         btnAtras.setOnClickListener {
-            finish() // Cierra la pantalla y vuelve atrás
-        }
 
-        // --- 2. CONFIGURACIÓN DE LOS BOTONES DE LA CARD ---
+        }
 
         // Botón GUARDAR
         val btnGuardar: Button = findViewById(R.id.btnGuardar)
         btnGuardar.setOnClickListener {
-            // Por ahora solo cerramos la pantalla,
-            // pero acá es donde después se validará que los campos no estén vacíos.
             finish()
         }
 
