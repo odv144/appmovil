@@ -15,10 +15,7 @@ class DatabaseHelper(context: Context) :
         const val DATABASE_NAME="deportivo.db"
         const val DATABASE_VERSION =1
 
-        //TABLA
         const val TABLA_LOGIN = "login"
-
-        //COLUMNAS
         const val COLUMN_ID="id"
         const val COLUMN_NOMBRE="nombre"
         const val COLUMN_CLAVE = "clave"
@@ -26,7 +23,7 @@ class DatabaseHelper(context: Context) :
 
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL("PRAGMA foreign_keys = ON")
-        //ROLES
+
         db?.execSQL("""
             CREATE TABLE IF NOT EXISTS roles(
             rolusu INTEGER NOT NULL,
@@ -34,7 +31,7 @@ class DatabaseHelper(context: Context) :
             PRIMARY KEY (rolusu)
             )
         """.trimIndent())
-        //USUARIO
+
         db?.execSQL("""
             CREATE TABLE IF NOT EXISTS usuario (
             idusuario INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -48,7 +45,6 @@ class DatabaseHelper(context: Context) :
             )
         """.trimIndent())
 
-        //CREDENCIALES
         db?.execSQL("""
             CREATE TABLE IF NOT EXISTS credencial(
             codusu INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -59,7 +55,7 @@ class DatabaseHelper(context: Context) :
             FOREIGN KEY (rolusu) REFERENCES roles(rolusu)
             )
         """.trimIndent())
-        //SOCIO
+
         db?.execSQL("""
             CREATE TABLE IF NOT EXISTS socio(
             nrosocio INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -70,7 +66,7 @@ class DatabaseHelper(context: Context) :
             FOREIGN KEY (idusuario) REFERENCES usuario(idusuario)
             )
         """.trimIndent())
-        //ACTIVIDAD
+
         db?.execSQL("""
             CREATE TABLE IF NOT EXISTS actividad(
              idactividad     INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -82,7 +78,7 @@ class DatabaseHelper(context: Context) :
              turno           TEXT
             )
         """.trimIndent())
-        //CUOTA
+
         db?.execSQL("""
             CREATE TABLE IF NOT EXISTS cuota(
             idcuota INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -97,7 +93,7 @@ class DatabaseHelper(context: Context) :
             FOREIGN KEY (nrosocio) REFERENCES socio(nrosocio)
             )
         """.trimIndent())
-        //NO SOCIO
+
         db?.execSQL("""
             CREATE TABLE IF NOT EXISTS nosocio (
                 nronosocio  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -106,7 +102,7 @@ class DatabaseHelper(context: Context) :
                 FOREIGN KEY (idusuario) REFERENCES usuario(idusuario)
             )
         """.trimIndent())
-        //SOCIO - ACTIVIDAD
+
         db?.execSQL("""
             CREATE TABLE IF NOT EXISTS socio_actividad (
                 idinscripcion   INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -119,7 +115,7 @@ class DatabaseHelper(context: Context) :
                 FOREIGN KEY (idactividad) REFERENCES actividad(idactividad)
             )
         """.trimIndent())
-        //NOSOCIO ACTIVIDAD
+
         db?.execSQL("""
             CREATE TABLE IF NOT EXISTS nosocio_actividad (
                 id          INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -129,18 +125,12 @@ class DatabaseHelper(context: Context) :
                 FOREIGN KEY (idactividad) REFERENCES actividad(idactividad)
             )
         """.trimIndent())
-        insertarDatosIniciales(db)
 
+        insertarDatosIniciales(db)
     }
 
-
-
-    override fun onUpgrade(
-        db: SQLiteDatabase?,
-        oldVersion:Int,
-        newVersion: Int
-    ){
-        db?.execSQL("DROP TABLE IF EXISTS $TABLA_LOGIN") //tabla de login vieja
+    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int){
+        db?.execSQL("DROP TABLE IF EXISTS $TABLA_LOGIN")
         db?.execSQL("DROP TABLE IF EXISTS nosocio_actividad")
         db?.execSQL("DROP TABLE IF EXISTS socio_actividad")
         db?.execSQL("DROP TABLE IF EXISTS cuota")
@@ -151,38 +141,51 @@ class DatabaseHelper(context: Context) :
         db?.execSQL("DROP TABLE IF EXISTS usuario")
         db?.execSQL("DROP TABLE IF EXISTS roles")
         onCreate(db)
-     }
+    }
+
     override fun onOpen(db: SQLiteDatabase) {
         super.onOpen(db)
         if (!db.isReadOnly) db.execSQL("PRAGMA foreign_keys = ON")
     }
-    // ── Datos iniciales ────────────────────────────────────────
+
     private fun insertarDatosIniciales(db: SQLiteDatabase?) {
 
-        // roles
-        db?.execSQL("INSERT INTO roles VALUES (1,'Administrador')")
-        db?.execSQL("INSERT INTO roles VALUES (2,'Empleado')")
+        // ── Roles ──────────────────────────────────────────────
+        db?.execSQL("INSERT OR IGNORE INTO roles VALUES (1,'Administrador')")
+        db?.execSQL("INSERT OR IGNORE INTO roles VALUES (2,'Empleado')")
 
-        // credenciales
-        listOf("omar","cynthia","cristian","analia","jairo","admin").forEachIndexed { i, nombre ->
-            db?.execSQL("INSERT INTO credencial (nombreusu,passusu,rolusu,activo) VALUES ('$nombre','1234',1,1)")
+        // ── Credenciales ───────────────────────────────────────
+        listOf("omar","cynthia","cristian","analia","jairo","admin").forEach { nombre ->
+            db?.execSQL("INSERT OR IGNORE INTO credencial (nombreusu,passusu,rolusu,activo) VALUES ('$nombre','1234',1,1)")
         }
 
-        // actividades
-        db?.execSQL("INSERT INTO actividad VALUES (1,'Fútbol 5','Partidos de fútbol 5 con árbitro',1500,2500,10,'Mañana')")
-        db?.execSQL("INSERT INTO actividad VALUES (2,'Natación Adultos','Clases de natación para adultos principiantes',2000,3500,15,'Tarde')")
-        db?.execSQL("INSERT INTO actividad VALUES (3,'Yoga','Sesiones de yoga y meditación',1800,3000,20,'Mañana')")
-        db?.execSQL("INSERT INTO actividad VALUES (4,'Tenis','Clases de tenis individuales y grupales',2500,4000,8,'Tarde')")
-        db?.execSQL("INSERT INTO actividad VALUES (5,'Gimnasio','Acceso a sala de musculación y máquinas',3000,5000,30,'Noche')")
-        db?.execSQL("INSERT INTO actividad VALUES (6,'Pilates','Clases de pilates con instructora certificada',2200,3800,12,'Mañana')")
-        db?.execSQL("INSERT INTO actividad VALUES (7,'Paddle','Alquiler de cancha de paddle por hora',1200,2000,4,'Tarde')")
-        db?.execSQL("INSERT INTO actividad VALUES (8,'Zumba','Clases de baile fitness con música latina',1500,2800,25,'Noche')")
-        db?.execSQL("INSERT INTO actividad VALUES (9,'Natación Niños','Clases de natación para niños de 6 a 12 años',1800,3200,12,'Tarde')")
-        db?.execSQL("INSERT INTO actividad VALUES (10,'Básquet','Entrenamientos y partidos de básquetbol',1600,2600,12,'Noche')")
+        // ── Actividades ────────────────────────────────────────
+        db?.execSQL("INSERT OR IGNORE INTO actividad VALUES (1,'Fútbol 5','Partidos de fútbol 5 con árbitro',1500,2500,10,'Mañana')")
+        db?.execSQL("INSERT OR IGNORE INTO actividad VALUES (2,'Natación Adultos','Clases de natación para adultos principiantes',2000,3500,15,'Tarde')")
+        db?.execSQL("INSERT OR IGNORE INTO actividad VALUES (3,'Yoga','Sesiones de yoga y meditación',1800,3000,20,'Mañana')")
+        db?.execSQL("INSERT OR IGNORE INTO actividad VALUES (4,'Tenis','Clases de tenis individuales y grupales',2500,4000,8,'Tarde')")
+        db?.execSQL("INSERT OR IGNORE INTO actividad VALUES (5,'Gimnasio','Acceso a sala de musculación y máquinas',3000,5000,30,'Noche')")
+        db?.execSQL("INSERT OR IGNORE INTO actividad VALUES (6,'Pilates','Clases de pilates con instructora certificada',2200,3800,12,'Mañana')")
+        db?.execSQL("INSERT OR IGNORE INTO actividad VALUES (7,'Paddle','Alquiler de cancha de paddle por hora',1200,2000,4,'Tarde')")
+        db?.execSQL("INSERT OR IGNORE INTO actividad VALUES (8,'Zumba','Clases de baile fitness con música latina',1500,2800,25,'Noche')")
+        db?.execSQL("INSERT OR IGNORE INTO actividad VALUES (9,'Natación Niños','Clases de natación para niños de 6 a 12 años',1800,3200,12,'Tarde')")
+        db?.execSQL("INSERT OR IGNORE INTO actividad VALUES (10,'Básquet','Entrenamientos y partidos de básquetbol',1600,2600,12,'Noche')")
+
+        // ── Usuarios de prueba ─────────────────────────────────
+        db?.execSQL("INSERT OR IGNORE INTO usuario (idusuario, nombre, apellido, dni, telefono, email, fecharegistro, certificadomedico) VALUES (1, 'Luis', 'García', '30123456', '351111111', 'luis@mail.com', '2024-01-01', 1)")
+        db?.execSQL("INSERT OR IGNORE INTO usuario (idusuario, nombre, apellido, dni, telefono, email, fecharegistro, certificadomedico) VALUES (2, 'Ana', 'López', '28456789', '351222222', 'ana@mail.com', '2024-01-01', 1)")
+
+        // ── Socios de prueba ───────────────────────────────────
+        db?.execSQL("INSERT OR IGNORE INTO socio (nrosocio, idusuario, estadohabilitacion, cuotamensual, carneteentregado) VALUES (1, 1, 'activo', 3000.0, 1)")
+        db?.execSQL("INSERT OR IGNORE INTO socio (nrosocio, idusuario, estadohabilitacion, cuotamensual, carneteentregado) VALUES (2, 2, 'inactivo', 3000.0, 0)")
+
+        // ── Actividades de los socios ──────────────────────────
+        db?.execSQL("INSERT OR IGNORE INTO socio_actividad (nrosocio, idactividad, fechainscripcion, estado) VALUES (1, 1, '2024-01-01', 'activo')")
+        db?.execSQL("INSERT OR IGNORE INTO socio_actividad (nrosocio, idactividad, fechainscripcion, estado) VALUES (2, 3, '2024-01-01', 'activo')")
     }
+
     fun ingresoLogin(usuario: String, pass: String): String? {
         val db = this.readableDatabase
-
         val cursor = db.rawQuery("""
             SELECT r.nomrol
             FROM credencial c
@@ -196,10 +199,42 @@ class DatabaseHelper(context: Context) :
         if (cursor.moveToFirst()) {
             rol = cursor.getString(cursor.getColumnIndexOrThrow("nomrol"))
         }
-
         cursor.close()
         db.close()
         return rol
     }
-}
 
+    fun buscarSocioParaCarnet(termino: String): Map<String, String>? {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("""
+            SELECT 
+                s.nrosocio,
+                u.nombre,
+                u.apellido,
+                u.dni,
+                s.estadohabilitacion,
+                s.cuotamensual,
+                GROUP_CONCAT(a.nombre, ', ') AS actividades
+            FROM socio s
+            INNER JOIN usuario u ON s.idusuario = u.idusuario
+            LEFT JOIN socio_actividad sa ON s.nrosocio = sa.nrosocio
+            LEFT JOIN actividad a ON sa.idactividad = a.idactividad
+            WHERE CAST(s.nrosocio AS TEXT) = ?
+               OR u.dni = ?
+            GROUP BY s.nrosocio
+            LIMIT 1
+        """.trimIndent(), arrayOf(termino, termino))
+
+        return if (cursor.moveToFirst()) {
+            mapOf(
+                "nrosocio"    to cursor.getString(cursor.getColumnIndexOrThrow("nrosocio")),
+                "nombre"      to cursor.getString(cursor.getColumnIndexOrThrow("nombre")),
+                "apellido"    to cursor.getString(cursor.getColumnIndexOrThrow("apellido")),
+                "dni"         to cursor.getString(cursor.getColumnIndexOrThrow("dni")),
+                "estado"      to cursor.getString(cursor.getColumnIndexOrThrow("estadohabilitacion")),
+                "actividades" to (cursor.getString(cursor.getColumnIndexOrThrow("actividades")) ?: "Sin actividad")
+            )
+        } else null
+            .also { cursor.close(); db.close() }
+    }
+}
