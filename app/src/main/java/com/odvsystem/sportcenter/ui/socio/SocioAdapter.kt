@@ -40,7 +40,8 @@ class SocioAdapter (
         holder.tvNombre.text = "Socio: ${item.apellido}, ${item.nombre}"
         holder.tvDni.text = "DNI: ${item.dni}"
       //  holder.tvActividad.text  ="Cuota Mensual $${item.cuota.toString()}"
-        holder.tvEstado.text  = $$"Estado: $${item.estadohabilitacion}"
+       // holder.tvEstado.text  = $$"Estado: $${item.estadohabilitacion}"
+        holder.tvEstado.text = "Estado: ${item.estadohabilitacion}"
         holder.btnDetalle.setOnClickListener  { onVer(item) }
         holder.btnEditar.setOnClickListener   { onEditar(item) }
         holder.btnEliminar.setOnClickListener { onEliminar(item) }

@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.odvsystem.sportcenter.ui.actividad.ActividadActivity
+import com.odvsystem.sportcenter.ui.nosocio.NoSociosActivity
 import com.odvsystem.sportcenter.ui.socio.SociosActivity
 import com.odvsystem.sportcenter.ui.vencimiento.VencimientoActivity
 

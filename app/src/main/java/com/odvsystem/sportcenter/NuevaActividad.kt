@@ -2,7 +2,6 @@ package com.odvsystem.sportcenter
 
 import android.os.Bundle
 import android.widget.ArrayAdapter
-import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
@@ -31,47 +30,32 @@ class NuevaActividad : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_nueva_actividad)
         binding = ActivityNuevaActividadBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         repo = ActividadRepository(this)
 
-        //Vincular Vistas
-        etNombreActividad= findViewById(R.id.etNombreActividad)
-        etDescripcion = findViewById(R.id.etDescripcion)
-        spinnerTurno= findViewById(R.id.spinnerTurno)
-        etCupo= findViewById(R.id.etCupo)
-        etTarifaDiaria=findViewById(R.id.etTarifaDiaria)
-        etTarifaMensual=findViewById(R.id.etTarifaMensual)
+        // Inicializar vistas
+        etNombreActividad = binding.etNombreActividad
+        etDescripcion = binding.etDescripcion
+        etTarifaDiaria = binding.etTarifaDiaria
+        etTarifaMensual = binding.etTarifaMensual
+        etCupo = binding.etCupo
+        spinnerTurno = binding.spinnerTurno
 
-        // Cargar opciones del Spinner
-        spinnerTurno.adapter = ArrayAdapter(this,
-            android.R.layout.simple_spinner_dropdown_item, turnos)
+        // Configurar Spinner
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, turnos)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerTurno.adapter = adapter
 
-        // Verificar si viene un ID desde ActividadActivity
-        val idActividad = intent.getIntExtra("idActividad", -1)
-
-        if (idActividad != -1) {
-            // MODO EDITAR → buscar en BD y rellenar campos
-            binding.encabezado.setTitulo("Editar Actividad")
-            actividadExistente = repo.obtenerPorId(idActividad)
-            actividadExistente?.let { rellenarCampos(it) }
-        } else {
-            // MODO NUEVO → título vacío
-            binding.encabezado.setTitulo("Nuevas Actividad")
-
-
-        }
-       // Configuracion del boton de Atraz del encabezado
-        binding.encabezado.setDestino(ActividadActivity::class.java)
+        // --- 1. CONFIGURACIÓN DEL HEADER ---
+        binding.encabezado.setTitulo("Nueva Actividad")
+        binding.encabezado.setOnAtrasClick { finish() }
 
         // --- 2. CONFIGURACIÓN DE LOS BOTONES DE LA CARD ---
 
         // Botón GUARDAR
-        val btnGuardar: Button = findViewById(R.id.btnGuardar)
-        btnGuardar.setOnClickListener {
-            // Por ahora solo cerramos la pantalla,
-            // pero acá es donde después se validará que los campos no estén vacíos.
+        binding.btnGuardar.setOnClickListener {
             guardar()
         }
 
@@ -79,16 +63,26 @@ class NuevaActividad : AppCompatActivity() {
         binding.btnLimpiar.setOnClickListener {
             limpiarCampos()
         }
+
+        // --- 3. MODO EDICIÓN ---
+        val idActividad = intent.getIntExtra("idActividad", -1)
+        if (idActividad != -1) {
+            actividadExistente = repo.obtenerPorId(idActividad)
+            actividadExistente?.let {
+                rellenarCampos(it)
+                binding.encabezado.setTitulo("Editar Actividad")
+            }
+        }
     }
 
     // Función extra para que el código sea más ordenado
     private fun limpiarCampos() {
-        findViewById<EditText>(R.id.etNombreActividad).text.clear()
-        findViewById<EditText>(R.id.etDescripcion).text.clear()
-        //findViewById<EditText>(R.id.etTurno).text.clear()
-        findViewById<EditText>(R.id.etCupo).text.clear()
-        findViewById<EditText>(R.id.etTarifaDiaria).text.clear()
-        findViewById<EditText>(R.id.etTarifaMensual).text.clear()
+        etNombreActividad.text.clear()
+        etDescripcion.text.clear()
+        etCupo.text.clear()
+        etTarifaDiaria.text.clear()
+        etTarifaMensual.text.clear()
+        spinnerTurno.setSelection(0)
     }
     // Rellena los campos cuando es edición
     private fun rellenarCampos(actividad: Actividad) {

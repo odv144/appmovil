@@ -13,7 +13,7 @@ class DatabaseHelper(context: Context) :
     ){
     companion object{
         const val DATABASE_NAME="deportivo.db"
-        const val DATABASE_VERSION = 2
+        const val DATABASE_VERSION = 5
 
         //TABLA
         const val TABLA_LOGIN = "login"
@@ -106,6 +106,20 @@ class DatabaseHelper(context: Context) :
                 FOREIGN KEY (idusuario) REFERENCES usuario(idusuario) ON DELETE CASCADE
             )
         """.trimIndent())
+        //PAGO NO SOCIO
+        db?.execSQL("""
+        CREATE TABLE IF NOT EXISTS pago_nosocio(
+            idpago INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+            nronosocio INTEGER NOT NULL,
+            idactividad INTEGER,
+            monto REAL,
+            fechapago TEXT,
+            metodopago TEXT,
+            FOREIGN KEY (nronosocio) REFERENCES nosocio(nronosocio) ON DELETE CASCADE,
+            FOREIGN KEY (idactividad) REFERENCES actividad(idactividad) ON DELETE SET NULL
+        )
+        """.trimIndent())
+
         //SOCIO - ACTIVIDAD
         db?.execSQL("""
             CREATE TABLE IF NOT EXISTS socio_actividad (
@@ -141,6 +155,10 @@ class DatabaseHelper(context: Context) :
         newVersion: Int
     ){
         db?.execSQL("DROP TABLE IF EXISTS $TABLA_LOGIN") //tabla de login vieja
+        db?.execSQL("DROP TABLE IF EXISTS nosocio_actividad")
+        db?.execSQL("DROP TABLE IF EXISTS socio_actividad")
+        db?.execSQL("DROP TABLE IF EXISTS cuota")
+        db?.execSQL("DROP TABLE IF EXISTS pago_nosocio")
         db?.execSQL("DROP TABLE IF EXISTS nosocio_actividad")
         db?.execSQL("DROP TABLE IF EXISTS socio_actividad")
         db?.execSQL("DROP TABLE IF EXISTS cuota")
@@ -198,6 +216,28 @@ class DatabaseHelper(context: Context) :
         db?.execSQL("INSERT INTO cuota VALUES (2,2,3,2025,11000,'2025-03-31',null,null,0)")
         db?.execSQL("INSERT INTO cuota VALUES (3,3,4,2025,7500,'2025-04-15',null,null,0)")
         db?.execSQL("INSERT INTO cuota VALUES (4,4,3,2025,8000,'2025-03-28',null,null,0)")
+
+        // nosocios de prueba
+        db?.execSQL("INSERT INTO usuario VALUES (5,'Pérez','Juan','40111222','1133334444','juan@mail.com','2025-04-01',1)")
+        db?.execSQL("INSERT INTO nosocio VALUES (1,5,'Visitante eventual')")
+        db?.execSQL("INSERT INTO nosocio_actividad VALUES (1,1,1)")
+        db?.execSQL("INSERT INTO pago_nosocio VALUES (1,1,1,2500,'2025-04-01','Efectivo')")
+        // más nosocios de prueba
+        db?.execSQL("INSERT INTO usuario VALUES (6,'Martínez','Laura','40222333','1134445555','laura@mail.com','2025-04-03',1)")
+        db?.execSQL("INSERT INTO nosocio VALUES (2,6,'Viene ocasionalmente a clases de yoga')")
+
+        db?.execSQL("INSERT INTO usuario VALUES (7,'Sosa','Diego','40333444','1135556666','diego@mail.com','2025-04-05',1)")
+        db?.execSQL("INSERT INTO nosocio VALUES (3,7,'Participa a veces en fútbol 5')")
+
+        db?.execSQL("INSERT INTO usuario VALUES (8,'Ramírez','Camila','40444555','1136667777','camila@mail.com','2025-04-08',1)")
+        db?.execSQL("INSERT INTO nosocio VALUES (4,8,'Asiste ocasionalmente a natación')")
+
+        db?.execSQL("INSERT INTO usuario VALUES (9,'Torres','Nicolás','40555666','1137778888','nicolas@mail.com','2025-04-10',1)")
+        db?.execSQL("INSERT INTO nosocio VALUES (5,9,'Usa el gimnasio algunos días')")
+
+        db?.execSQL("INSERT INTO usuario VALUES (10,'Acosta','Sofía','40666777','1138889999','sofia@mail.com','2025-04-12',1)")
+        db?.execSQL("INSERT INTO nosocio VALUES (6,10,'Realiza pilates de forma eventual')")
+
     }
     fun ingresoLogin(usuario: String, pass: String): String? {
         val db = this.readableDatabase
