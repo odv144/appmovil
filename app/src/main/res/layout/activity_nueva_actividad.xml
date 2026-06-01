@@ -7,7 +7,10 @@
     android:orientation="vertical"
     android:background="#F2F4F2">
 
-    <include layout="@layout/component_header" />
+    <com.odvsystem.sportcenter.components.Header
+        android:id="@+id/encabezado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <!-- ===== CARD BLANCA PRINCIPAL ===== -->
 
     <ScrollView
@@ -85,6 +88,7 @@
                 <View android:layout_height="4dp" />
 
                 <!-- FILA: TURNO -->
+                <!--
                 <TableRow
                     android:padding="8dp">
                     <TextView
@@ -100,6 +104,21 @@
                         android:hint="Noche"
                         android:background="@null"
                         android:textSize="14sp"/>
+                </TableRow>
+                -->
+                <TableRow
+                    android:padding="8dp">
+                    <TextView
+                        android:text="Turno"
+                        android:textStyle="bold"
+                        android:textColor="#333333"
+                        android:layout_gravity="center_vertical"
+                        android:paddingEnd="16dp"/>
+                    <Spinner
+                        android:id="@+id/spinnerTurno"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginBottom="4dp" />
                 </TableRow>
                 <View android:layout_height="4dp" />
 

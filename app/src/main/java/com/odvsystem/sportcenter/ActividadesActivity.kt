@@ -17,22 +17,23 @@ class ActividadesActivity : AppCompatActivity() {
         setContentView(binding.root)
         enableEdgeToEdge()
         val newActi : Button =findViewById<Button>(R.id.btnNuevaActividad)
-        val edit : Button =findViewById<Button>(R.id.btnEditar)
+    //    val edit : Button =findViewById<Button>(R.id.btnEditar)
 
         binding.encabezado.setTitulo("Actividades")
         binding.encabezado.setDestino(MenuActivity::class.java)
-
+/*
         newActi.setOnClickListener {
             intent.putExtra("FLAG", true)
             val vistaNuevaActividad = Intent(this, NuevaActividad::class.java)
             startActivity(vistaNuevaActividad)
         }
+
         edit.setOnClickListener {
             intent.putExtra("FLAG", false)
             val vistaNuevaActividad = Intent(this, NuevaActividad::class.java)
             startActivity(vistaNuevaActividad)
         }
-
+*/
     }
 
 

@@ -19,7 +19,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -30,7 +29,10 @@
             android:name=".ReimpresionCarnet"
             android:exported="false" />
         <activity
-            android:name=".VencimientoActivity"
+            android:name=".ui.vencimiento.VencimientoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.actividad.ActividadActivity"
             android:exported="false" />
         <activity
             android:name=".ActividadesActivity"
@@ -48,7 +50,7 @@
             android:name=".ListadoCarnet"
             android:exported="false" />
         <activity
-            android:name=".SociosActivity"
+            android:name=".ui.socio.SociosActivity"
             android:exported="false" />
         <activity
             android:name=".MenuActivity"
@@ -56,11 +58,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
