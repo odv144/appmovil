@@ -143,19 +143,21 @@
                         android:layout_height="wrap_content"
                         android:nestedScrollingEnabled="false" />
                 </LinearLayout>
+                <Button
+                    android:id="@+id/btnCobrarCuota"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_margin="12dp"
+                    android:text="Cobrar cuota"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:backgroundTint="#2E7D32" />
             </LinearLayout>
+
         </ScrollView>
 
         <!-- Botón inferior -->
-        <Button
-            android:id="@+id/btnCobrarCuota"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:layout_margin="12dp"
-            android:text="Cobrar cuota"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:backgroundTint="#2E7D32" />
+
 
     </LinearLayout>
 

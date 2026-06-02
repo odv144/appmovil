@@ -45,7 +45,9 @@
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
+            android:layout_marginTop="-20dp"
             android:layout_width="match_parent"
+
             android:layout_height="wrap_content">
 
             <LinearLayout
@@ -55,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:layout_margin="5dp"
-                    android:background="#fff"
+                    android:background="@drawable/bd_badge_gris"
                     android:layout_gravity="center">
                     <TextView
                         android:layout_width="wrap_content"
@@ -81,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:layout_margin="5dp"
-                android:background="#fff"
+                android:background="@drawable/bd_badge_gris"
                 android:layout_gravity="center">
                 <TextView
                     android:layout_width="wrap_content"
@@ -107,7 +109,7 @@
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:layout_margin="5dp"
-                android:background="#fff"
+                android:background="@drawable/bd_badge_gris"
                 android:layout_gravity="center">
                 <TextView
                     android:layout_width="wrap_content"
@@ -151,19 +153,20 @@
                     android:orientation="vertical"
                     android:background="@drawable/bg_card_menu_gris"
                     android:layout_weight="1"
+                    android:padding="3dp"
                     android:layout_margin="2dp">
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:background="#555999"
                         android:layout_gravity="center"
-                        android:src="@android:drawable/ic_menu_agenda"/>
+                        android:src="@drawable/ic_socio"
+                        />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Socios"
                         android:textColor="@color/black"
-                        android:textSize="30sp"
+                        android:textSize="28sp"
                         android:padding="2dp"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -178,22 +181,22 @@
                     android:layout_width="0dp"
                     android:layout_height="120dp"
                     android:orientation="vertical"
-                    android:background="#995599"
+                    android:background="@drawable/bg_card_menu_gris"
+                    android:padding="3dp"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
                     >
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:background="#995599"
                         android:layout_gravity="center"
-                        android:src="@android:drawable/ic_menu_call"/>
+                        android:src="@drawable/ic_no_socio"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="No Socios"
                         android:textColor="@color/black"
-                        android:textSize="30sp"
+                        android:textSize="28sp"
                         android:padding="2dp"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -219,21 +222,21 @@
 
                     android:layout_height="120dp"
                     android:orientation="vertical"
-                    android:background="#eeff55"
+                    android:background="@drawable/bg_card_menu_gris"
+                    android:padding="3dp"
                     android:layout_weight="1"
                     android:layout_margin="2dp">
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:background="#eeff55"
                         android:layout_gravity="center"
-                        android:src="@android:drawable/ic_menu_myplaces"/>
+                        android:src="@drawable/ic_actividad"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Actividades"
                         android:textColor="@color/black"
-                        android:textSize="30sp"
+                        android:textSize="28sp"
                         android:padding="2dp"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -248,22 +251,22 @@
                     android:layout_width="0dp"
                     android:layout_height="120dp"
                     android:orientation="vertical"
-                    android:background="#bbff99"
+                    android:background="@drawable/bg_card_menu_gris"
+                    android:padding="3dp"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
                     >
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:background="#bbff99"
                         android:layout_gravity="center"
-                        android:src="@android:drawable/ic_menu_month"/>
+                        android:src="@drawable/ic_vencimiento"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Vencimientos"
                         android:textColor="@color/black"
-                        android:textSize="30sp"
+                        android:textSize="28sp"
                         android:padding="2dp"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -279,23 +282,23 @@
         </LinearLayout>
         <LinearLayout
             android:id="@+id/menu_reimpresion"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
             android:orientation="horizontal"
-            android:background="#ccc"
-            android:gravity="center">
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="#bbff99"
-                android:layout_gravity="center"
-                android:layout_marginRight="30dp"
-                android:src="@android:drawable/ic_menu_set_as"/>
+            android:layout_marginBottom="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/bg_card_menu_gris"
+                android:padding="5dp"
                 android:orientation="vertical">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_carnet"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -319,6 +322,8 @@
             android:background="@drawable/btn_verde_rounded_sm"
             android:text="Cerrar Sesión"
             android:textColor="@color/white"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:textSize="32sp"
             android:layout_marginTop="20dp"/>
     </LinearLayout>
