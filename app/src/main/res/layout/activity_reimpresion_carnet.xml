@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#F2F4F2">
+    android:background="#F2F4F2"
+    android:orientation="vertical">
 
     <include layout="@layout/component_header" />
 
@@ -12,12 +11,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingHorizontal="16dp"
         android:paddingTop="12dp"
-        android:paddingBottom="12dp"
-        android:background="#FFFFFF"
-        android:gravity="center_vertical">
+        android:paddingBottom="12dp">
 
         <EditText
             android:id="@+id/etBuscarSocio"
@@ -25,21 +24,21 @@
             android:layout_height="48dp"
             android:layout_weight="1"
             android:hint="Nº de socio o DNI"
+            android:imeOptions="actionSearch"
             android:inputType="number"
             android:paddingHorizontal="12dp"
-            android:imeOptions="actionSearch"
-            android:singleLine="true"/>
+            android:singleLine="true" />
 
         <Button
             android:id="@+id/btnBuscar"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_marginStart="8dp"
+            android:backgroundTint="#2E7D32"
+            android:stateListAnimator="@null"
             android:text="Buscar"
             android:textAllCaps="false"
-            android:backgroundTint="#2E7D32"
-            android:textColor="#FFFFFF"
-            android:stateListAnimator="@null"/>
+            android:textColor="#FFFFFF" />
 
     </LinearLayout>
 
@@ -58,53 +57,68 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:text="VISTA PREVIA DEL CARNET"
-                android:textSize="11sp"
-                android:textStyle="bold"
                 android:textColor="#555555"
-                android:layout_marginBottom="10dp" />
+                android:textSize="11sp"
+                android:textStyle="bold" />
 
             <!-- ===== CARNET ===== -->
             <LinearLayout
                 android:id="@+id/cardCarnet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:background="#1B5E20"
+                android:orientation="vertical"
                 android:padding="16dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:letterSpacing="0.1"
                     android:text="SPORT CENTER · CARNET DE SOCIO"
                     android:textColor="#A5D6A7"
-                    android:textSize="10sp"
-                    android:letterSpacing="0.1" />
+                    android:textSize="10sp" />
 
                 <TextView
                     android:id="@+id/tvNombreSocio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
                     android:text="— Buscá un socio —"
                     android:textColor="#FFFFFF"
                     android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvEtiquetaInactivo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⚠ INACTIVO / PAGO PENDIENTE"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp"
                     android:textStyle="bold"
-                    android:layout_marginTop="4dp" />
+                    android:background="#C62828"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="8dp"
+                    android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/tvDniSocio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
                     android:text=""
                     android:textColor="#A5D6A7"
-                    android:textSize="11sp"
-                    android:layout_marginBottom="16dp" />
+                    android:textSize="11sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="16dp">
+                    android:layout_marginBottom="16dp"
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -182,21 +196,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#0D3B18"
-                    android:padding="14dp"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:padding="14dp">
 
                     <ImageView
-                        android:layout_width="44dp"
-                        android:layout_height="44dp"
-                        android:src="@android:drawable/ic_menu_camera"
-                        android:tint="#4CAF50" />
+                        android:id="@+id/ivQR"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@android:drawable/ic_menu_camera" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="14dp">
+                        android:layout_marginStart="14dp"
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -230,13 +244,13 @@
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:layout_margin="16dp"
-        android:text="Imprimir carnet"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:textAllCaps="false"
-        android:textStyle="bold"
         android:backgroundTint="#2E7D32"
         android:elevation="0dp"
-        android:stateListAnimator="@null" />
+        android:stateListAnimator="@null"
+        android:text="Imprimir carnet"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
 </LinearLayout>

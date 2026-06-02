@@ -235,6 +235,28 @@ class DatabaseHelper(context: Context) :
                 "actividades" to (cursor.getString(cursor.getColumnIndexOrThrow("actividades")) ?: "Sin actividad")
             )
         } else null
-            .also { cursor.close(); db.close() }
+            .also { cursor.close() }
+    }
+    fun obtenerVigenciaSocio(nrosocio: String): String {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("""
+        SELECT mes, anio
+        FROM cuota
+        WHERE nrosocio = ?
+          AND estadopago = 1
+        ORDER BY anio DESC, mes DESC
+        LIMIT 1
+    """.trimIndent(), arrayOf(nrosocio))
+
+        val resultado = if (cursor.moveToFirst()) {
+            val mes  = cursor.getInt(cursor.getColumnIndexOrThrow("mes")).toString().padStart(2, '0')
+            val anio = cursor.getInt(cursor.getColumnIndexOrThrow("anio"))
+            "$mes/$anio"
+        } else {
+            "Sin cuota"
+        }
+
+        cursor.close()
+        return resultado
     }
 }
