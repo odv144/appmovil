@@ -19,9 +19,6 @@
             android:exported="false"
             android:theme="@style/Theme.SportCenter" />
         <activity
-            android:name=".activity_editar_no_socio"
-            android:exported="false" />
-        <activity
             android:name=".ui.nosocio.EditarSocioActivity"
             android:exported="false" />
         <activity

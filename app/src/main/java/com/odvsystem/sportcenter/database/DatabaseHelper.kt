@@ -13,15 +13,8 @@ class DatabaseHelper(context: Context) :
     ){
     companion object{
         const val DATABASE_NAME="deportivo.db"
-        const val DATABASE_VERSION = 5
+        const val DATABASE_VERSION = 6
 
-        //TABLA
-        const val TABLA_LOGIN = "login"
-
-        //COLUMNAS
-        const val COLUMN_ID="id"
-        const val COLUMN_NOMBRE="nombre"
-        const val COLUMN_CLAVE = "clave"
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
@@ -154,7 +147,7 @@ class DatabaseHelper(context: Context) :
         oldVersion:Int,
         newVersion: Int
     ){
-        db?.execSQL("DROP TABLE IF EXISTS $TABLA_LOGIN") //tabla de login vieja
+
         db?.execSQL("DROP TABLE IF EXISTS nosocio_actividad")
         db?.execSQL("DROP TABLE IF EXISTS socio_actividad")
         db?.execSQL("DROP TABLE IF EXISTS cuota")
@@ -209,29 +202,6 @@ class DatabaseHelper(context: Context) :
         // ── Actividades de los socios ──────────────────────────
         db?.execSQL("INSERT OR IGNORE INTO socio_actividad (nrosocio, idactividad, fechainscripcion, estado) VALUES (1, 1, '2024-01-01', 'activo')")
         db?.execSQL("INSERT OR IGNORE INTO socio_actividad (nrosocio, idactividad, fechainscripcion, estado) VALUES (2, 3, '2024-01-01', 'activo')")
-        // actividades
-        db?.execSQL("INSERT INTO actividad VALUES (1,'Fútbol 5','Partidos de fútbol 5 con árbitro',1500,2500,10,'Mañana')")
-        db?.execSQL("INSERT INTO actividad VALUES (2,'Natación Adultos','Clases de natación para adultos principiantes',2000,3500,15,'Tarde')")
-        db?.execSQL("INSERT INTO actividad VALUES (3,'Yoga','Sesiones de yoga y meditación',1800,3000,20,'Mañana')")
-        db?.execSQL("INSERT INTO actividad VALUES (4,'Tenis','Clases de tenis individuales y grupales',2500,4000,8,'Tarde')")
-        db?.execSQL("INSERT INTO actividad VALUES (5,'Gimnasio','Acceso a sala de musculación y máquinas',3000,5000,30,'Noche')")
-        db?.execSQL("INSERT INTO actividad VALUES (6,'Pilates','Clases de pilates con instructora certificada',2200,3800,12,'Mañana')")
-        db?.execSQL("INSERT INTO actividad VALUES (7,'Paddle','Alquiler de cancha de paddle por hora',1200,2000,4,'Tarde')")
-        db?.execSQL("INSERT INTO actividad VALUES (8,'Zumba','Clases de baile fitness con música latina',1500,2800,25,'Noche')")
-        db?.execSQL("INSERT INTO actividad VALUES (9,'Natación Niños','Clases de natación para niños de 6 a 12 años',1800,3200,12,'Tarde')")
-        db?.execSQL("INSERT INTO actividad VALUES (10,'Básquet','Entrenamientos y partidos de básquetbol',1600,2600,12,'Noche')")
-
-        // usuarios de prueba
-        db?.execSQL("INSERT INTO usuario VALUES (1,'García','Luis','30123456','1134567890','garcia@mail.com','2025-01-10',1)")
-        db?.execSQL("INSERT INTO usuario VALUES (2,'López','Marcos','31234567','1145678901','lopez@mail.com','2025-01-15',1)")
-        db?.execSQL("INSERT INTO usuario VALUES (3,'Rodríguez','Carlos','32345678','1156789012','rodriguez@mail.com','2025-02-01',1)")
-        db?.execSQL("INSERT INTO usuario VALUES (4,'Fernandez','Pedro','33456789','1167890123','fernandez@mail.com','2025-02-15',1)")
-
-        // socios de prueba
-        db?.execSQL("INSERT INTO socio VALUES (1,1,'activo',8500,1)")
-        db?.execSQL("INSERT INTO socio VALUES (2,2,'activo',11000,1)")
-        db?.execSQL("INSERT INTO socio VALUES (3,3,'activo',7500,1)")
-        db?.execSQL("INSERT INTO socio VALUES (4,4,'activo',8000,1)")
 
 
         // cuotas de prueba
