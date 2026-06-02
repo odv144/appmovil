@@ -17,136 +17,16 @@
         android:paddingHorizontal="16dp"
         android:paddingTop="16dp">
 
-        <LinearLayout
+        <!-- Lista -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerActividades"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="#3333"
-            android:padding="12dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="10dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.3"
-                    android:text="ACTIVIDAD"
-                    android:textColor="@color/verde_medio"
-                    android:textStyle="bold"
-                    android:textSize="11sp" />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.2"
-                    android:text="CUOTA"
-                    android:textColor="@color/verde_medio"
-                    android:textStyle="bold"
-                    android:textSize="11sp"
-                    android:gravity="center" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="DÍA"
-                    android:textColor="@color/verde_medio"
-                    android:textStyle="bold"
-                    android:textSize="11sp"
-                    android:gravity="center" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.8"
-                    android:text="CUPO"
-                    android:textColor="@color/verde_medio"
-                    android:textStyle="bold"
-                    android:textSize="11sp"
-                    android:gravity="center" />
-
-            </LinearLayout>
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="12dp" />
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingVertical="14dp">
-
-                <!-- ACTIVIDAD -->
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.3"
-                    android:orientation="vertical">
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Fútbol"
-                        android:textColor="@color/verde_medio"
-                        android:textStyle="bold"
-                        android:textSize="12sp"
-                        android:background="@drawable/bg_badge_verde_claro"
-                        android:paddingHorizontal="10dp"
-                        android:paddingVertical="4dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Fútbol 5 y 11"
-                        android:textColor="#8C8C8C"
-                        android:textSize="10sp"
-                        android:layout_marginTop="4dp" />
-
-                </LinearLayout>
-
-                <!-- CUOTA -->
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.2"
-                    android:text="$8.500"
-                    android:textColor="@color/black"
-                    android:textSize="13sp"
-                    android:gravity="center" />
-
-                <!-- DIA -->
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="$1.200"
-                    android:textColor="@color/black"
-                    android:textSize="13sp"
-                    android:gravity="center" />
-
-                <!-- CUPO -->
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.8"
-                    android:text="30"
-                    android:textColor="@color/black"
-                    android:textSize="13sp"
-                    android:gravity="center" />
-
-            </LinearLayout>
-            <!-- DIVISOR -->
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#ECECEC" />
-            <!-- resto de filas -->
-        </LinearLayout>
-
-     <!-- BOTONES -->
+        <!-- BOTONES -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -168,22 +48,6 @@
                 android:textSize="13sp"
                 android:backgroundTint="@color/verde_claro" />
 
-            <!-- BOTON EDITAR -->
-            <!-- puse esto por que el color era morado -->
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnEditar"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:layout_marginStart="8dp"
-                android:text="Editar"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="13sp"
-                android:background="@drawable/btn_white_rounded"
-                android:backgroundTint="@null"
-                />
 
         </LinearLayout>
 

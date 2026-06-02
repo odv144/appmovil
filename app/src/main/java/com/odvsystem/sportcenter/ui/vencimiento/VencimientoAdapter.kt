@@ -1,4 +1,4 @@
-package com.odvsystem.sportcenter
+package com.odvsystem.sportcenter.ui.vencimiento
 
 import android.graphics.Color
 import android.view.LayoutInflater
@@ -6,12 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.odvsystem.sportcenter.R
+import com.odvsystem.sportcenter.model.Vencimiento
 
 class VencimientoAdapter (
     private val lista: List<Vencimiento>,
     private val onClick: (Vencimiento) -> Unit
     ) : RecyclerView.Adapter<VencimientoAdapter.ViewHolder>() {
-
+    private var posicionSeleccionada = -1
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvNombre: TextView = view.findViewById(R.id.tvNombre)
         val tvPeriodo: TextView = view.findViewById(R.id.tvPeriodo)
@@ -54,7 +56,22 @@ class VencimientoAdapter (
                 holder.tvEstado.setBackgroundResource(R.drawable.bg_badge_naranjaclaro)
             }
         }
+        if (position == posicionSeleccionada) {
+            holder.itemView.setBackgroundResource(
+                R.drawable.bg_item_seleccionado
+            )
+        } else {
+            holder.itemView.setBackgroundColor(Color.TRANSPARENT)
+        }
+        holder.itemView.setOnClickListener {
 
-        holder.itemView.setOnClickListener { onClick(item) }
+            val anterior = posicionSeleccionada
+            posicionSeleccionada = holder.adapterPosition
+
+            notifyItemChanged(anterior)
+            notifyItemChanged(posicionSeleccionada)
+
+            onClick(item)
+        }
     }
 }

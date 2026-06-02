@@ -12,8 +12,8 @@ class Header @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet?=null
 ): LinearLayout(context,attrs){
-    private val btnAtras: Button
-    private val tvTitulo: TextView
+    private var btnAtras: Button? = null
+    private var tvTitulo: TextView? = null
     init {
         inflate(context, R.layout.component_header, this)
         orientation=VERTICAL
@@ -21,14 +21,14 @@ class Header @JvmOverloads constructor(
         tvTitulo = findViewById<TextView>(R.id.tvTitulo)
     }
     fun setTitulo(titulo:String){
-        tvTitulo.text=titulo
+        tvTitulo?.text=titulo
     }
     fun setDestino(destino:Class<*>){
-        btnAtras.setOnClickListener {
+        btnAtras?.setOnClickListener {
             context.startActivity(Intent(context, destino))
         }
     }
     fun setOnAtrasClick(accion:()->Unit){
-        btnAtras.setOnClickListener { accion() }
+        btnAtras?.setOnClickListener { accion() }
     }
 }

@@ -3,15 +3,10 @@ package com.odvsystem.sportcenter
 import android.app.AlertDialog
 import android.os.Bundle
 import android.widget.Button
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-
-import com.odvsystem.sportcenter.databinding.ActivityMainBinding
 import com.odvsystem.sportcenter.databinding.ActivityRegistrarNoSocioBinding
-import com.odvsystem.sportcenter.databinding.ActivityRegistrarSocioBinding
+import com.odvsystem.sportcenter.ui.nosocio.NoSociosActivity
 
 class RegistrarNoSocioActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegistrarNoSocioBinding

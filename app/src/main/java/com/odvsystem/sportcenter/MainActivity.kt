@@ -11,22 +11,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.odvsystem.sportcenter.database.DatabaseHelper
-import com.odvsystem.sportcenter.database.LoginDao
-import com.odvsystem.sportcenter.model.Login
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         val dbHelper = DatabaseHelper(this)
-        DatabaseHelper(this).writableDatabase.close()
-       // val loginDao = LoginDao(this)
-        //INSERTAR
-/*
-        val nuevoLogin = Login(nombre="Admin",clave="1234")
-        val idInsertado = loginDao.insertar(nuevoLogin)
-        Log.d("sqlite","id insertado $idInsertado")
-*/
+
+        // DatabaseHelper(this).writableDatabase.close()
 
         setContentView(R.layout.activity_main)
         val boton: Button = findViewById(R.id.btnLogin)

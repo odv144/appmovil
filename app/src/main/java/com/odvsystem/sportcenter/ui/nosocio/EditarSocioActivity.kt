@@ -1,13 +1,13 @@
-package com.odvsystem.sportcenter
+package com.odvsystem.sportcenter.ui.nosocio
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.odvsystem.sportcenter.R
 import com.odvsystem.sportcenter.databinding.ActivityEditarSocioBinding
+import com.odvsystem.sportcenter.ui.socio.SociosActivity
 
 class EditarSocioActivity : AppCompatActivity() {
     private lateinit var  binding: ActivityEditarSocioBinding
@@ -17,8 +17,8 @@ class EditarSocioActivity : AppCompatActivity() {
         setContentView(R.layout.activity_editar_socio)
         setContentView(binding.root)
         enableEdgeToEdge()
-        val guardar: Button= findViewById<Button>(R.id.btnGuardar)
-        val limpiar: Button= findViewById<Button>(R.id.btnLimpiar)
+        val guardar: Button = findViewById<Button>(R.id.btnGuardar)
+        val limpiar: Button = findViewById<Button>(R.id.btnLimpiar)
         binding.encabezado.setTitulo("Editar Socio")
         binding.encabezado.setDestino(SociosActivity::class.java)
 
