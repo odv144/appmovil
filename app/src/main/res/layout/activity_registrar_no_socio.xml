@@ -1,172 +1,231 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:background="@color/fondoGris">
-    <!--ENCABEZADO REUTILIZABLE CON COMPONENTE-->
-    <com.odvsystem.sportcenter.components.Header
-        android:id="@+id/encabezado"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:orientation="vertical" >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="DATOS DEL VISITANTE"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/verde_oscuro"
-            />
-        <EditText
-            android:id="@+id/etDni"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="DNI"
-            android:background="@color/white"
-            android:padding="3dp"
-            android:layout_marginTop="5dp"
-            />
-        <EditText
-            android:id="@+id/etNombre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="NOMBRE"
-            android:background="@color/white"
-            android:padding="3dp"
-            android:layout_marginTop="5dp"
-            />
-        <EditText
-            android:id="@+id/etApellido"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="APELLIDO"
-            android:background="@color/white"
-            android:padding="3dp"
-            android:layout_marginTop="5dp"
-            />
-        <EditText
-            android:id="@+id/etTelefono"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="TELEFONO"
-            android:background="@color/white"
-            android:padding="3dp"
-            android:inputType="phone"
-            android:layout_marginTop="5dp"
-            />
-        <EditText
-            android:id="@+id/etEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="CORREO ELECTRONICO"
-            android:inputType="textEmailAddress"
-            android:background="@color/white"
-            android:padding="3dp"
-            android:layout_marginTop="5dp"
-            />
+    android:background="#FFFFFF"
+    android:fillViewport="true">
 
-    </LinearLayout>
-    <!--CONTENIDO PARA MEMBRESIA-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:orientation="vertical"
-        android:background="@color/fondoGris">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ACTIVIDAD DEL DÍA"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/verde_oscuro"
-            />
-        <EditText
-            android:id="@+id/etActividad"
+        android:orientation="vertical">
+
+        <com.odvsystem.sportcenter.components.Header
+            android:id="@+id/encabezado"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="ACTIVIDAD"
-            android:background="@color/white"
-            android:padding="3dp"
-            android:layout_marginTop="5dp"
-            />
-        <EditText
-            android:id="@+id/etCuota"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="TARIFA DEL DÍA"
-            android:background="@color/white"
-            android:padding="3dp"
-            android:layout_marginTop="5dp"
-            />
-        <EditText
-            android:id="@+id/etFormaPago"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="FORMA DE PAGO"
-            android:background="@color/white"
-            android:padding="3dp"
-            android:layout_marginTop="5dp"
-            />
+            android:layout_height="wrap_content" />
+
+        <!-- DATOS DEL VISITANTE -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginStart="36dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_form_card"
+            android:orientation="vertical">
+
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="CERTIFICADO. MÉDICO"
-                android:background="@color/white"
-                android:padding="3dp"
-                android:textSize="18sp"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"/>
-            <CheckBox
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:id="@+id/chkCerti"/>
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:gravity="center_vertical"
+                android:paddingStart="14dp"
+                android:text="DATOS DEL VISITANTE"
+                android:textColor="#0D6B2A"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.08" />
+
+            <EditText
+                android:id="@+id/etDni"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/bg_form_row"
+                android:hint="DNI"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textColor="#111111"
+                android:textColorHint="#555555"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etNombre"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/bg_form_row"
+                android:hint="Nombre"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textColor="#111111"
+                android:textColorHint="#555555"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etApellido"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/bg_form_row"
+                android:hint="Apellido"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textColor="#111111"
+                android:textColorHint="#555555"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etTelefono"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/bg_form_row"
+                android:hint="Teléfono"
+                android:inputType="phone"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textColor="#111111"
+                android:textColorHint="#555555"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@android:color/transparent"
+                android:hint="E-mail"
+                android:inputType="textEmailAddress"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textColor="#111111"
+                android:textColorHint="#555555"
+                android:textSize="14sp" />
+
         </LinearLayout>
 
-
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
-
-        <Button
-            android:id="@+id/btnCobrar"
+        <!-- ACTIVIDAD DEL DÍA -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/verdeBoton"
-            android:text="REGISTRAR Y COBRAR"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:layout_marginStart="36dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_form_card"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btnLimpiar"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:gravity="center_vertical"
+                android:paddingStart="14dp"
+                android:text="ACTIVIDAD DEL DÍA"
+                android:textColor="#0D6B2A"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.08" />
+
+            <EditText
+                android:id="@+id/etActividad"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/bg_form_row"
+                android:hint="Actividad"
+                android:inputType="text"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textColor="#111111"
+                android:textColorHint="#555555"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etCuota"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/bg_form_row"
+                android:hint="Tarifa del día"
+                android:inputType="numberDecimal"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textColor="#111111"
+                android:textColorHint="#555555"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etFormaPago"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/bg_form_row"
+                android:hint="Forma de pago"
+                android:inputType="text"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textColor="#111111"
+                android:textColorHint="#555555"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="Cert. médico"
+                    android:textColor="#555555"
+                    android:textSize="14sp" />
+
+                <CheckBox
+                    android:id="@+id/chkCerti"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Presentado"
+                    android:textColor="#9A9A9A"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- BOTONES -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/white"
-            android:text="LIMPIAR"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:layout_height="48dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginTop="22dp"
+            android:orientation="horizontal">
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnCobrar"
+                android:layout_width="0dp"
+                android:layout_height="46dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_btn_green"
+                android:text="Registrar y cobrar"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnLimpiar"
+                android:layout_width="0dp"
+                android:layout_height="46dp"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_btn_outline"
+                android:text="Limpiar"
+                android:textAllCaps="false"
+                android:textColor="#111111"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+</ScrollView>

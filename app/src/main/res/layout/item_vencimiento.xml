@@ -39,10 +39,11 @@
 
         <TextView
             android:id="@+id/tvVence"
+            android:singleLine="true"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="13sp"
+            android:layout_weight="1.7"
+            android:textSize="11sp"
             android:textColor="#424242" />
 
         <!-- Ícono estado -->
