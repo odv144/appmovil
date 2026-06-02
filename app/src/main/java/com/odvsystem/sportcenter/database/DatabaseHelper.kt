@@ -13,15 +13,8 @@ class DatabaseHelper(context: Context) :
     ){
     companion object{
         const val DATABASE_NAME="deportivo.db"
-        const val DATABASE_VERSION = 5
+        const val DATABASE_VERSION = 6
 
-        //TABLA
-        const val TABLA_LOGIN = "login"
-
-        //COLUMNAS
-        const val COLUMN_ID="id"
-        const val COLUMN_NOMBRE="nombre"
-        const val COLUMN_CLAVE = "clave"
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
@@ -154,7 +147,7 @@ class DatabaseHelper(context: Context) :
         oldVersion:Int,
         newVersion: Int
     ){
-        db?.execSQL("DROP TABLE IF EXISTS $TABLA_LOGIN") //tabla de login vieja
+
         db?.execSQL("DROP TABLE IF EXISTS nosocio_actividad")
         db?.execSQL("DROP TABLE IF EXISTS socio_actividad")
         db?.execSQL("DROP TABLE IF EXISTS cuota")
@@ -177,38 +170,38 @@ class DatabaseHelper(context: Context) :
     // ── Datos iniciales ────────────────────────────────────────
     private fun insertarDatosIniciales(db: SQLiteDatabase?) {
 
-        // roles
-        db?.execSQL("INSERT INTO roles VALUES (1,'Administrador')")
-        db?.execSQL("INSERT INTO roles VALUES (2,'Empleado')")
+        // ── Roles ──────────────────────────────────────────────
+        db?.execSQL("INSERT OR IGNORE INTO roles VALUES (1,'Administrador')")
+        db?.execSQL("INSERT OR IGNORE INTO roles VALUES (2,'Empleado')")
 
-        // credenciales
-        listOf("omar","cynthia","cristian","analia","jairo","admin").forEachIndexed { i, nombre ->
-            db?.execSQL("INSERT INTO credencial (nombreusu,passusu,rolusu,activo) VALUES ('$nombre','1234',1,1)")
+        // ── Credenciales ───────────────────────────────────────
+        listOf("omar","cynthia","cristian","analia","jairo","admin").forEach { nombre ->
+            db?.execSQL("INSERT OR IGNORE INTO credencial (nombreusu,passusu,rolusu,activo) VALUES ('$nombre','1234',1,1)")
         }
 
-        // actividades
-        db?.execSQL("INSERT INTO actividad VALUES (1,'Fútbol 5','Partidos de fútbol 5 con árbitro',1500,2500,10,'Mañana')")
-        db?.execSQL("INSERT INTO actividad VALUES (2,'Natación Adultos','Clases de natación para adultos principiantes',2000,3500,15,'Tarde')")
-        db?.execSQL("INSERT INTO actividad VALUES (3,'Yoga','Sesiones de yoga y meditación',1800,3000,20,'Mañana')")
-        db?.execSQL("INSERT INTO actividad VALUES (4,'Tenis','Clases de tenis individuales y grupales',2500,4000,8,'Tarde')")
-        db?.execSQL("INSERT INTO actividad VALUES (5,'Gimnasio','Acceso a sala de musculación y máquinas',3000,5000,30,'Noche')")
-        db?.execSQL("INSERT INTO actividad VALUES (6,'Pilates','Clases de pilates con instructora certificada',2200,3800,12,'Mañana')")
-        db?.execSQL("INSERT INTO actividad VALUES (7,'Paddle','Alquiler de cancha de paddle por hora',1200,2000,4,'Tarde')")
-        db?.execSQL("INSERT INTO actividad VALUES (8,'Zumba','Clases de baile fitness con música latina',1500,2800,25,'Noche')")
-        db?.execSQL("INSERT INTO actividad VALUES (9,'Natación Niños','Clases de natación para niños de 6 a 12 años',1800,3200,12,'Tarde')")
-        db?.execSQL("INSERT INTO actividad VALUES (10,'Básquet','Entrenamientos y partidos de básquetbol',1600,2600,12,'Noche')")
+        // ── Actividades ────────────────────────────────────────
+        db?.execSQL("INSERT OR IGNORE INTO actividad VALUES (1,'Fútbol 5','Partidos de fútbol 5 con árbitro',1500,2500,10,'Mañana')")
+        db?.execSQL("INSERT OR IGNORE INTO actividad VALUES (2,'Natación Adultos','Clases de natación para adultos principiantes',2000,3500,15,'Tarde')")
+        db?.execSQL("INSERT OR IGNORE INTO actividad VALUES (3,'Yoga','Sesiones de yoga y meditación',1800,3000,20,'Mañana')")
+        db?.execSQL("INSERT OR IGNORE INTO actividad VALUES (4,'Tenis','Clases de tenis individuales y grupales',2500,4000,8,'Tarde')")
+        db?.execSQL("INSERT OR IGNORE INTO actividad VALUES (5,'Gimnasio','Acceso a sala de musculación y máquinas',3000,5000,30,'Noche')")
+        db?.execSQL("INSERT OR IGNORE INTO actividad VALUES (6,'Pilates','Clases de pilates con instructora certificada',2200,3800,12,'Mañana')")
+        db?.execSQL("INSERT OR IGNORE INTO actividad VALUES (7,'Paddle','Alquiler de cancha de paddle por hora',1200,2000,4,'Tarde')")
+        db?.execSQL("INSERT OR IGNORE INTO actividad VALUES (8,'Zumba','Clases de baile fitness con música latina',1500,2800,25,'Noche')")
+        db?.execSQL("INSERT OR IGNORE INTO actividad VALUES (9,'Natación Niños','Clases de natación para niños de 6 a 12 años',1800,3200,12,'Tarde')")
+        db?.execSQL("INSERT OR IGNORE INTO actividad VALUES (10,'Básquet','Entrenamientos y partidos de básquetbol',1600,2600,12,'Noche')")
 
-        // usuarios de prueba
-        db?.execSQL("INSERT INTO usuario VALUES (1,'García','Luis','30123456','1134567890','garcia@mail.com','2025-01-10',1)")
-        db?.execSQL("INSERT INTO usuario VALUES (2,'López','Marcos','31234567','1145678901','lopez@mail.com','2025-01-15',1)")
-        db?.execSQL("INSERT INTO usuario VALUES (3,'Rodríguez','Carlos','32345678','1156789012','rodriguez@mail.com','2025-02-01',1)")
-        db?.execSQL("INSERT INTO usuario VALUES (4,'Fernandez','Pedro','33456789','1167890123','fernandez@mail.com','2025-02-15',1)")
+        // ── Usuarios de prueba ─────────────────────────────────
+        db?.execSQL("INSERT OR IGNORE INTO usuario (idusuario, nombre, apellido, dni, telefono, email, fecharegistro, certificadomedico) VALUES (1, 'Luis', 'García', '30123456', '351111111', 'luis@mail.com', '2024-01-01', 1)")
+        db?.execSQL("INSERT OR IGNORE INTO usuario (idusuario, nombre, apellido, dni, telefono, email, fecharegistro, certificadomedico) VALUES (2, 'Ana', 'López', '28456789', '351222222', 'ana@mail.com', '2024-01-01', 1)")
 
-        // socios de prueba
-        db?.execSQL("INSERT INTO socio VALUES (1,1,'activo',8500,1)")
-        db?.execSQL("INSERT INTO socio VALUES (2,2,'activo',11000,1)")
-        db?.execSQL("INSERT INTO socio VALUES (3,3,'activo',7500,1)")
-        db?.execSQL("INSERT INTO socio VALUES (4,4,'activo',8000,1)")
+        // ── Socios de prueba ───────────────────────────────────
+        db?.execSQL("INSERT OR IGNORE INTO socio (nrosocio, idusuario, estadohabilitacion, cuotamensual, carneteentregado) VALUES (1, 1, 'activo', 3000.0, 1)")
+        db?.execSQL("INSERT OR IGNORE INTO socio (nrosocio, idusuario, estadohabilitacion, cuotamensual, carneteentregado) VALUES (2, 2, 'inactivo', 3000.0, 0)")
+
+        // ── Actividades de los socios ──────────────────────────
+        db?.execSQL("INSERT OR IGNORE INTO socio_actividad (nrosocio, idactividad, fechainscripcion, estado) VALUES (1, 1, '2024-01-01', 'activo')")
+        db?.execSQL("INSERT OR IGNORE INTO socio_actividad (nrosocio, idactividad, fechainscripcion, estado) VALUES (2, 3, '2024-01-01', 'activo')")
 
 
         // cuotas de prueba
@@ -260,5 +253,60 @@ class DatabaseHelper(context: Context) :
         db.close()
         return rol
     }
-}
 
+    fun buscarSocioParaCarnet(termino: String): Map<String, String>? {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("""
+            SELECT 
+                s.nrosocio,
+                u.nombre,
+                u.apellido,
+                u.dni,
+                s.estadohabilitacion,
+                s.cuotamensual,
+                GROUP_CONCAT(a.nombre, ', ') AS actividades
+            FROM socio s
+            INNER JOIN usuario u ON s.idusuario = u.idusuario
+            LEFT JOIN socio_actividad sa ON s.nrosocio = sa.nrosocio
+            LEFT JOIN actividad a ON sa.idactividad = a.idactividad
+            WHERE CAST(s.nrosocio AS TEXT) = ?
+               OR u.dni = ?
+            GROUP BY s.nrosocio
+            LIMIT 1
+        """.trimIndent(), arrayOf(termino, termino))
+
+        return if (cursor.moveToFirst()) {
+            mapOf(
+                "nrosocio"    to cursor.getString(cursor.getColumnIndexOrThrow("nrosocio")),
+                "nombre"      to cursor.getString(cursor.getColumnIndexOrThrow("nombre")),
+                "apellido"    to cursor.getString(cursor.getColumnIndexOrThrow("apellido")),
+                "dni"         to cursor.getString(cursor.getColumnIndexOrThrow("dni")),
+                "estado"      to cursor.getString(cursor.getColumnIndexOrThrow("estadohabilitacion")),
+                "actividades" to (cursor.getString(cursor.getColumnIndexOrThrow("actividades")) ?: "Sin actividad")
+            )
+        } else null
+            .also { cursor.close() }
+    }
+    fun obtenerVigenciaSocio(nrosocio: String): String {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("""
+        SELECT mes, anio
+        FROM cuota
+        WHERE nrosocio = ?
+          AND estadopago = 1
+        ORDER BY anio DESC, mes DESC
+        LIMIT 1
+    """.trimIndent(), arrayOf(nrosocio))
+
+        val resultado = if (cursor.moveToFirst()) {
+            val mes  = cursor.getInt(cursor.getColumnIndexOrThrow("mes")).toString().padStart(2, '0')
+            val anio = cursor.getInt(cursor.getColumnIndexOrThrow("anio"))
+            "$mes/$anio"
+        } else {
+            "Sin cuota"
+        }
+
+        cursor.close()
+        return resultado
+    }
+}
