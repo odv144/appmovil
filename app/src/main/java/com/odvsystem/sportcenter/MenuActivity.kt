@@ -11,6 +11,10 @@ import com.odvsystem.sportcenter.ui.actividad.ActividadActivity
 import com.odvsystem.sportcenter.ui.nosocio.NoSociosActivity
 import com.odvsystem.sportcenter.ui.socio.SociosActivity
 import com.odvsystem.sportcenter.ui.vencimiento.VencimientoActivity
+import android.widget.TextView
+import com.odvsystem.sportcenter.repository.CuotaRepository
+import com.odvsystem.sportcenter.repository.SocioRepository
+import com.odvsystem.sportcenter.repository.NoSocioRepository
 
 class MenuActivity : AppCompatActivity() {
 
@@ -18,6 +22,23 @@ class MenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_menu)
+
+        // Repositorios
+        val socioRepo = com.odvsystem.sportcenter.repository.SocioRepository(this)
+        val nosocioRepo = com.odvsystem.sportcenter.repository.NoSocioRepository(this)
+        val cuotaRepo = CuotaRepository(this)
+
+        // Contadores
+        val tvTotalSocios = findViewById<TextView>(R.id.tvTotalSocios)
+        val tvVisitasHoy = findViewById<TextView>(R.id.tvVisitasHoy)
+        val tvSociosVencidos = findViewById<TextView>(R.id.tvSociosVencidos)
+
+        tvTotalSocios.text = socioRepo.obtenerTodos().size.toString()
+        tvVisitasHoy.text = nosocioRepo.obtenerTodos().size.toString()
+        tvSociosVencidos.text = cuotaRepo.obtenerVencimientos().count {
+            it.estadoPago == 0
+        }.toString()
+
         val socios: LinearLayout = findViewById<LinearLayout>(R.id.menu_Socio)
         val nosocio: LinearLayout = findViewById<LinearLayout>(R.id.menu_NoSocio)
         val vencimiento: LinearLayout=findViewById<LinearLayout>(R.id.menu_Vencimientos)

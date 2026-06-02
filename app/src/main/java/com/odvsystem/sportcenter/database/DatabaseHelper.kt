@@ -194,21 +194,32 @@ class DatabaseHelper(context: Context) :
         // ── Usuarios de prueba ─────────────────────────────────
         db?.execSQL("INSERT OR IGNORE INTO usuario (idusuario, nombre, apellido, dni, telefono, email, fecharegistro, certificadomedico) VALUES (1, 'Luis', 'García', '30123456', '351111111', 'luis@mail.com', '2024-01-01', 1)")
         db?.execSQL("INSERT OR IGNORE INTO usuario (idusuario, nombre, apellido, dni, telefono, email, fecharegistro, certificadomedico) VALUES (2, 'Ana', 'López', '28456789', '351222222', 'ana@mail.com', '2024-01-01', 1)")
+        db?.execSQL("INSERT OR IGNORE INTO usuario (idusuario, nombre, apellido, dni, telefono, email, fecharegistro, certificadomedico) VALUES (3, 'Carlos', 'Gómez', '32123456', '351333333', 'carlos@mail.com', '2024-01-01', 1)")
+        db?.execSQL("INSERT OR IGNORE INTO usuario (idusuario, nombre, apellido, dni, telefono, email, fecharegistro, certificadomedico) VALUES (4, 'Marta', 'Sánchez', '35123456', '351444444', 'marta@mail.com', '2024-01-01', 1)")
+
 
         // ── Socios de prueba ───────────────────────────────────
         db?.execSQL("INSERT OR IGNORE INTO socio (nrosocio, idusuario, estadohabilitacion, cuotamensual, carneteentregado) VALUES (1, 1, 'activo', 3000.0, 1)")
         db?.execSQL("INSERT OR IGNORE INTO socio (nrosocio, idusuario, estadohabilitacion, cuotamensual, carneteentregado) VALUES (2, 2, 'inactivo', 3000.0, 0)")
+        db?.execSQL("INSERT OR IGNORE INTO socio (nrosocio, idusuario, estadohabilitacion, cuotamensual, carneteentregado) VALUES (3, 3, 'activo', 3500.0, 1)")
+        db?.execSQL("INSERT OR IGNORE INTO socio (nrosocio, idusuario, estadohabilitacion, cuotamensual, carneteentregado) VALUES (4, 4, 'activo', 4000.0, 1)")
+
 
         // ── Actividades de los socios ──────────────────────────
         db?.execSQL("INSERT OR IGNORE INTO socio_actividad (nrosocio, idactividad, fechainscripcion, estado) VALUES (1, 1, '2024-01-01', 'activo')")
         db?.execSQL("INSERT OR IGNORE INTO socio_actividad (nrosocio, idactividad, fechainscripcion, estado) VALUES (2, 3, '2024-01-01', 'activo')")
 
 
-        // cuotas de prueba
+        // ── Cuotas de prueba (ESTADOS: Al día, Vencido, Próximo) ──
+        db?.execSQL("DELETE FROM cuota")
+        // Socio 1: PAGADA (Verde)
         db?.execSQL("INSERT INTO cuota VALUES (1,1,4,2025,8500,'2025-04-10',null,null,1)")
-        db?.execSQL("INSERT INTO cuota VALUES (2,2,3,2025,11000,'2025-03-31',null,null,0)")
-        db?.execSQL("INSERT INTO cuota VALUES (3,3,4,2025,7500,'2025-04-15',null,null,0)")
-        db?.execSQL("INSERT INTO cuota VALUES (4,4,3,2025,8000,'2025-03-28',null,null,0)")
+        // Socio 2: VENCIDA (Rojo) - Fecha en el pasado
+        db?.execSQL("INSERT INTO cuota VALUES (2,2,3,2025,11000,'2024-01-01',null,null,0)")
+        // Socio 3: PRÓXIMO (!) - Fecha en el futuro
+        db?.execSQL("INSERT INTO cuota VALUES (3,3,5,2025,7500,'2026-12-31',null,null,0)")
+        // Socio 4: VENCIDA (Rojo) - Fecha en el pasado
+        db?.execSQL("INSERT INTO cuota VALUES (4,4,3,2025,8000,'2024-05-20',null,null,0)")
 
         // nosocios de prueba
         db?.execSQL("INSERT INTO usuario VALUES (5,'Pérez','Juan','40111222','1133334444','juan@mail.com','2025-04-01',1)")
