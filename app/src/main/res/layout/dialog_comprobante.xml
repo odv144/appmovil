@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,6 +35,7 @@
             app:cardCornerRadius="15dp"
             app:strokeWidth="3dp"
             app:strokeColor="@color/black"
+            app:cardBackgroundColor="@color/white"
             android:layout_margin="10dp">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -46,8 +48,9 @@
                 android:textColor="@color/verde_oscuro"
                 android:textStyle="italic"
                 android:textSize="22sp"
-                android:text="López, Marcos"/>
+                android:id="@+id/tvNombreSocioComprobante"/>
             <TextView
+                android:id="@+id/tvActiSocio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/verde_claro"
@@ -66,13 +69,16 @@
             android:layout_height="wrap_content"
             android:text="Período"
             android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            />
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="15dp"
             app:strokeWidth="1dp"
             app:strokeColor="@color/black"
+            app:cardBackgroundColor="@color/white"
             android:layout_margin="10dp">
                 <TextView
                     android:layout_width="wrap_content"
@@ -81,7 +87,7 @@
                     android:textStyle="italic"
                     android:textSize="20sp"
                     android:padding="10dp"
-                    android:text="Abril 2025"/>
+                    android:id="@+id/tvPeriodoComprobante"/>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
     <LinearLayout
@@ -93,13 +99,16 @@
             android:layout_height="wrap_content"
             android:text="Total abonado"
             android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            />
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="15dp"
             app:strokeWidth="1dp"
             app:strokeColor="@color/black"
+            app:cardBackgroundColor="@color/white"
             android:layout_margin="10dp">
             <TextView
                 android:layout_width="wrap_content"
@@ -108,7 +117,7 @@
                 android:textStyle="italic"
                 android:textSize="20sp"
                 android:padding="10dp"
-                android:text="$11.000"/>
+                android:id="@+id/tvMontoComprobante"/>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
     <LinearLayout
@@ -120,13 +129,16 @@
             android:layout_height="wrap_content"
             android:text="Forma de Pago"
             android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            />
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="15dp"
             app:strokeWidth="1dp"
             app:strokeColor="@color/black"
+            app:cardBackgroundColor="@color/white"
             android:layout_margin="10dp">
             <TextView
                 android:layout_width="wrap_content"
@@ -135,7 +147,7 @@
                 android:textStyle="italic"
                 android:textSize="20sp"
                 android:padding="10dp"
-                android:text="Efectivo"/>
+                android:id="@+id/tvFormaPagoComprobante"/>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
     <!--

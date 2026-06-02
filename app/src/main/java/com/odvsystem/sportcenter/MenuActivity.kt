@@ -7,12 +7,13 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintSet
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.odvsystem.sportcenter.ui.actividad.ActividadActivity
+import com.odvsystem.sportcenter.ui.nosocio.NoSociosActivity
+import com.odvsystem.sportcenter.ui.socio.SociosActivity
+import com.odvsystem.sportcenter.ui.vencimiento.VencimientoActivity
 
 class MenuActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

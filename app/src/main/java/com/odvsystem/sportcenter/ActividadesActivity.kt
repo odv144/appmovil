@@ -3,11 +3,10 @@ package com.odvsystem.sportcenter
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.odvsystem.sportcenter.databinding.ActivityActividadesBinding
+
 class ActividadesActivity : AppCompatActivity() {
     private lateinit var binding: ActivityActividadesBinding
 
@@ -24,11 +23,13 @@ class ActividadesActivity : AppCompatActivity() {
         binding.encabezado.setDestino(MenuActivity::class.java)
 /*
         newActi.setOnClickListener {
-           val vistaNuevaActividad = Intent(this, NuevaActividad::class.java)
+            intent.putExtra("FLAG", true)
+            val vistaNuevaActividad = Intent(this, NuevaActividad::class.java)
             startActivity(vistaNuevaActividad)
         }
 
         edit.setOnClickListener {
+            intent.putExtra("FLAG", false)
             val vistaNuevaActividad = Intent(this, NuevaActividad::class.java)
             startActivity(vistaNuevaActividad)
         }

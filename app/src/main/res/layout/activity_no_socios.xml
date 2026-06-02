@@ -6,21 +6,19 @@
     android:orientation="vertical"
     android:background="#F2F4F2">
 
-    <!--ENCABEZADO REUTILIZABLE CON COMPONENTE-->
     <com.odvsystem.sportcenter.components.Header
         android:id="@+id/encabezado"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-    <!--CARD BLANCA CONTENEDORA -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
+        android:layout_height="match_parent"
         android:layout_margin="14dp"
         android:background="#FFFFFF"
         android:elevation="4dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:orientation="vertical"
         android:padding="14dp">
 
@@ -43,7 +41,7 @@
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/etBuscar"
+                android:id="@+id/etBuscarNoSocio"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@null"
@@ -55,19 +53,15 @@
                 android:textSize="13sp" />
         </LinearLayout>
 
+        <!-- LISTADO -->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvSocios"
+            android:id="@+id/rvNoSocios"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:padding="12dp" />
 
-        <!-- Línea divisora (va entre encabezados y datos,
-             la ponemos fija aquí como referencia visual) -->
-        <!-- NOTA: en la versión dinámica esta línea la podés agregar
-             también con addView() como un View separador desde Kotlin -->
-
-        <!--BOTONES DE ACCIÓN -->
+        <!-- BOTÓN DE ACCIÓN -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,24 +69,21 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btnRegistrar"
+                android:id="@+id/btnRegistrarNoSocio"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
-                android:layout_marginEnd="8dp"
                 android:layout_weight="1"
                 android:backgroundTint="#2E7D32"
                 android:elevation="0dp"
                 android:stateListAnimator="@null"
-                android:text="+ NUEVO SOCIO"
+                android:text="+ NUEVO NO SOCIO"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
-
         </LinearLayout>
 
     </LinearLayout>
-
 
 </LinearLayout>

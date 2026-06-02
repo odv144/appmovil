@@ -14,9 +14,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SportCenter">
-
         <activity
-            android:name=".EditarSocioActivity"
+            android:name=".ui.nosocio.EditarNoSocioActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SportCenter" />
+        <activity
+            android:name=".activity_editar_no_socio"
+            android:exported="false" />
+        <activity
+            android:name=".ui.nosocio.EditarSocioActivity"
             android:exported="false" />
         <activity
             android:name=".InicioPortada"
@@ -33,7 +39,7 @@
             android:name=".ReimpresionCarnet"
             android:exported="false" />
         <activity
-            android:name=".VencimientoActivity"
+            android:name=".ui.vencimiento.VencimientoActivity"
             android:exported="false" />
         <activity
             android:name=".ui.actividad.ActividadActivity"
@@ -42,10 +48,10 @@
             android:name=".ActividadesActivity"
             android:exported="false" />
         <activity
-            android:name=".RegistrarNoSocioActivity"
+            android:name=".ui.nosocio.RegistrarNoSocioActivity"
             android:exported="false" />
         <activity
-            android:name=".NoSociosActivity"
+            android:name=".ui.nosocio.NoSociosActivity"
             android:exported="false" />
         <activity
             android:name=".RegistrarSocioActivity"
@@ -54,15 +60,14 @@
             android:name=".ListadoCarnet"
             android:exported="false" />
         <activity
-            android:name=".SociosActivity"
+            android:name=".ui.socio.SociosActivity"
             android:exported="false" />
         <activity
             android:name=".MenuActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>

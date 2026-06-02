@@ -17,7 +17,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         val dbHelper = DatabaseHelper(this)
-        DatabaseHelper(this).writableDatabase.close()
+
+        // DatabaseHelper(this).writableDatabase.close()
+
         setContentView(R.layout.activity_main)
         val boton: Button = findViewById(R.id.btnLogin)
 
