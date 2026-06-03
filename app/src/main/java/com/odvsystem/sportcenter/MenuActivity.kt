@@ -47,7 +47,6 @@ class MenuActivity : AppCompatActivity() {
         val cerrarSesion: Button = findViewById(R.id.btnCerrarSesion)
 
         socios.setOnClickListener {
-            Toast.makeText(this,"presionando boton de socio", Toast.LENGTH_LONG).show()
             val intentar = Intent(this, SociosActivity::class.java)
             startActivity(intentar)
         }
@@ -63,12 +62,7 @@ class MenuActivity : AppCompatActivity() {
             val intentar = Intent(this, ActividadActivity::class.java)
             startActivity(intentar)
         }
-        /*
-        acti.setOnClickListener {
-            val intentar = Intent(this, ActividadesActivity::class.java)
-            startActivity(intentar)
-        }
-        */
+        
         reimpresion.setOnClickListener {
             val intentar = Intent(this, ReimpresionCarnet::class.java)
             startActivity(intentar)

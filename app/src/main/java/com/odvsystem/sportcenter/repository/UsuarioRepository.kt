@@ -61,4 +61,39 @@ class UsuarioRepository(context: Context) {
         return filas > 0
     }
 
+    //validacion de dni no duplicado
+
+    fun existeDni(dni: String, idUsuarioExcluir: Int? = null): Boolean {
+        val db = dbHelper.readableDatabase
+
+        val cursor = if (idUsuarioExcluir != null) {
+            db.rawQuery(
+                """
+            SELECT idusuario 
+            FROM usuario 
+            WHERE dni = ? 
+              AND idusuario != ?
+            LIMIT 1
+            """.trimIndent(),
+                arrayOf(dni, idUsuarioExcluir.toString())
+            )
+        } else {
+            db.rawQuery(
+                """
+            SELECT idusuario 
+            FROM usuario 
+            WHERE dni = ?
+            LIMIT 1
+            """.trimIndent(),
+                arrayOf(dni)
+            )
+        }
+
+        val existe = cursor.moveToFirst()
+        cursor.close()
+        db.close()
+
+        return existe
+    }
+
 }

@@ -69,8 +69,7 @@ class ActividadActivity: AppCompatActivity() {
     }
 
     private fun irAEditar(actividad: Actividad?) {
-        Toast.makeText(this, "Intentando editar", Toast.LENGTH_SHORT).show()
-        val intent = Intent(this, NuevaActividad::class.java)
+         val intent = Intent(this, NuevaActividad::class.java)
         actividad?.let { intent.putExtra("idActividad", it.idActividad) }
         startActivity(intent)
     }

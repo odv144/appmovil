@@ -106,30 +106,33 @@ class CuotaRepository(context: Context) {
         val lista = mutableListOf<Vencimiento>()
 
         val cursor = db.rawQuery("""
-    SELECT c.idcuota,
-           u.apellido || ', ' || u.nombre AS nombre,
-           c.mes || '/' || c.anio AS periodo,
-           '$' || CAST(CAST(c.monto AS INTEGER) AS TEXT) AS monto,
-           c.fechavencimiento AS vence,
-           CASE 
-               WHEN c.estadopago = 1 THEN 'al_dia'
-               WHEN date(c.fechavencimiento) < date('now') THEN 'vencido'
-               ELSE 'proximo'
-           END AS estado
-    FROM cuota c
-    INNER JOIN socio s ON c.nrosocio = s.nrosocio
-    INNER JOIN usuario u ON s.idusuario = u.idusuario
-    ORDER BY c.fechavencimiento ASC
-""".trimIndent(), null)
+        SELECT c.idcuota,
+               u.apellido || ', ' || u.nombre AS nombre,
+               c.mes || '/' || c.anio AS periodo,
+               '$' || CAST(CAST(c.monto AS INTEGER) AS TEXT) AS monto,
+               c.fechavencimiento AS vence,
+               CASE 
+                   WHEN c.estadopago = 1 THEN 'al_dia'
+                   WHEN date(c.fechavencimiento) < date('now') THEN 'vencido'
+                   ELSE 'proximo'
+               END AS estado
+        FROM cuota c
+        INNER JOIN socio s ON c.nrosocio = s.nrosocio
+        INNER JOIN usuario u ON s.idusuario = u.idusuario
+        ORDER BY c.fechavencimiento ASC
+    """.trimIndent(), null)
 
         while (cursor.moveToNext()) {
+            val fechaVencimientoBD = cursor.getString(4)
+            val fechaVencimientoMostrar = convertirFechaArgentina(fechaVencimientoBD)
+
             lista.add(
                 Vencimiento(
                     idCuota = cursor.getInt(0),
                     nombre  = cursor.getString(1),
                     periodo = cursor.getString(2),
                     monto   = cursor.getString(3),
-                    vence   = cursor.getString(4),
+                    vence   = fechaVencimientoMostrar,
                     estado  = cursor.getString(5)
                 )
             )
@@ -146,4 +149,32 @@ class CuotaRepository(context: Context) {
         calendar.add(Calendar.DAY_OF_MONTH, dias)
         return sdf.format(calendar.time)
     }
+
+    //conversion de fecha
+    private fun convertirFechaArgentina(fechaBD: String?): String {
+        if (fechaBD.isNullOrEmpty()) return ""
+
+        return try {
+            val formatoEntrada = java.text.SimpleDateFormat(
+                "yyyy-MM-dd",
+                java.util.Locale.getDefault()
+            )
+
+            val formatoSalida = java.text.SimpleDateFormat(
+                "dd-MM-yyyy",
+                java.util.Locale("es", "AR")
+            )
+
+            val fecha = formatoEntrada.parse(fechaBD)
+
+            if (fecha != null) {
+                formatoSalida.format(fecha)
+            } else {
+                fechaBD
+            }
+        } catch (e: Exception) {
+            fechaBD
+        }
+    }
+
 }
