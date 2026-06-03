@@ -13,7 +13,7 @@ class DatabaseHelper(context: Context) :
     ){
     companion object{
         const val DATABASE_NAME="deportivo.db"
-        const val DATABASE_VERSION = 6
+        const val DATABASE_VERSION = 8
 
     }
 
@@ -87,6 +87,7 @@ class DatabaseHelper(context: Context) :
             fechapago TEXT,
             metodopago TEXT,
             estadopago INTEGER DEFAULT 0,
+            UNIQUE(nrosocio, mes, anio),
             FOREIGN KEY (nrosocio) REFERENCES socio(nrosocio) ON DELETE CASCADE
             )
         """.trimIndent())
@@ -207,8 +208,6 @@ class DatabaseHelper(context: Context) :
         // cuotas de prueba
         db?.execSQL("INSERT INTO cuota VALUES (1,1,4,2025,8500,'2025-04-10',null,null,1)")
         db?.execSQL("INSERT INTO cuota VALUES (2,2,3,2025,11000,'2025-03-31',null,null,0)")
-        db?.execSQL("INSERT INTO cuota VALUES (3,3,4,2025,7500,'2025-04-15',null,null,0)")
-        db?.execSQL("INSERT INTO cuota VALUES (4,4,3,2025,8000,'2025-03-28',null,null,0)")
 
         // nosocios de prueba
         db?.execSQL("INSERT INTO usuario VALUES (5,'Pérez','Juan','40111222','1133334444','juan@mail.com','2025-04-01',1)")

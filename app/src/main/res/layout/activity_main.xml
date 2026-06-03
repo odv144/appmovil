@@ -1,60 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingTop="30dp"
-    android:paddingHorizontal="40dp" >
+    android:background="#FFFFFF">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="50dp"
-        app:srcCompat="@drawable/background" />
+        android:layout_width="match_parent"
+        android:layout_height="222dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background" />
 
-    <EditText
-        android:id="@+id/EtUser"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
-        android:hint="Nombre de Usuario"
-        android:inputType="text"
-        android:background="@drawable/btn_white_rounded"
-        android:padding="10dp"
-        android:textColor="#2E7D32"
-        />
-    <EditText
-        android:id="@+id/EtClave"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
-        android:hint="Clave de Usuario"
-        android:inputType="textPassword"
-        android:background="@drawable/btn_white_rounded"
-        android:padding="10dp"
-        android:textColor="#2E7D32"
-        />
-    <!-- Botón Iniciar sesión -->
-    <android.widget.Button
-        android:id="@+id/btnLogin"
-        android:layout_width="350dp"
-        android:layout_height="52dp"
-        android:backgroundTint="@color/verde_oscuro"
-        android:elevation="4dp"
-        android:text="Iniciar sesión"
-        android:textColor="#FFFFFF"
-        android:textSize="15sp"
-        android:textStyle="bold" />
+        android:orientation="vertical"
+        android:paddingStart="36dp"
+        android:paddingEnd="36dp"
+        android:paddingTop="24dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="Sport Center @ 2026"
-        android:layout_marginTop="20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CORREO ELECTRÓNICO"
+            android:textColor="#5A5A5A"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.06" />
+
+        <EditText
+            android:id="@+id/EtUser"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/bg_login_input"
+            android:hint="admin@sportcenter.com"
+            android:inputType="textEmailAddress"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:textColor="#333333"
+            android:textColorHint="#9A9A9A"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="CONTRASEÑA"
+            android:textColor="#5A5A5A"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.06" />
+
+        <EditText
+            android:id="@+id/EtClave"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/bg_login_input"
+            android:hint="••••••••"
+            android:inputType="textPassword"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:textColor="#333333"
+            android:textColorHint="#9A9A9A"
+            android:textSize="13sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_login_button"
+            android:text="Entrar al sistema"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:text="Sport Center © 2026"
+            android:textAlignment="center"
+            android:textColor="#9A9A9A"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
 </LinearLayout>

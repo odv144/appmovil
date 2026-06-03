@@ -59,7 +59,7 @@ class RegistrarSocioActivity : AppCompatActivity() {
         binding.encabezado.setDestino(SociosActivity::class.java)
 
         binding.btnGuardar.setOnClickListener {
-            guardar()
+                guardar()
            // val intentar = Intent(this, SociosActivity::class.java)
             //startActivity(intentar)
         }
@@ -71,16 +71,37 @@ class RegistrarSocioActivity : AppCompatActivity() {
     }
 
     //funcionando ahora debo tomar los datos de la vistas
-    private fun guardar(){
-        val nombre = binding.etNombre.text.toString()
-        val apellido = binding.etApellido.text.toString()
-        val dni = binding.etDni.text.toString()
-        val telefono = binding.etTelefono.text.toString()
+    private fun guardar() {
+        val nombre = binding.etNombre.text.toString().trim()
+        val apellido = binding.etApellido.text.toString().trim()
+        val dni = binding.etDni.text.toString().trim()
+        val telefono = binding.etTelefono.text.toString().trim()
         val formaPago = binding.spFormaPago.selectedItem.toString()
-        val email = binding.etEmail.text.toString()
+        val email = binding.etEmail.text.toString().trim()
         val cuota = binding.etCuota.text.toString().toDoubleOrNull() ?: 0.0
-        val certificado = if(binding.chkCerti.isChecked) 1 else 0
-        val fecha = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
+        val certificado = if (binding.chkCerti.isChecked) 1 else 0
+        val fechaBD = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
+
+        if (nombre.isEmpty() || apellido.isEmpty() || dni.isEmpty()) {
+            Toast.makeText(this, "Complete nombre, apellido y DNI", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (cuota <= 0) {
+            Toast.makeText(this, "Ingrese una cuota válida", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val idUsuarioActual = socioExistente?.idUsuario?.toInt()
+
+        if (repoUsuario.existeDni(dni, idUsuarioActual)) {
+            Toast.makeText(
+                this,
+                "Ya existe un usuario registrado con ese DNI",
+                Toast.LENGTH_SHORT
+            ).show()
+            return
+        }
 
         if (socioExistente != null) {
             // EDITAR
@@ -91,9 +112,10 @@ class RegistrarSocioActivity : AppCompatActivity() {
                 dni,
                 telefono,
                 email,
-                fecha,
+                fechaBD,
                 certificado
             )
+
             repoUsuario.actualizar(usuario)
 
             val socio = Socio(
@@ -105,11 +127,14 @@ class RegistrarSocioActivity : AppCompatActivity() {
             )
 
             val resultado = repo.actualizar(socio)
-            if (resultado) {
 
+            if (resultado) {
                 Toast.makeText(this, "Socio actualizado correctamente", Toast.LENGTH_SHORT).show()
                 finish()
+            } else {
+                Toast.makeText(this, "Error al actualizar socio", Toast.LENGTH_SHORT).show()
             }
+
         } else {
             // NUEVO
             val usuario = Usuario(
@@ -119,54 +144,85 @@ class RegistrarSocioActivity : AppCompatActivity() {
                 dni,
                 telefono,
                 email,
-                fecha,
+                fechaBD,
                 certificado
             )
-            val idUsuarioGenerado : Long= repoUsuario.insertar(usuario)
 
-            if (idUsuarioGenerado > 0) {
-                val socio = Socio(
+            val idUsuarioGenerado: Long = repoUsuario.insertar(usuario)
+
+            if (idUsuarioGenerado <= 0) {
+                Toast.makeText(this, "Error al registrar usuario", Toast.LENGTH_SHORT).show()
+                return
+            }
+
+            val socio = Socio(
+                0,
+                idUsuarioGenerado.toInt(),
+                "Al dia",
+                cuota,
+                1
+            )
+
+            val idSocioGenerado = repo.insertar(socio)
+
+            if (idSocioGenerado <= 0) {
+                Toast.makeText(this, "Error al registrar socio", Toast.LENGTH_SHORT).show()
+                return
+            }
+            val repoCuota = CuotaRepository(this)
+            val calendar = Calendar.getInstance()
+            val mesActual = calendar.get(Calendar.MONTH) + 1
+            val anioActual = calendar.get(Calendar.YEAR)
+            val periodo = "${mesActual.toString().padStart(2, '0')}/$anioActual"
+            val fechaVencimientoBD = repoCuota.obtenerRenovacionVencimiento(fechaBD)
+            val fechaVencimientoMostrar = convertirFechaArgentina(fechaVencimientoBD)
+            val ok = repoCuota.insertar(
+                Cuota(
                     0,
-                    idUsuarioGenerado.toInt(),
-                    "Al dia",
-                    cuota,
+                    idSocioGenerado.toInt(),
+                    mesActual,
+                    anioActual,
+                    socio.cuotamensual,
+                    fechaVencimientoBD,
+                    fechaBD,
+                    formaPago,
                     1
                 )
-                val idSocioGenerado = repo.insertar(socio)
-                if (idSocioGenerado > 0) {
-                    val repoCuota : CuotaRepository = CuotaRepository(this)
-                    val calendar = Calendar.getInstance()
-                    val mesActual = calendar.get(Calendar.MONTH) + 1
-                    val anioActual = calendar.get(Calendar.YEAR)
+            )
 
-                    val ok=  repoCuota.insertar(Cuota(
-                        0,
-                        idSocioGenerado.toInt(),
-                        mesActual,
-                        anioActual,
-                        socio.cuotamensual,
-                        repoCuota.obtenerRenovacionVencimiento(fecha.toString()),
-                        fecha,
-                        formaPago,
-                        1))
-                    if(ok){
-                        val cobro :Vencimiento = Vencimiento(
-                            idCuota = 0,
-                            usuario.nombre,
-                            fecha,
-                            socio.cuotamensual.toString(),
-                            repoCuota.obtenerRenovacionVencimiento(fecha.toString()),
-                            "al_dia"
-                        )
-                        mostrarDialogoCobro(cobro,idSocioGenerado.toInt())
+            if (ok) {
+                val cobro = Vencimiento(
+                    0,
+                    "$apellido, $nombre",
+                    periodo,
+                    socio.cuotamensual.toString(),
+                    fechaVencimientoMostrar,
+                    "al_dia"
+                )
 
-                    }else {
-                        Toast.makeText(this, "Socio creado", Toast.LENGTH_SHORT).show()
-                        finish() // Si no hay diálogo, cerramos para volver a la lista
-                    }
+                mostrarDialogoCobro(cobro, idSocioGenerado.toInt())
 
-                }
+            } else {
+                Toast.makeText(this, "Socio creado, pero no se pudo registrar la cuota", Toast.LENGTH_SHORT).show()
+                finish()
             }
+        }
+    }
+
+    private fun convertirFechaArgentina(fechaBD: String): String {
+        return try {
+            val formatoEntrada = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            val formatoSalida = SimpleDateFormat("dd-MM-yyyy", Locale("es", "AR"))
+
+            val fechaParseada = formatoEntrada.parse(fechaBD)
+
+            if (fechaParseada != null) {
+                formatoSalida.format(fechaParseada)
+            } else {
+                fechaBD
+            }
+        } catch (e: Exception) {
+            fechaBD
         }
     }
 
