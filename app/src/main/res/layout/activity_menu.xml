@@ -60,7 +60,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="48"
+                        android:id="@+id/tvTotalSocios"
                         android:textStyle="bold"
                         android:textColor="#2e7d32"
                         android:textSize="32sp"
@@ -86,7 +86,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="12"
+                    android:id="@+id/tvVisitasHoy"
                     android:textStyle="bold"
                     android:textColor="#2e7d32"
                     android:textSize="32sp"
@@ -112,7 +112,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="5"
+                    android:id="@+id/tvSociosVencidos"
                     android:textStyle="bold"
                     android:textColor="#f00"
                     android:textSize="32sp"
