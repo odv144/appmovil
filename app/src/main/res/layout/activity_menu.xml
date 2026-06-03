@@ -57,32 +57,7 @@
             android:layout_marginTop="-20dp"
             android:orientation="horizontal">
 
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:layout_margin="5dp"
-                    android:background="#fff"
-                    android:layout_gravity="center">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/tvTotalSocios"
-                        android:textStyle="bold"
-                        android:textColor="#2e7d32"
-                        android:textSize="32sp"
-                       android:layout_gravity="center"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Socios"
-                        android:textColor="@color/black"
-                        android:textSize="22sp"
-                        android:layout_gravity="center"/>
-                </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="55dp"
@@ -93,11 +68,12 @@
                 android:background="@drawable/bg_dashboard_stat_card">
 
                 <TextView
+                    android:id="@+id/tvTotalSocios"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="48"
                     android:textColor="#168333"
-                    android:textSize="18sp"
+                    android:textSize="28sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -105,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:text="Socios"
                     android:textColor="#4F4F4F"
-                    android:textSize="8sp" />
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
@@ -125,7 +101,8 @@
                     android:id="@+id/tvVisitasHoy"
                     android:textStyle="bold"
                     android:textColor="#2e7d32"
-                    android:textSize="32sp"
+                    android:textSize="28sp"
+                    android:text="5"
                     android:layout_gravity="center"
                     />
 
@@ -134,7 +111,7 @@
                     android:layout_height="wrap_content"
                     android:text="Visitas hoy"
                     android:textColor="#4F4F4F"
-                    android:textSize="8sp" />
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
@@ -153,7 +130,8 @@
                     android:id="@+id/tvSociosVencidos"
                     android:textStyle="bold"
                     android:textColor="#f00"
-                    android:textSize="32sp"
+                    android:textSize="28sp"
+                    android:text="5"
                     android:layout_gravity="center"
                     />
 
@@ -162,7 +140,7 @@
                     android:layout_height="wrap_content"
                     android:text="Vencidos"
                     android:textColor="#4F4F4F"
-                    android:textSize="8sp" />
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
@@ -384,12 +362,12 @@
                 android:textSize="28sp" />
 
         </LinearLayout>
-
+<!--
         <Space
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="137dp"
             android:layout_weight="1" />
-
+-->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnCerrarSesion"
             android:layout_width="122dp"
